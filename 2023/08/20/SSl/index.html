@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="SSL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSl">
+<meta property="og:url" content="http://example.com/2023/08/20/SSl/index.html">
+<meta property="og:site_name" content="Aurora0702">
+<meta property="og:description" content="SSL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://dl2.iteye.com/upload/attachment/0122/0705/ef68ba41-183b-3972-ae7a-3a3ddf634fb0.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-5b9e83fec099fba99d7f83bccca35e0a_1440w.webp">
+<meta property="article:published_time" content="2023-08-20T15:39:43.000Z">
+<meta property="article:modified_time" content="2023-10-15T11:49:48.000Z">
+<meta property="article:author" content="Qing">
+<meta property="article:tag" content="-SSL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://dl2.iteye.com/upload/attachment/0122/0705/ef68ba41-183b-3972-ae7a-3a3ddf634fb0.png">
+
+<link rel="canonical" href="http://example.com/2023/08/20/SSl/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>SSl | Aurora0702</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Aurora0702</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home                      //首页 fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive      //归档 fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th       //分类 fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags                 //标签 fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user               //关于 fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download   //资源 fa-fw"></i>resources</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="calendar    //日历 fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="sitemap    //站点地图，供搜索引擎爬取 fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="heartbeat      //腾讯公益404 fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/20/SSl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qing">
+      <meta itemprop="description" content="May everything you work for have a romantic outcome in the future ．">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurora0702">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SSl
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-20 23:39:43" itemprop="dateCreated datePublished" datetime="2023-08-20T23:39:43+08:00">2023-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-15 19:49:48" itemprop="dateModified" datetime="2023-10-15T19:49:48+08:00">2023-10-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">-基础知识</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h1><span id="more"></span>
+
+<h2 id="1-什么是SSL"><a href="#1-什么是SSL" class="headerlink" title="1.什么是SSL?"></a>1.什么是SSL?</h2><p>SSL是一种安全套接层协议，是Web浏览器与Web服务器之间安全交换信息的协议，提供两个基本的安全服务：鉴别与保密。</p>
+<h2 id="2-SSL协议的三个特性"><a href="#2-SSL协议的三个特性" class="headerlink" title="2.SSL协议的三个特性"></a>2.SSL协议的三个特性</h2><ol>
+<li><p>保密：在握手协议中定义了会话密钥后，所有的消息都被加密；</p>
+</li>
+<li><p>鉴别：可选的客户端认证，和强制的服务器端认证；</p>
+</li>
+<li><p>完整性：传送的消息包括消息完整性检查（使用MAC）。</p>
+</li>
+</ol>
+<h2 id="3-SSL的位置"><a href="#3-SSL的位置" class="headerlink" title="3.SSL的位置"></a>3.SSL的位置</h2><p>ssl位于应用层和TCP层之间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">初始：应用层数据直接递给传输层</span><br><span class="line"></span><br><span class="line">ssl加入后：应用层———&gt;ssl层---&gt;对数据加密，增加自己的ssl头</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-SSL工作原理"><a href="#4-SSL工作原理" class="headerlink" title="4.SSL工作原理"></a>4.SSL工作原理</h2><h3 id="a-握手协议（Handshake-protocol）"><a href="#a-握手协议（Handshake-protocol）" class="headerlink" title="a).握手协议（Handshake protocol）"></a>a).握手协议（Handshake protocol）</h3><p>首先握手协议是在应用程序的数据传输之前使用的</p>
+<p>其次握手协议是客户机和服务器之间用ssl链接的时候使用的子协议。握手协议是ssl中复杂的协议，它包括客户机和服务器之间的一系列消息。它允许服务器和客户机相互验证，协商加密和MAC算法以及保密密钥，用来保护在SSL记录中发送的数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">每个握手协议包含以下3个字段</span><br><span class="line"></span><br><span class="line">（1）Type：表示10种消息类型之一</span><br><span class="line"></span><br><span class="line">（2）Length：表示消息长度字节数</span><br><span class="line"></span><br><span class="line">（3）Content：与消息相关的参数</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>握手协议的4个阶段：</strong></p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0122/0705/ef68ba41-183b-3972-ae7a-3a3ddf634fb0.png" alt="img"></p>
+<p>（英文的，下面浅说一下）</p>
+<p><strong>阶段一：启动逻辑连接，建立这个连接的安全能力</strong></p>
+<p>  客户机向服务器发出client hello消息并等待服务器响应</p>
+<p>  服务器向客户机返回server hello消息，对client hello消息中的信息进行确认。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Client hello消息包括Version，Random，Session id，Cipher suite，Compression method等信息。</span><br><span class="line"></span><br><span class="line">ClientHello：客户发送CilentHello信息，包含如下内容：</span><br><span class="line">   1.客户端可以支持的SSL最高版本号</span><br><span class="line">   2. 一个用于生成主秘密的32字节的随机数。</span><br><span class="line">   3.一个确定会话的会话ID。</span><br><span class="line">   4.一个客户端可以支持的密码套件列表。（密码套件格式：每个套件都以“SSL”开头，紧跟着的是密钥交换算法。用“With”这个词把密钥交换算法、加密算法、散列算法分开，例如：SSL_DHE_RSA_WITH_DES_CBC_SHA,表示把DHE_RSA(带有RSA数字签名的暂时Diffie-HellMan)定义为密钥交换算法；把DES_CBC定义为加密算法；把SHA定义为散列算法）</span><br><span class="line">   5.一个客户端可以支持的压缩算法列表。</span><br><span class="line"> </span><br><span class="line">ServerHello：服务器用ServerHello信息应答客户，包括下列内容：</span><br><span class="line">  1.一个SSL版本号：取客户端支持的最高版本号和服务端支持的最高版本号中的较低者。</span><br><span class="line">  2.一个用于生成主秘密的32字节的随机数。（客户端一个、服务端一个）</span><br><span class="line">  3.会话ID</span><br><span class="line">  4.从客户端的密码套件列表中选择的一个密码套件</span><br><span class="line">  5.从客户端的压缩方法的列表中选择的压缩方法</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">————————————————</span><br><span class="line">原文链接：https://blog.csdn.net/chengqiuming/article/details/70139813</span><br></pre></td></tr></table></figure>
+
+<p>这个阶段之后，客户端服务端知道了下列内容：<br>1.SSL版本<br>2.密钥交换算法、散列算法和加密算法<br>3.压缩方法<br>4.有关密钥生成的两个随机数</p>
+<p><strong>阶段二：服务器鉴别与密钥交换</strong></p>
+<p>在这个阶段，服务器启动SSL，是本阶段消息的唯一发送方，客户机是唯一的接收方.</p>
+<p>该阶段有四步：</p>
+<p>第一步：证书</p>
+<p>  服务器将数字证书和到根CA整个链发给客户端，使客户端能用服务器证书中的服务器公钥认证服务器。</p>
+<p>第二步：服务器密钥交换（可选）</p>
+<p>   这里视密钥交换算法而定。</p>
+<hr>
+<p>SSL中密钥交换算法有6种：无效（没有密钥交换）、RSA、匿名Diffie-Hellman、暂时Diffie-Hellman、固定Diffie-Hellman、Fortezza。<br>在SSL阶段1中，已经确定使哪种密钥交换算法。<br>如果协商过程中确定使用RSA交换密钥，在RSA中，服务器在它的第一个信息中，发送了RSA加密&#x2F;解密公钥证书。不过，因为预备主秘密是由客户端在下一个阶段生成并发送的，所以第二个信息是空的。</p>
+<hr>
+<p>第三步：证书请求（可选）   </p>
+<p>  服务端可能会要求客户自身进行验证。</p>
+<p>第四步：服务器握手完成</p>
+<p>  第二阶段的结束，第三阶段开始的信号。</p>
+<p><strong>阶段三：客户机鉴别与密钥交换</strong></p>
+<p>客户机启动SSL握手第3阶段，是本阶段所有消息的唯一发送方，服务器是所有消息的唯一接收方，该阶段分为3步。</p>
+<p>第一步：证书（可选）</p>
+<p>  为了对服务器证明自身，客户要发送一个证书信息，这是可选的，在IIS中可以配置强制客户端证书认证。<br>第二步：客户机密钥交换（Pre-master-secret）</p>
+<p>  这里客户端将预备主密钥发送给服务端，注意这里会使用服务端的公钥进行加密。<br>第三步：证书验证（可选）</p>
+<p>  对预备秘密和随机数进行签名，证明拥有第一步证书的公钥。</p>
+<p><strong>阶段四：完成</strong></p>
+<p>客户机启动SSL握手第4阶段，使服务器结束。该阶段分为4步，前2个消息来自客户机（改变密码规格值，MD5散列值+SHA散列），后2个消息来自服务器（改变密码规格值，MD5散列值+SHA散列）。</p>
+<h3 id="b-记录协议（Record-protocol）"><a href="#b-记录协议（Record-protocol）" class="headerlink" title="b).记录协议（Record protocol）"></a>b).记录协议（Record protocol）</h3><p>记录协议在客户机和服务器握手成功后使用，即客户机和服务器鉴别对方和确定安全信息交换使用的算法后，进入SSL记录协议，记录协议向SSL连接提供两个服务：</p>
+<p>（1）保密性：使用握手协议定义的秘密密钥实现</p>
+<p>（2）完整性：握手协议定义了MAC，用于保证消息完整性</p>
+<p><img src="https://pic3.zhimg.com/80/v2-5b9e83fec099fba99d7f83bccca35e0a_1440w.webp" alt="img"></p>
+<h3 id="c-警报协议（Alert-protocol）"><a href="#c-警报协议（Alert-protocol）" class="headerlink" title="c).警报协议（Alert protocol）"></a>c).警报协议（Alert protocol）</h3><p>客户机和服务器发现错误时，向对方发送一个警报消息。如果是致命错误，则算法立即关闭SSL连接，双方还会先删除相关的会话号，秘密和密钥。每个警报消息共2个字节，第1个字节表示错误类型，如果是警报，则值为1，如果是致命错误，则值为2；第2个字节制定实际错误类型。</p>
+<p>文章参考如下，讲解很详细都配图了，比较好懂：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.https://blog.csdn.net/chengqiuming/article/details/70139813</span><br><span class="line">2.https://zhuanlan.zhihu.com/p/114612812</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SSL/" rel="tag"># -SSL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/08/27/Dos/" rel="next" title="Dos">
+      Dos <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL"><span class="nav-number">1.</span> <span class="nav-text">SSL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFSSL"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是SSL?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SSL%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">2.SSL协议的三个特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SSL%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">3.SSL的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-SSL%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">4.SSL工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE%EF%BC%88Handshake-protocol%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">a).握手协议（Handshake protocol）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-%E8%AE%B0%E5%BD%95%E5%8D%8F%E8%AE%AE%EF%BC%88Record-protocol%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">b).记录协议（Record protocol）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-%E8%AD%A6%E6%8A%A5%E5%8D%8F%E8%AE%AE%EF%BC%88Alert-protocol%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">c).警报协议（Alert protocol）</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Qing"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Qing</p>
+  <div class="site-description" itemprop="description">May everything you work for have a romantic outcome in the future ．</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Aurora0702" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Aurora0702" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2018629083@qq.com" title="E-Mail → mailto:2018629083@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74850066?spm=1000.2115.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74850066?spm&#x3D;1000.2115.3001.5343" rel="noopener" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://cyberchef.org/" title="Tool → https:&#x2F;&#x2F;cyberchef.org&#x2F;" rel="noopener" target="_blank"><i class="fab fa-key fa-fw"></i>Tool</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xuanhhhhh.github.io/" title="https:&#x2F;&#x2F;xuanhhhhh.github.io&#x2F;" rel="noopener" target="_blank">chen</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qing</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

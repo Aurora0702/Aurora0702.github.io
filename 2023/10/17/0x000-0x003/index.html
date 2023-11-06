@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="0x000-0x003更多的基础的东西  网站是如何搭建起来的 操作系统 IP基础知识 端口与协议 nginx 服务端响应状态码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0x000-0x003">
+<meta property="og:url" content="http://example.com/2023/10/17/0x000-0x003/index.html">
+<meta property="og:site_name" content="Aurora0702">
+<meta property="og:description" content="0x000-0x003更多的基础的东西  网站是如何搭建起来的 操作系统 IP基础知识 端口与协议 nginx 服务端响应状态码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/10/17/0x000-0x003/1.3.png">
+<meta property="og:image" content="http://example.com/2023/10/17/0x000-0x003/1.2.png">
+<meta property="og:image" content="http://example.com/2023/10/17/0x000-0x003/1.1.png">
+<meta property="og:image" content="http://example.com/2023/10/17/0x000-0x003/1.4.png">
+<meta property="og:image" content="http://example.com/2023/10/17/0x000-0x003/0x000.png">
+<meta property="article:published_time" content="2023-10-17T13:14:25.000Z">
+<meta property="article:modified_time" content="2023-10-17T13:40:12.000Z">
+<meta property="article:author" content="Qing">
+<meta property="article:tag" content="CALSS1-3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/10/17/0x000-0x003/1.3.png">
+
+<link rel="canonical" href="http://example.com/2023/10/17/0x000-0x003/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>0x000-0x003 | Aurora0702</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Aurora0702</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home                      //首页 fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive      //归档 fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th       //分类 fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags                 //标签 fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user               //关于 fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="download   //资源 fa-fw"></i>resources</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="calendar    //日历 fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="sitemap    //站点地图，供搜索引擎爬取 fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="heartbeat      //腾讯公益404 fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/17/0x000-0x003/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Qing">
+      <meta itemprop="description" content="May everything you work for have a romantic outcome in the future ．">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aurora0702">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          0x000-0x003
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-17 21:14:25 / 修改时间：21:40:12" itemprop="dateCreated datePublished" datetime="2023-10-17T21:14:25+08:00">2023-10-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB2/" itemprop="url" rel="index"><span itemprop="name">WEB2</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="0x000-0x003"><a href="#0x000-0x003" class="headerlink" title="0x000-0x003"></a>0x000-0x003</h1><p>更多的基础的东西</p>
+<ol>
+<li>网站是如何搭建起来的</li>
+<li>操作系统</li>
+<li>IP基础知识</li>
+<li>端口与协议</li>
+<li>nginx</li>
+<li>服务端响应状态码</li>
+</ol>
+<hr>
+<span id="more"></span>
+
+<h1 id="网站是如何搭建起来的"><a href="#网站是如何搭建起来的" class="headerlink" title="网站是如何搭建起来的"></a>网站是如何搭建起来的</h1><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>服务器和家庭使用电脑的区别是;</p>
+<ol>
+<li>没有显卡</li>
+<li>cup和内存的不同</li>
+</ol>
+<h2 id="三大件"><a href="#三大件" class="headerlink" title="三大件"></a>三大件</h2><h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h4><p><strong>主要是负责接入新的请求之类的</strong></p>
+<p>并发性能力</p>
+<p>常见的有：</p>
+<ol>
+<li>Apache</li>
+<li>IIS</li>
+<li>Tomcat</li>
+</ol>
+<p><strong>承载用户访问</strong></p>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>1.数据库种类</p>
+<ul>
+<li><p>关系型数据库</p>
+<p>数据之间有关系</p>
+<ol>
+<li>MySQL</li>
+<li>MaiaDB</li>
+<li>Oracle</li>
+<li>SQL Server</li>
+</ol>
+</li>
+<li><p>非关系型数据库</p>
+<p>一一对应的关系，没有其余复杂的关系</p>
+<ol>
+<li>Redis</li>
+<li>MongoDB</li>
+</ol>
+</li>
+</ul>
+<h4 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h4><ol>
+<li>PHP</li>
+<li>Java</li>
+<li>.NET<ul>
+<li>ASP</li>
+<li>ASP.NET</li>
+</ul>
+</li>
+</ol>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><ol>
+<li>家庭操作系统</li>
+</ol>
+<ul>
+<li>windows XP</li>
+<li>Windows 7</li>
+<li>Windows 8</li>
+<li>Windows 10</li>
+</ul>
+<p>2.服务器操作系统</p>
+<ul>
+<li>Windows 11</li>
+<li>Windows 2000</li>
+<li>Windows 2003</li>
+<li>Windows 2008</li>
+<li>Windows 2012</li>
+<li>Windows 2016</li>
+<li>Windows  2019</li>
+<li>Windows 2022</li>
+</ul>
+<p>3.Linux操作系统</p>
+<ul>
+<li>Centos</li>
+<li>Ubuntu</li>
+<li>Debian</li>
+<li>Unix</li>
+</ul>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="IP基础知识"><a href="#IP基础知识" class="headerlink" title="IP基础知识"></a>IP基础知识</h2><h3 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h3><ul>
+<li><h4 id="局域网IP分类"><a href="#局域网IP分类" class="headerlink" title="局域网IP分类"></a>局域网IP分类</h4></li>
+</ul>
+<p>在同一个局域网的，当前路径下</p>
+<ol>
+<li><p>A类IP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.*.*.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>B类IP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.*.*.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C类IP</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.*.*.*</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><h4 id="广域网IP"><a href="#广域网IP" class="headerlink" title="广域网IP"></a>广域网IP</h4><p>国家级路由器——大型省级路由器——各个路由器——个人（唯一的IP）</p>
+<p><strong>【重启路由器的时候IP会被改变，改变的只有后边的，前面的一般是不会变化的】</strong></p>
+</li>
+<li><h4 id="公网IP"><a href="#公网IP" class="headerlink" title="公网IP"></a>公网IP</h4><p>国家级允许外部访问的，暴露在外的</p>
+</li>
+</ul>
+<h3 id="IP段的划分"><a href="#IP段的划分" class="headerlink" title="IP段的划分"></a>IP段的划分</h3><ul>
+<li><p>c段</p>
+<p>192.168.66.0&#x2F;24</p>
+<p>是指</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.66.1—192.168.66.255</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>b段</p>
+<p>192.168.0.0&#x2F;16</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.0——192.168.1.255</span><br></pre></td></tr></table></figure>
+
+<p>​    255个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.0——192.168.2.255</span><br></pre></td></tr></table></figure>
+
+<p>​    255个</p>
+</li>
+<li><p>a段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.0.0.0/8  </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="端口与协议"><a href="#端口与协议" class="headerlink" title="端口与协议"></a>端口与协议</h2><h3 id="通信协议分类"><a href="#通信协议分类" class="headerlink" title="通信协议分类"></a>通信协议分类</h3><ul>
+<li>DNS协议</li>
+<li>ICMP协议</li>
+<li>TCP&#x2F;TP协议</li>
+<li>UDP协议</li>
+<li>HTTP协议</li>
+<li>HTTPS协议</li>
+</ul>
+<h3 id="端口知识"><a href="#端口知识" class="headerlink" title="端口知识"></a>端口知识</h3><ol>
+<li><p>默认可使用端口1-65535</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">端口号的数量为65535是因为16位二进制可以表示2的16次方个不同的数值，且0被保留为无效端口。底层原理涉及端口号的二进制表示和分类，以及为了减少端口冲突和提供足够的端口号供应用程序选择而做出的设计选择。</span><br></pre></td></tr></table></figure>
+
+<p>可以分为三大类：</p>
+<ul>
+<li><p>公认端口（Well Known Ports）：</p>
+<p>​     从0到1023，它们紧密绑定（binding）于一些服务。通常这些端口的通讯明确表明了某种服务的协议。例如：80端口实际上总是HTTP通讯。 </p>
+</li>
+<li><p>注册端口（Registered Ports）：</p>
+<p>​     从1024到49151。它们松散地绑定于一些服务。也就是说有许多服务绑定于这些端口，这些端口同样用于许多其它目的。例如：许多系统处理动态端口从1024左右开始。 </p>
+</li>
+<li><p>动态和&#x2F;或私有端口（Dynamic and&#x2F;or Private Ports）：</p>
+<p>​     从49152到65535。理论上，不应为服务分配这些端口。实际上，机器通常从1024起分配动态端口。但也有例外：SUN的RPC端口从32768开始。</p>
+<p>补充：</p>
+<p>【Sun Microsystems <strong>远程过程调用</strong> （Sun RPC）（也称为开放网络计算远程过程调用 （ONC RPC））提供了一种在一个主机上运行的程序调用另一主机上运行的程序中的过程的方法。】</p>
+</li>
+</ul>
+<p>常用端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">21：FTP服务所开放的端口，用于上传、下载文件。</span><br><span class="line">22：SSH端口，用于通过命令行模式远程连接Linux服务器或vps。</span><br><span class="line">23：Telnet端口，用于Telnet远程登录服务器。</span><br><span class="line">25：SMTP服务所开放的端口，用于发送邮件。</span><br><span class="line">80：HTTP用于HTTP服务提供访问功能，例如，IIS、Apache、Nginx 等服务。</span><br><span class="line">110：POP3用于POP3 协议，POP3 是电子邮件收发的协议。</span><br><span class="line">143：IMAP用于IMAP（Internet Message Access Protocol）协议，IMAP 是用于电子邮件的接收的协议。</span><br><span class="line">443：HTTPS 用于HTTPS服务提供访问功能。HTTPS 是一种能提供加密和通过安全端口传输的一种协议。</span><br><span class="line">1433：SQL Server SQL Server的TCP 端口，用于供SQL Server对外提供服务。</span><br><span class="line">1434：SQL Server SQL Server的UDP端口，用于返回SQL Server使用了哪个 TCP/IP 端口。</span><br><span class="line">1521：Oracle通信端口，服务器上部署了Oracle SQL需要放行的端口。</span><br><span class="line">3306：MySQL数据库对外提供服务的端口。</span><br><span class="line">3389：远程桌面服务端口，可以通过这个端口远程连接服务器。</span><br><span class="line">8080：代理端口,同80端口一样，8080 端口常用于WWW代理服务，实现网页浏览。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问的时候没有加端口<strong>自动访问80端口</strong></p>
+<p>127.0.0.1</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:80/</span><br></pre></td></tr></table></figure>
+
+<p>计算机默认的IP地址，就相当于访问当前计算机地址</p>
+<p><strong>3.端口好比是两个盒子，每个上面开洞，两个洞之间连接，网络好比是绳子，但是还要同一语言（协议），IP扮演一个全球唯一的门牌号.</strong></p>
+<h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p>不准确说法–在电脑里面找寻找文件。</p>
+<p>静态资源服务，通过本地 文件系统 提供服务；</p>
+<h2 id="工作进程数量"><a href="#工作进程数量" class="headerlink" title="工作进程数量"></a>工作进程数量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker_processes</span><br></pre></td></tr></table></figure>
+
+<h2 id="3访问127-0-0-1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？"><a href="#3访问127-0-0-1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？" class="headerlink" title="3访问127.0.0.1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？"></a><strong>3访问127.0.0.1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？</strong></h2><h3 id="关于127-0-0-1的解释"><a href="#关于127-0-0-1的解释" class="headerlink" title="关于127.0.0.1的解释"></a>关于127.0.0.1的解释</h3><ol>
+<li><p><strong>location &#x2F;</strong> 重定向目录</p>
+<p><img src="/2023/10/17/0x000-0x003/1.3.png" alt="1.3"></p>
+</li>
+<li><p>实际上访问的是计算机上的一个文件：</p>
+<p><strong>index.html</strong></p>
+<p><img src="/2023/10/17/0x000-0x003/1.2.png" alt="1.2"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<p>访问的是文件，把index.html读取后返回给了浏览器。</p>
+<p><img src="/2023/10/17/0x000-0x003/1.1.png" alt="1.1"></p>
+<p>浏览器：不仅仅可以访问某个目标，渲染服务端发过来的 <strong>html的内容，以及js、css都会运行</strong>。相当于解析器。</p>
+</li>
+<li><p><strong>root</strong>相关知识</p>
+<ul>
+<li><p><strong>root：</strong></p>
+<p><strong>网站根目录！</strong></p>
+</li>
+<li><p><strong>index：</strong></p>
+<p><strong>网站默认首页文件名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>没有指定访问文件名称，则默认访问网页首页</li>
+<li>如果指定，则默认访问这个文件</li>
+<li>如果有文件夹，则</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/文件夹名称/文件名</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>当有人访问这个nginx端口时候默认从那一个目录下面读取 <strong>index.html</strong></p>
+</li>
+</ol>
+<p><img src="/2023/10/17/0x000-0x003/1.4.png" alt="1.4"></p>
+<h1 id="服务端响应状态码"><a href="#服务端响应状态码" class="headerlink" title="服务端响应状态码"></a>服务端响应状态码</h1><p>注：</p>
+<p>一般把<strong>nginx</strong>称作是服务端，<strong>浏览器</strong>称作是客户端</p>
+<h2 id="403"><a href="#403" class="headerlink" title="403"></a>403</h2><p>无法访问到某一个文件或者目录，也有无权限访问的意思</p>
+<h2 id="200"><a href="#200" class="headerlink" title="200"></a>200</h2><p>请求成功</p>
+<h2 id="301"><a href="#301" class="headerlink" title="301"></a>301</h2><p>资源（网页等）被永久转移到其它URL</p>
+<h2 id="404"><a href="#404" class="headerlink" title="404"></a>404</h2><p>请求的资源（网页等）不存在</p>
+<h2 id="500"><a href="#500" class="headerlink" title="500"></a>500</h2><p>内部服务器错误</p>
+<p>&#x2F;&#x2F;用到什么查找什么</p>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="/2023/10/17/0x000-0x003/0x000.png" alt="0x000"></p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1925309">常用端口及范围-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36777143/article/details/131186877#:~:text=%E7%AB%AF%E5%8F%A3%E5%8F%B7%E7%9A%84%E6%95%B0%E9%87%8F%E6%98%AF65535%E4%B8%AA%E6%98%AF%E5%9B%A0%E4%B8%BA%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%AD%EF%BC%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%98%AF%E7%94%A816%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5%E5%8F%AF%E4%BB%A5%E6%9C%892%E7%9A%8416%E6%AC%A1%E6%96%B9%EF%BC%882^16%EF%BC%89%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%8C%E5%8D%B365536%E4%B8%AA%E3%80%82,%E7%BB%BC%E4%B8%8A%E6%89%80%E8%BF%B0%EF%BC%8C%E7%AB%AF%E5%8F%A3%E5%8F%B7%E7%9A%84%E6%95%B0%E9%87%8F%E4%B8%BA65535%E6%98%AF%E5%9B%A0%E4%B8%BA16%E4%BD%8D%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA2%E7%9A%8416%E6%AC%A1%E6%96%B9%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%B0%E5%80%BC%EF%BC%8C%E4%B8%940%E8%A2%AB%E4%BF%9D%E7%95%99%E4%B8%BA%E6%97%A0%E6%95%88%E7%AB%AF%E5%8F%A3%E3%80%82">为什么端口的数量是65535个？底层原理是什么？_65535端口-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CALSS1-3/" rel="tag"># CALSS1-3</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/10/15/Java-004/" rel="prev" title="Java-004">
+      <i class="fa fa-chevron-left"></i> Java-004
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/10/28/0x004/" rel="next" title="4">
+      4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x000-0x003"><span class="nav-number">1.</span> <span class="nav-text">0x000-0x003</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%AB%99%E6%98%AF%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E8%B5%B7%E6%9D%A5%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">网站是如何搭建起来的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">三大件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">解析器</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">4.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">4.1.</span> <span class="nav-text">IP基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP%E5%88%86%E7%B1%BB"><span class="nav-number">4.1.1.</span> <span class="nav-text">IP分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91IP%E5%88%86%E7%B1%BB"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">局域网IP分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BF%E5%9F%9F%E7%BD%91IP"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">广域网IP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AC%E7%BD%91IP"><span class="nav-number">4.1.1.3.</span> <span class="nav-text">公网IP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP%E6%AE%B5%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-number">4.1.2.</span> <span class="nav-text">IP段的划分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E4%B8%8E%E5%8D%8F%E8%AE%AE"><span class="nav-number">4.2.</span> <span class="nav-text">端口与协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB"><span class="nav-number">4.2.1.</span> <span class="nav-text">通信协议分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E7%9F%A5%E8%AF%86"><span class="nav-number">4.2.2.</span> <span class="nav-text">端口知识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">5.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E8%BF%9B%E7%A8%8B%E6%95%B0%E9%87%8F"><span class="nav-number">5.2.</span> <span class="nav-text">工作进程数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E8%AE%BF%E9%97%AE127-0-0-1%E5%88%B0%E5%BA%95%E8%AE%BF%E9%97%AE%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E8%AE%BF%E9%97%AE%E7%9A%84%E9%A1%B5%E9%9D%A2%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E9%82%A3%E4%B9%88%E5%A4%9A%E4%B8%9C%E8%A5%BF%EF%BC%9F"><span class="nav-number">5.3.</span> <span class="nav-text">3访问127.0.0.1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E127-0-0-1%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">5.3.1.</span> <span class="nav-text">关于127.0.0.1的解释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">服务端响应状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#403"><span class="nav-number">6.1.</span> <span class="nav-text">403</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#200"><span class="nav-number">6.2.</span> <span class="nav-text">200</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#301"><span class="nav-number">6.3.</span> <span class="nav-text">301</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#404"><span class="nav-number">6.4.</span> <span class="nav-text">404</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#500"><span class="nav-number">6.5.</span> <span class="nav-text">500</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">7.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">8.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Qing"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Qing</p>
+  <div class="site-description" itemprop="description">May everything you work for have a romantic outcome in the future ．</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Aurora0702" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Aurora0702" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:2018629083@qq.com" title="E-Mail → mailto:2018629083@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74850066?spm=1000.2115.3001.5343" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74850066?spm&#x3D;1000.2115.3001.5343" rel="noopener" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://cyberchef.org/" title="Tool → https:&#x2F;&#x2F;cyberchef.org&#x2F;" rel="noopener" target="_blank"><i class="fab fa-key fa-fw"></i>Tool</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xuanhhhhh.github.io/" title="https:&#x2F;&#x2F;xuanhhhhh.github.io&#x2F;" rel="noopener" target="_blank">chen</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qing</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
