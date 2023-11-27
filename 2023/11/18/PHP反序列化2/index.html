@@ -22,20 +22,43 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="GET 和 POST 的区别是什么，区别……">
+  <meta name="description" content="PHP反序列化2😶‍🌫️POP链，魔术方法 分析代码逻辑，构造payload 其他魔术方法 __destruct() 121.用户主动销毁对象2.程序结束的时候有引擎自动销毁    __toString()   如果没有 1echo $a;  则不会调用这个方法 对象被当作字符串一样调用的时候使用这个方法  __callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GET和POST的区别">
-<meta property="og:url" content="http://example.com/2023/10/10/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="PHP反序列化2">
+<meta property="og:url" content="http://example.com/2023/11/18/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%962/index.html">
 <meta property="og:site_name" content="Aurora0702">
-<meta property="og:description" content="GET 和 POST 的区别是什么，区别……">
+<meta property="og:description" content="PHP反序列化2😶‍🌫️POP链，魔术方法 分析代码逻辑，构造payload 其他魔术方法 __destruct() 121.用户主动销毁对象2.程序结束的时候有引擎自动销毁    __toString()   如果没有 1echo $a;  则不会调用这个方法 对象被当作字符串一样调用的时候使用这个方法  __callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-10T08:36:24.000Z">
-<meta property="article:modified_time" content="2023-10-15T11:50:24.000Z">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701083712683.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084181165.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084919628.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084935543.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084971264.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701085067302.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701085042623.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086187245.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086367645.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086425120.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701087582663.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701087558719.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088079461.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088092513.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088623375.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088715378.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089557895.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089577412.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088989740.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089296210.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089168811.png">
+<meta property="article:published_time" content="2023-11-18T06:42:58.000Z">
+<meta property="article:modified_time" content="2023-11-27T13:15:14.417Z">
 <meta property="article:author" content="Qing">
-<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="漏洞">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701083712683.png">
 
-<link rel="canonical" href="http://example.com/2023/10/10/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/">
+<link rel="canonical" href="http://example.com/2023/11/18/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%962/">
 
 
 <script id="page-configurations">
@@ -48,7 +71,7 @@
   };
 </script>
 
-  <title>GET和POST的区别 | Aurora0702</title>
+  <title>PHP反序列化2 | Aurora0702</title>
   
 
 
@@ -188,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/10/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/18/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%962/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -201,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          GET和POST的区别
+          PHP反序列化2
         </h1>
 
         <div class="post-meta">
@@ -211,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-10-10 16:36:24" itemprop="dateCreated datePublished" datetime="2023-10-10T16:36:24+08:00">2023-10-10</time>
+              <time title="创建时间：2023-11-18 14:42:58" itemprop="dateCreated datePublished" datetime="2023-11-18T14:42:58+08:00">2023-11-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-15 19:50:24" itemprop="dateModified" datetime="2023-10-15T19:50:24+08:00">2023-10-15</time>
+                <time title="修改时间：2023-11-27 21:15:14" itemprop="dateModified" datetime="2023-11-27T21:15:14+08:00">2023-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +249,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">-基础知识</span></a>
+                  <a href="/categories/%E6%BC%8F%E6%B4%9E/" itemprop="url" rel="index"><span itemprop="name">漏洞</span></a>
                 </span>
             </span>
 
@@ -241,58 +264,69 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="GET-和-POST-的区别"><a href="#GET-和-POST-的区别" class="headerlink" title="GET 和 POST 的区别"></a>GET 和 POST 的区别</h1><p>是什么，区别……</p>
-<hr>
-<span id="more"></span>
+        <h1 id="PHP反序列化2😶‍🌫️"><a href="#PHP反序列化2😶‍🌫️" class="headerlink" title="PHP反序列化2😶‍🌫️"></a>PHP反序列化2😶‍🌫️</h1><p>POP链，魔术方法</p>
+<p>分析代码逻辑，构造payload</p>
+<h1 id="其他魔术方法"><a href="#其他魔术方法" class="headerlink" title="其他魔术方法"></a>其他魔术方法</h1><ul>
+<li><p><em><strong>__destruct()</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.用户主动销毁对象</span><br><span class="line">2.程序结束的时候有引擎自动销毁</span><br></pre></td></tr></table></figure>
 
-<h1 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h1><p><code>GET</code>和<code>POST</code>，两者是<code>HTTP</code>协议中发送请求的方法</p>
-<p><code>GET</code></p>
-<p>用于请求一个指定的资源的表示方式，使用 get 的请求应该只被用于获取数据</p>
-<p><code>POST</code></p>
-<p>用于将实体提交的指定的资源，通常导致在服务器上</p>
-<p>状态变化或<strong>副作用</strong></p>
-<p>本质上都是<code>TCP</code>链接，并无差别</p>
-<p>但是由于<code>HTTP</code>的规定和浏览器&#x2F;服务器的限制，导致他们在应用过程中会体现出一些区别</p>
-<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><h2 id="从w3schools得到的标准答案的区别如下："><a href="#从w3schools得到的标准答案的区别如下：" class="headerlink" title="从w3schools得到的标准答案的区别如下："></a>从<code>w3schools</code>得到的标准答案的区别如下：</h2><ul>
-<li><p>GET在浏览器回退时是无害的，而POST会再次提交请求。</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701083712683.png" alt="1701083712683"></p>
 </li>
-<li><p>GET产生的URL地址可以被Bookmark（加入标签），而POST不可以。</p>
+<li><p><em><strong>__toString()</strong></em></p>
+<img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084181165.png" alt="1701084181165" style="zoom:150%;">
+
+<p>如果没有</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>;</span><br></pre></td></tr></table></figure>
+
+<p>则不会调用这个方法</p>
+<p>对象被当作字符串一样调用的时候使用这个方法</p>
 </li>
-<li><p>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</p>
+<li><p><em><strong>__callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法时触发</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084919628.png" alt="1701084919628"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084935543.png" alt="1701084935543"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084971264.png" alt="1701084971264"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701085067302.png" alt="1701085067302"></p>
+<p>执行结果：</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701085042623.png" alt="1701085042623"></p>
 </li>
-<li><p>GET请求只能进行url编码，而POST支持多种编码方式。</p>
+<li><p><em><strong>get() &#x2F;&#x2F;获得一个类的成员变量时调用,用于从不可访问的属性读取数据（不可访问的属性包括：1.属性是私有型。2.类中不存在的成员变量）</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086187245.png" alt="1701086187245"></p>
+<p>不存在的属性被调用</p>
 </li>
-<li><p>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</p>
+<li><p><em><strong>__set() &#x2F;&#x2F;用于将数据写入不可访问的属性</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086367645.png" alt="1701086367645"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086425120.png" alt="1701086425120"></p>
 </li>
-<li><p>GET请求在URL中传送的参数是有长度限制的，而POST没有。</p>
+<li><p><em><strong>__sleep() ：在serialize之前被调用，可以指定要序列化的对象属性</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701087582663.png" alt="1701087582663"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701087558719.png" alt="1701087558719"></p>
 </li>
-<li><p>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</p>
+<li><p><em><strong>__wakeup ：反序列化恢复对象之前调用该方法</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088079461.png" alt="1701088079461"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088092513.png" alt="1701088092513"></p>
 </li>
-<li><p>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</p>
+<li><p><em><strong>__isset()     &#x2F;&#x2F;在不可访问的属性上调用iset()或empty()触发</strong></em></p>
 </li>
-<li><p>GET参数通过URL传递，POST放在Request body中</p>
+<li><p><em><strong>__unset()   &#x2F;&#x2F;在不可访问的属性上使用unset()时触发</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088623375.png" alt="1701088623375"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088715378.png" alt="1701088715378"></p>
+</li>
+<li><p><em><strong>__invoke()    &#x2F;&#x2F;当尝试以调用函数的方式调用一个对象时</strong></em></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089557895.png" alt="1701089557895"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089577412.png" alt="1701089577412"></p>
+<p>把对象当做函数去应用了</p>
 </li>
 </ul>
-<h2 id="传递参数的方式不同"><a href="#传递参数的方式不同" class="headerlink" title="传递参数的方式不同"></a>传递参数的方式不同</h2><ul>
-<li><p><strong>GET</strong>的参数一般是通过 <strong>？</strong>跟在URL后面的，多个参数通过 **&amp;**进行连接</p>
-</li>
-<li><p><strong>POST</strong>的参数一般是包含在 <strong>Request Body</strong>中</p>
-<!--但是这个不是绝对的--></li>
-</ul>
-<h2 id="安全性不同"><a href="#安全性不同" class="headerlink" title="安全性不同"></a>安全性不同</h2><p>因为参数传递方式的不同，GET相较于POST更不安全，GET的参数是直接暴露在URL中的。</p>
-<p>其实两个都不能算是安全的，这两个方式都是基于HTTP的，如果想要安全的传输，HTTPS更具有安全性能。</p>
-<h2 id="参数长度限制不同"><a href="#参数长度限制不同" class="headerlink" title="参数长度限制不同"></a>参数长度限制不同</h2><p>GET 和 POST 传递参数的长度不同：</p>
-<ul>
-<li>get传送的数据量较小，不能大于2KB。</li>
-<li>post传送的数据量较大，一般被默认为不受限制。</li>
-</ul>
-<p>在这里我们要明确一点：<strong>HTTP 协议没有 Body 和 URL 的长度限制，对 URL 限制的大多是浏览器和服务器的原因。</strong></p>
-<p>服务器是因为处理长 URL 要消耗比较多的资源，为了性能和安全（防止恶意构造长 URL 来攻击）考虑，会给 URL 长度加限制。</p>
-<h2 id="数据包"><a href="#数据包" class="headerlink" title="数据包"></a>数据包</h2><p>对于<code>GET</code>方式的请求，浏览器会把<code>http header</code>和<code>data</code>一并发送出去，服务器响应200（返回数据）</p>
-<p>对于<code>POST</code>，浏览器先发送<code>header</code>，服务器响应100 <code>continue</code>，浏览器再发送<code>data</code>，服务器响应200 ok</p>
-<p>并不是所有浏览器都会在<code>POST</code>中发送两次包，<code>Firefox</code>就只发送一次</p>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://vue3js.cn/interview/http/GET_POST.html#%E4%BA%8C%E3%80%81%E5%8C%BA%E5%88%AB">面试官：说一下 GET 和 POST 的区别？ | web前端面试 - 面试官系列 (vue3js.cn)</a></p>
-<h2 id="【前端-·-面试-】HTTP-总结（五）——-GET-和-POST-掘金-juejin-cn"><a href="#【前端-·-面试-】HTTP-总结（五）——-GET-和-POST-掘金-juejin-cn" class="headerlink" title="【前端 · 面试 】HTTP 总结（五）—— GET 和 POST - 掘金 (juejin.cn)"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6992933721703710750#heading-3">【前端 · 面试 】HTTP 总结（五）—— GET 和 POST - 掘金 (juejin.cn)</a></h2>
+<h1 id="对象变量属性"><a href="#对象变量属性" class="headerlink" title="对象变量属性"></a>对象变量属性</h1><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><p> 公有类型</p>
+<h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><p>私有类型</p>
+<p>该类型的属性或方法只能在该类中使用</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088989740.png" alt="1701088989740"></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><h4 id="："><a href="#：" class="headerlink" title="**&lt;和上面的 *__invoke()* 结合&gt;**："></a>**&lt;和上面的 *__invoke()* 结合&gt;**：</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089296210.png" alt="1701089296210"></p>
+<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089168811.png" alt="1701089168811"></p>
+<h4 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h4><p>只输出脸变得原因是：这里的 <em><strong>sex</strong></em> 为 <em><strong>public</strong></em> 不是私有类，所以只有 <em><strong>name ，age</strong></em> 这两个被 <em><strong>private</strong></em> 修饰的调用方法并且输出结果</p>
+<h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2><p> 受保护类型</p>
+<p>在子类中可以调用父类方法</p>
+
     </div>
 
     
@@ -301,7 +335,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+              <a href="/tags/%E6%BC%8F%E6%B4%9E/" rel="tag"># 漏洞</a>
+              <a href="/tags/web/" rel="tag"># web</a>
           </div>
 
         
@@ -310,13 +345,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/10/02/Day5/" rel="prev" title="Day5">
-      <i class="fa fa-chevron-left"></i> Day5
+    <a href="/2023/11/14/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" rel="prev" title="PHP反序列化">
+      <i class="fa fa-chevron-left"></i> PHP反序列化
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/10/15/Java-004/" rel="next" title="Java-004">
-      Java-004 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -375,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GET-%E5%92%8C-POST-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">GET 和 POST 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8Ew3schools%E5%BE%97%E5%88%B0%E7%9A%84%E6%A0%87%E5%87%86%E7%AD%94%E6%A1%88%E7%9A%84%E5%8C%BA%E5%88%AB%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">从w3schools得到的标准答案的区别如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0%E7%9A%84%E6%96%B9%E5%BC%8F%E4%B8%8D%E5%90%8C"><span class="nav-number">3.2.</span> <span class="nav-text">传递参数的方式不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8D%E5%90%8C"><span class="nav-number">3.3.</span> <span class="nav-text">安全性不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E4%B8%8D%E5%90%8C"><span class="nav-number">3.4.</span> <span class="nav-text">参数长度限制不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">3.5.</span> <span class="nav-text">数据包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">4.</span> <span class="nav-text">参考文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E5%89%8D%E7%AB%AF-%C2%B7-%E9%9D%A2%E8%AF%95-%E3%80%91HTTP-%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%94%EF%BC%89%E2%80%94%E2%80%94-GET-%E5%92%8C-POST-%E6%8E%98%E9%87%91-juejin-cn"><span class="nav-number">4.1.</span> <span class="nav-text">【前端 · 面试 】HTTP 总结（五）—— GET 和 POST - 掘金 (juejin.cn)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%962%F0%9F%98%B6%E2%80%8D%F0%9F%8C%AB%EF%B8%8F"><span class="nav-number">1.</span> <span class="nav-text">PHP反序列化2😶‍🌫️</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">其他魔术方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%8F%98%E9%87%8F%E5%B1%9E%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">对象变量属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#public"><span class="nav-number">3.1.</span> <span class="nav-text">public</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#private"><span class="nav-number">3.2.</span> <span class="nav-text">private</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%9A"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">**&lt;和上面的 *__invoke()* 结合&gt;**：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%EF%BC%9A"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">结果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">原因：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#protected"><span class="nav-number">3.3.</span> <span class="nav-text">protected</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
