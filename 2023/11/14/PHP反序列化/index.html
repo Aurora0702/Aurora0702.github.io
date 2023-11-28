@@ -44,6 +44,7 @@
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700121044810.png">
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700121158809.png">
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700121360250.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20231128094256841.png">
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700124204065.png">
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700124160978.png">
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700124279677.png">
@@ -53,7 +54,7 @@
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700123181151.png">
 <meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700124628110.png">
 <meta property="article:published_time" content="2023-11-14T10:04:19.000Z">
-<meta property="article:modified_time" content="2023-11-16T09:03:32.695Z">
+<meta property="article:modified_time" content="2023-11-28T02:42:51.060Z">
 <meta property="article:author" content="Qing">
 <meta property="article:tag" content="漏洞">
 <meta property="article:tag" content="web">
@@ -243,7 +244,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-16 17:03:32" itemprop="dateModified" datetime="2023-11-16T17:03:32+08:00">2023-11-16</time>
+                <time title="修改时间：2023-11-28 10:42:51" itemprop="dateModified" datetime="2023-11-28T10:42:51+08:00">2023-11-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -357,6 +358,7 @@
 <p>提取一下关键有用的部分</p>
 <p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1700121360250.png" alt="1700121360250"></p>
 <p>分析代码逻辑：</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20231128094256841.png" alt="image-20231128094256841"></p>
 <p>通过<strong>index.php</strong>文件可以得知：使用get得到<strong>select</strong>，对select进行反序列化就可以得到flag</p>
 <p>在 <strong>class.php</strong>文件中包含 <strong>flag.php</strong></p>
 <p>有两个 <strong>private变量：username和password</strong> 用 <strong>if语句</strong>来判断 <strong>password</strong>是否等于100<strong>同时username</strong>是否为admin。</p>
@@ -380,7 +382,7 @@
 
 <p>光拿到这个还不够，因为他这个变量是private</p>
 <p>所以放到url中的时候，还要在类名——在这里是<strong>Name</strong> 的前后加上</p>
-<p><strong>%0</strong></p>
+<p><strong>%00</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;%00Name%00username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;%00Name%00password&quot;</span>;s:<span class="number">3</span>:<span class="string">&quot;100&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
 
 
