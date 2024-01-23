@@ -22,20 +22,40 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="CTF——misc常见音频隐写总结总结一下ctf中遇到音频题怎么解决…… 最主要提供解题思路">
+  <meta name="description" content="Moectf2023复盘-WEB1 http Web入门指北 彼岸的flag cookie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CTF-misc常见的音频隐写">
-<meta property="og:url" content="http://example.com/2023/09/20/CTF-misc%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99/index.html">
+<meta property="og:title" content="Moectf2023复盘">
+<meta property="og:url" content="http://example.com/2024/01/23/Moectf2023%E5%A4%8D%E7%9B%98/index.html">
 <meta property="og:site_name" content="Aurora0702">
-<meta property="og:description" content="CTF——misc常见音频隐写总结总结一下ctf中遇到音频题怎么解决…… 最主要提供解题思路">
+<meta property="og:description" content="Moectf2023复盘-WEB1 http Web入门指北 彼岸的flag cookie">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-20T12:21:03.000Z">
-<meta property="article:modified_time" content="2023-10-15T11:54:58.000Z">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123091814689.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123092605886.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095426197.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095222797.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095507080.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095608794.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123100412102.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123100653221.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123100922332.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123101701951.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123103626109.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123104953450.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105332708.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105436258.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105622726.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105709211.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105927719.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123110130465.png">
+<meta property="og:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123110117876.png">
+<meta property="article:published_time" content="2024-01-23T01:13:57.000Z">
+<meta property="article:modified_time" content="2024-01-23T03:10:34.768Z">
 <meta property="article:author" content="Qing">
-<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Moectf2023">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123091814689.png">
 
-<link rel="canonical" href="http://example.com/2023/09/20/CTF-misc%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99/">
+<link rel="canonical" href="http://example.com/2024/01/23/Moectf2023%E5%A4%8D%E7%9B%98/">
 
 
 <script id="page-configurations">
@@ -48,7 +68,7 @@
   };
 </script>
 
-  <title>CTF-misc常见的音频隐写 | Aurora0702</title>
+  <title>Moectf2023复盘 | Aurora0702</title>
   
 
 
@@ -188,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/20/CTF-misc%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/23/Moectf2023%E5%A4%8D%E7%9B%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -201,7 +221,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CTF-misc常见的音频隐写
+          Moectf2023复盘
         </h1>
 
         <div class="post-meta">
@@ -210,16 +230,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-09-20 20:21:03" itemprop="dateCreated datePublished" datetime="2023-09-20T20:21:03+08:00">2023-09-20</time>
+              <time title="创建时间：2024-01-23 09:13:57 / 修改时间：11:10:34" itemprop="dateCreated datePublished" datetime="2024-01-23T09:13:57+08:00">2024-01-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-15 19:54:58" itemprop="dateModified" datetime="2023-10-15T19:54:58+08:00">2023-10-15</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -241,42 +255,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="CTF——misc常见音频隐写总结"><a href="#CTF——misc常见音频隐写总结" class="headerlink" title="CTF——misc常见音频隐写总结"></a>CTF——misc常见音频隐写总结</h1><p>总结一下ctf中遇到音频题怎么解决……</p>
-<p>最主要提供解题思路</p>
+        <h1 id="Moectf2023复盘-WEB1"><a href="#Moectf2023复盘-WEB1" class="headerlink" title="Moectf2023复盘-WEB1"></a>Moectf2023复盘-WEB1</h1><ol>
+<li>http</li>
+<li>Web入门指北</li>
+<li>彼岸的flag</li>
+<li>cookie</li>
+</ol>
 <hr>
 <span id="more"></span>
 
-<p>[TOC]</p>
-<h1 id="常见工具"><a href="#常见工具" class="headerlink" title="常见工具"></a>常见工具</h1><p>这一块就就介绍一下常用的工具和使用方法</p>
-<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Audacity&spm=1001.2101.3001.7020">Audacity</a>，Adobe Audition(简称au)，SilentEye，DeepSound，MMSSTV，e2eSoft，mp3stego。</p>
-<p>这里面我用的最多的是：Audacity，mp3stego</p>
-<p>，SilentEye，DeepSound</p>
-<p>其他的说实话没咋用过</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>看到题目，第一步是先听一下音频中有没有什么关键的信息，比如摩斯电码（有间隔的长短电波），SSTV（连续刺耳的电波），拨号隐写之类的。如果不知道是什么声音先自行百度，听过就不会忘。然后打开以上工具看一看是否存在什么隐写，如果都没有办法的话可以欣赏一下音乐就下号了。</p>
-<p>解题过程中可能会遇到文件头被损毁的情况，查看这个文件的16进制，修复头或者查看隐藏信息</p>
-<p>wav文件头：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">52494646E6AD250357415645666D7420</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Audacity"><a href="#Audacity" class="headerlink" title="Audacity"></a>Audacity</h2><p>这个工具大多用来查看wav文件，查看波形图，有的题目他可能会把flag写到音频中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">很常见的就是藏在多视图，波形图，频谱图中。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="题目中有key的"><a href="#题目中有key的" class="headerlink" title="题目中有key的"></a>题目中有key的</h2><p><strong>这类题目大多使用：<em>silenteye、deepsound</em></strong></p>
-<p>偏向傻瓜式的操作了</p>
-<h2 id="拨号隐写"><a href="#拨号隐写" class="headerlink" title="拨号隐写"></a>拨号隐写</h2><p>经常打10086的时候对方可能说需要XX服务请按1，需要XX服务请按2，对于不同的数字有不同的声音，就可以隐写一些数据。可以通过DTMF提取出来。<br>DTMF脚本地址：<a target="_blank" rel="noopener" href="https://github.com/ribt/dtmf-decoder">https://github.com/ribt/dtmf-decoder</a></p>
-<h2 id="SSTV"><a href="#SSTV" class="headerlink" title="SSTV"></a>SSTV</h2><p>慢扫描电视（Slow-scan television 简称SSTV）是业余无线电爱好者的一种主要图片传输方法，慢扫描电视通过无线电传输和接收单色或彩色静态图片。<br><strong>这类题目大多使用：<em>silenteye、deepsound</em></strong></p>
-<p>这里强推虚拟声卡e2eSoft这个工具。SSTV正常解法需要一台设备播放一台设备收音，还容易收到杂音的干扰，虚拟声卡就可以很好的避免这个问题。而且，播放SSTV给人一种美国间谍在秘密通信的感觉。</p>
-<h2 id="MP3隐写"><a href="#MP3隐写" class="headerlink" title="MP3隐写"></a>MP3隐写</h2><p>使用工具</p>
-<p>通过输入指令操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 隐藏信息</span><br><span class="line"># —E 读取隐藏信息文件的内容，-P 设置密码</span><br><span class="line">encode.exe -E hidden_text.txt -P pass svega.wav svega_stego.mp3</span><br><span class="line"># 解密信息</span><br><span class="line">decode.exe -X svega_stego.mp3 -P pass</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>学习链接;</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51652400/article/details/123504708">ctf总结</a></p>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><p>打开环境看一下题目</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123091814689.png" alt="image-20240123091814689"></p>
+<p>要求完成下面五点</p>
+<p>抓包试一试</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123092605886.png" alt="image-20240123092605886"></p>
+<p>按照要求改包</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095426197.png" alt="image-20240123095426197"></p>
+<p>在改包的过程中出现了问题，burp中改为post无用，就在浏览器中使用插件</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095222797.png" alt="image-20240123095222797"></p>
+<p> 获得flag</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095507080.png" alt="image-20240123095507080"></p>
+<h1 id="Web入门指北"><a href="#Web入门指北" class="headerlink" title="Web入门指北"></a>Web入门指北</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123095608794.png" alt="image-20240123095608794"></p>
+<p>直接解码就好</p>
+<h1 id="彼岸的flag"><a href="#彼岸的flag" class="headerlink" title="彼岸的flag"></a>彼岸的flag</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123100412102.png" alt="image-20240123100412102"></p>
+<p>什么都没找到就看看源码</p>
+<p>看聊天记录中有个撤回的消息，可能会有发现</p>
+<p>查看一下，出现flag</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123100653221.png" alt="image-20240123100653221"></p>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123100922332.png" alt="image-20240123100922332"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123101701951.png" alt="image-20240123101701951"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123103626109.png" alt="image-20240123103626109"></p>
+<p>要先登录</p>
+<p>先注册一个</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123104953450.png" alt="image-20240123104953450"></p>
+<p>admin不行就换一个admin1</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105332708.png" alt="image-20240123105332708"></p>
+<p>然后用这个登录</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105436258.png" alt="image-20240123105436258"></p>
+<p>抓包看一下</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105622726.png" alt="image-20240123105622726"></p>
+<p>用工具</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105709211.png" alt="image-20240123105709211"></p>
+<p>试一下，看一下能不能出flag</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123105927719.png" alt="image-20240123105927719"></p>
+<p>不太行，不是admin，那就暴力搞成admin</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123110130465.png" alt="image-20240123110130465"></p>
+<p>在把cookie中的token改一下：</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240123110117876.png" alt="image-20240123110117876"></p>
 
     </div>
 
@@ -286,7 +311,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/Moectf2023/" rel="tag"># Moectf2023</a>
           </div>
 
         
@@ -295,13 +320,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/09/20/Day3/" rel="prev" title="Day3">
-      <i class="fa fa-chevron-left"></i> Day3
+    <a href="/2024/01/19/0x024/" rel="prev" title="0x024-0x025">
+      <i class="fa fa-chevron-left"></i> 0x024-0x025
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/09/22/CTF-WEB-SQL/" rel="next" title="CTF-WEB-SQL">
-      CTF-WEB-SQL <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -360,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CTF%E2%80%94%E2%80%94misc%E5%B8%B8%E8%A7%81%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">CTF——misc常见音频隐写总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">常见工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Audacity"><span class="nav-number">3.1.</span> <span class="nav-text">Audacity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E4%B8%AD%E6%9C%89key%E7%9A%84"><span class="nav-number">3.2.</span> <span class="nav-text">题目中有key的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A8%E5%8F%B7%E9%9A%90%E5%86%99"><span class="nav-number">3.3.</span> <span class="nav-text">拨号隐写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSTV"><span class="nav-number">3.4.</span> <span class="nav-text">SSTV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MP3%E9%9A%90%E5%86%99"><span class="nav-number">3.5.</span> <span class="nav-text">MP3隐写</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Moectf2023%E5%A4%8D%E7%9B%98-WEB1"><span class="nav-number">1.</span> <span class="nav-text">Moectf2023复盘-WEB1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http"><span class="nav-number">2.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web%E5%85%A5%E9%97%A8%E6%8C%87%E5%8C%97"><span class="nav-number">3.</span> <span class="nav-text">Web入门指北</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%BC%E5%B2%B8%E7%9A%84flag"><span class="nav-number">4.</span> <span class="nav-text">彼岸的flag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">5.</span> <span class="nav-text">cookie</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
