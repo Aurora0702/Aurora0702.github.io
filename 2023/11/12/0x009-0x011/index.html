@@ -1,80 +1,192 @@
 
 <!DOCTYPE html>
-<html lang="zh-CN" class="loading">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>0x009-0x011 - Aurora0702</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate" />
-    <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="May everything you work for have a romantic outcome in the future ．,
-  328599a5bd7bcd75e77b66901e057e5544782acc472a676b27744b8998100e3a15aaa91b814a58f947ca1e7eb6dd816e,"> 
-    <meta name="author" content="Qing"> 
-    <link rel="alternative" href="atom.xml" title="Aurora0702" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <meta charset="utf-8" />
+    <title>0x009-0x011 | Aurora0702</title>
+    <meta name="author" content="Qing" />
+    <meta name="description" content="May everything you work for have a romantic outcome in the future ．" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
 
-    
-    
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="0x009-0x011 - Aurora0702"/>
-    <meta name="twitter:description" content="May everything you work for have a romantic outcome in the future ．,
-  328599a5bd7bcd75e77b66901e057e5544782acc472a676b27744b8998100e3a15aaa91b814a58f947ca1e7eb6dd816e,"/>
-    
-    
-    
-    
-    <meta property="og:site_name" content="Aurora0702"/>
-    <meta property="og:type" content="object"/>
-    <meta property="og:title" content="0x009-0x011 - Aurora0702"/>
-    <meta property="og:description" content="May everything you work for have a romantic outcome in the future ．,
-  328599a5bd7bcd75e77b66901e057e5544782acc472a676b27744b8998100e3a15aaa91b814a58f947ca1e7eb6dd816e,"/>
-    
-<link rel="stylesheet" href="/css/diaspora.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-    <script>window.searchDbPath = "/search.xml";</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 6.3.0"></head>
-
-<body class="loading">
-    <span id="config-title" style="display:none">Aurora0702</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
-    <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">0x009-0x011</h3>
-    <div class="social">
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-            <div id="qr"></div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>AURORA0702</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;AURORA0702</span>
         </div>
-    </div>
-    <div class="scrollbar"></div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
 </div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    <div class="section">
-        <div class="article">
-    <div class='main'>
-        <h1 class="title">0x009-0x011</h1>
-        <div class="stuff">
-            <span>十一月 12, 2023</span>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>0x009-0x011</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/12
+        </span>
+        
+        <span class="category">
+            <a href="/categories/WEB2/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                WEB2
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CALSS9-CLASS11/" rel="tag">CALSS9-CLASS11</a></li></ul>
-
-
-        </div>
-        <div class="content markdown">
-            <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+            
+            <span class="tag">
+                
+                <a href="/tags/CALSS9-CLASS11/" style="color: #ff7d73">CALSS9-CLASS11</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
   <script id="hbeData" type="hbeData" data-hmacdigest="606917f84a87992d0073beb9f1abae8682272e4b2d1410f5619c3b58699570d4">328599a5bd7bcd75e77b66901e057e5544782acc472a676b27744b8998100e3a15aaa91b814a58f947ca1e7eb6dd816eac57a18aad3a5764fdaa2a64e0a14a88f73a1159db83fc5ef827f656d13620b33975dc79d269cbcb9b36c39a693142826e3baa8d1f311196eb90c287a9841012ea6f0c3133a9afd689b65cd1c51e94614f7c19a40e5292f660ddf2d389cad82ce950d62f0528abe07c0cc92d4ad699c452981d205cec408c89aa97644532bae43be37058c83d7bf044472612a81f1d56be3aafd7916557346936aea5d2e2109d201e333319685084d6978756653726f56c7823d2365ee4989e1445765ec06ce508a3470b938e4e0ed29fe04beab77598f1ed2b1459dbf0fc688b24536dadd046f0f490e0c9ae31cfbf25c0295384f59e83ff55695659cd724cb85737d754308b8eab46701780e7c68c5bba8034927c500a5d434feb35a865f6d280ece0846064475ad75c8e471fa8f90ef8373059350b763db01e100f68a61f4bcd3d68b3064c63875bf7485fa3f1733b3d4e8b4ae2a0e01dc45ccd9dada2f8bd9c115b4be3c2545fce1f7dad167666406a0cc8050bbe33daf2c7ebc30575647aed4a27b3ebd55ead0c2547fa85914c2074afd9ded4c9b2b7d1c502890e0f99f78cd451a13fd560d22d7e09efea7346fd89197ef783e43804d9fe9fa0c01290ad2581064711dcf4686eea2f610210f105df49ea02938cc00919371750aa17901878227279168771d5fac2e787f25a2b7a25f56d5397d7c1fde8112154625e926dd711050dcb445231711495b96a867388d8c94835cba8334751956da832bf3741fd5e59e23a127c198315b5b98f1a40075e4b63187ecab3c9487e82adbec0564d4d38f5a0d2dfa599d0de8a8454094969172c3c12c7c9d2c83100842c19e7c2f689db2afca9f2bdca335c056179624dfab0c6f92fdc4ae16049353f18108c4acf1eeeed8c25bb7d64d584b1d4462e2f3cadf6d75e0f6f296d63fff136e9fae561030109ded27025eb0c3975181302880dd8b1c16be73c165025d879b3e50722c891596d67541af0b83d1aad469660f17a44bf659dc5804db54f16af84490d79472ac9e245ecc1a9d541bc702671e60627b7bcb9afd16f17b21be6a1902ddbb71fd9f19351c4b3ac58e5cd6b4d3f4ef8971fbd6df0a660e9c065d20eab31b8f1218a3bb5f660932f578cd5e62595ad0fae624c073772671caa86dcb6446a3b83d9b5c81a56012857d0791a9fd0b8d6af629445fb38d49a77740c7bcad64dd12f94fffc94f86a75f6a40cf81b4b6238b52b62a38dd7f381246905df360cff4c4318c6b57421402664a0342116e0e51a6d4eb30b979025d01b91a550094af21d1825477e794c94947c024ef3d91f4a6f9a147adfe3fbf0bff6c993e3ce025914de81c75dbc815ac6b91747233e7541748aa4179fdc36a18251498a9c633d76ef8f560e8b319cd8ec8d4cdd632f428aeb4b946979d0e4fcdfc1d95bf7f47af924d40738de610bbc5f2fc179bfd69bbe818a67fb29dc148c53339edb20a691795ab5125d91c8f3885d19621abef3b408026966834cc9e94b0b93669403b44f877c7d98ff49ce5dd2e03eec6519856f97173cf5a69a985c78449861da0a8c24fcf919901a4779abca4bd0ba9fc82dd5c1284142fdbbae7d99f3262d3f5aefaf399b427b12549d399c6feca2507f04250c365b0cbc68f03cf93e108d1e75a48af534997065d33591113b01bcc42e7e30605bc2cde5f79fb4277230085501fa9093f0e1bb9aa98bc9e1d8c844e60027feed0c03660f9911db4ca3820c6034280daf436aa5685dc4b2c6e522513b578002e62ff545f4f7821f10e11f820754a96ff32a00d87ea4e49f7845282b6497494e3c418f22b361375319b9235f5eee7a448ae38c6f3bcc28c1d0ce4c9bfd9c3fec82ec24cc96a295a39448fd4a32814a4630c59050bcbc586fb6d9bc4c4141a6d35c279422c2e382ebb2399b1d3b4b2313b6f4ae51f769f125605e340771423eff6e3e39e0dbab40e9c9f07253a47bb585d1cbbd69c904b430f82728233a8b2d7b3335dfa89b07b0682b82641d4f80806bbfd24768a3f83fea30112f9b89fbd427ad7daf71e3b42e06c0d2201c923dc3ec38d6a24c64cc616c2eb4c0612c943a1d85332120d01d3f51cbc5115b9e0570ae448f3880bc508ecff75cdc7d7adcd0136518cd991c388ca332003be2c5891482ade4fa949f8067e68fc22026a2ff618c384299b1d687359a54c9303c6dcb242eb123d2cbc31cb83a0c94ad2fe0f1389604b97909d3db04724ab866c5a2e70d1f55fc43f4871507b0c16fc611cab02146beeb0558ab61604d65e3b7b3be9e45556153349edaf11120115305bf72da01d5bbd6719b2259ed9f9023c3acebf6732ad30df68a2c6d2f3cab1493afe7dfd324e62ef4a1618119c03bbc046b2ad34c9371c7a5ffc7a45b74eaed9925d0171effad0e25f455d44dd6048347d7b12dfa3ed0ca419ab50a3a829fd8daf6a9f103a495c558bde84d3961135a7343ae53d8826bfb77d35c15a452a7819276b2e03f382fc387ecfb818ec1d8d2d0ec1165c8e72cfa240e5b8104efd16c89d5d6bcbac07b718aa915071cbed11a64d0fbb7cd29ad7183080c58b3a71a1c58fb41603a52eb07edd1724fb050e719d4a0f37e1f6c7d8b3ad68f46992fd18e5fb496818ca946782431e75030d228d1819ee4fc7d0def6ccfef03982b87ae70c4691173ca0121e113dda44640dd92e2fecf4e57f1893ef20136cc1179ebe179acad972cb4b78eef9b900df916f75efa63445d80d235b3dd6ae4145a3b2a871bd97e59667dcd0119579afb2f7bfcf1934f3f47adfaf73ed1fd7fe5f5810af762004712457bb07d72066e61fd7a7ba613f7ad26f16dd11095895cad35cccb626c1b2c02bc5515b21c1d4445cabe0f281ae567cf6440a101512d80b876ad31d65db42a53fa51628d2bd706cedb1075862bb1b5d22aac0bc046c9fa7e79ce3cea5f1d32655ea7142448b6f9c153a17d5b15295d6b5eea85770b0f57ee13ba26cad560f40638bce26950b6d2df63faaf28239592febc4f5225794f21e7f7e599469f3cea81d8cef0378a0598398789b5dd1953b54cfd975c349c735d0ce00e75e35a0667cc49457be4f09bdb8de06428be172fced47306bfa7be81cfc332b87bf107ddbd86d2c1702209b043a79b58fb2b7207d5174f4eb6be502fd16320d7c53e9f863a3127350eee6197f8da689847f994e185c7e4ab4ed10389fa1d25f90b18b4003faf7215d4dfe7c872471b8dddf338df0ebbff1f33f99ad26fb842ab1ebef3d4153577ac73a412d55b89416fb01cfa62d6fb354b208fbae17ef2e27a25351d2ecbd98c6d1197dc8b8aa50d7223f6f21e5a5e7937c35b1494d0ad06b2cd26b181ee061569b6ba850e7b6cbcf3337ff4e21dd0f25fe87a7a735040e061136f25c9e1276f4d0a5e33ec3f69b73ec16935721aa4a014e6aa2234c2719428efb6936ca39d9dfffd70a2c015cb8cf94115081112e068f8ec5412a994681d02548eaea2c1a5516faafefb4f3f3064b7c8444ceb68b4e618bc88072f177fa91530062b01fc4753eed2433245cbf85480699a0089e21926ba8b12e1dd91dc04891f40f9052e791463765e97e941c2b0cbfe1ad560695005976ee559320d6fa7cb3936299cb36e3e4bb553b7dbe4968eda045e0cc3c2f3873a4a3eeb69da412db78b8964a9158d984c389139f6ee35acc26726d938d194a9a68058171e8d940646f9f071270804d78fea1689b52d11e2698b90f940730dfce7be8588a7efc6695a3afa80ab05fce7e98c87da3497b0c1be2f83ed8f68e8676d9d989b040c46607a18d3e163f526120e70d3ffdcba5471aa1e5f174e119a7b6cd40c79a5c875b4449cc5a3e9dbf1fd90d080eda9eb0817eb34d788a1fb8adede1a9bcfd1190ff586b870928047a7289c83776966d5826beff23ebcbee3e5bcf0ff4f28eb610c047e65695680e0c5b40d63182f1be9ec3a38c969a61d4c4c9a615f64a5ddb4d6e3afcfdaf1475bd9455ba90187477ee06684f2bfece12c00c97a4c6f929abf9d615ffde691c35b5e161cea3ffe188a4020e8367506518a2c690e91c8354120efefabb708742e96499412744b80c385d1c22211d915fbbed1ecabe389724395ab404e9ff80382278d2f39a9d0f803aa5f51dc5eee4b0c197d461dada9bdb0e085134582dd076f686fa528e04f9072f8c8b6f0815ec4b570cfe4b31d589447d0686a3a7a969bb01fd9e8be96bd927a58ca9fd208b93a44d5b5b33f6a4e07f0aa7bfeb6a3c79f3021932026752e5bc7e8e6f4ecae7443746786cbb58693098349fa1e2c31ac5a65c4e2e9d9629b50fe0fa91e26a6f555c98830c3f82b2473bbac17530a57ea095951012dee30f5d6f2d7e1cf63a410aa758635216ce7a9483aed146b3ca93a443546aa0926618b81db4c0efbe201a2673a92ef9209a505d408e137979a44a014ad9fd293ef768be3437a76735ccb35c8076f465817896c6b2a3b76381aba9b39684d141dee8b92dcf0cef07a36f3d17891c9c88dbfd39232c3b27ebee9471ad66a71a9ef76d827428a568e7bebf03c8799260f2672349935845e429cdecfb1e9676b887384db1d9af7e4316386de09281e880aea884bf0170f12c9c12400175f907d9986e39c37d2f13702b7034d89f3d133dccbbee23bdca0a181b93a5dc0898126b481eae55bc4a8daf694fa6b667841cc5f46089fe0a8d3506c0576c85d7d8926efb6a188582c8832566cc5c345c59da98f9ab467bfc2beec3565676df096fa136a2369ed7aa2175d3cd0b8913ca761abe5379907df281335fedda8518bb523d524dbe0854c7f0991fa5e796cb628647a163bd78fc216330451c335c3e8747e3f37bcbf241cb3acd0744379549a97f9f674cad04da30a40cb02478b5623930bf50583b85d5e76ce45f2ce3cd41c391319f3c0c875fec40f1ab4a9dd301ae27cb1456ee6c682c171b78f21035c000828f1f65be7505af4c564a3bc51b4b2f45c79da9275a77fb0906d66ea27264eb004ef69098cf80eac49a4ead0f3720941ef944e91149bfb3527906c301552ccc0b1838157294acdf75f983a919070f5bdb712c10268f1573aaf9684bcf9a97fd0071326fd0cadfb89d20e47d44f3741c995040687ab0b1407dc7c985c720376184d90715a2dc123813bed6fcd5ccd91e19e79ffad7e499319725078343dd9f61e</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
@@ -86,115 +198,50 @@
   </div>
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                        
-                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                </ul>
-            
-        </div>
-        
-        
-    <div id="gitalk-container" class="comment link"
-		data-enable="true"
-        data-ae="false"
-        data-ci=""
-        data-cs=""
-        data-r=""
-        data-o=""
-        data-a=""
-        data-d="false"
-    >查看评论</div>
-
-
     </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
-
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 Aurora0702
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Qing
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
     </div>
-</div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
 </body>
-
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/typed.js"></script>
-<script src="/js/diaspora.js"></script>
-
-
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-
-
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
 </html>
