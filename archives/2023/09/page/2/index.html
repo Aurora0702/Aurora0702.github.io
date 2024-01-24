@@ -38,6 +38,16 @@
 
 <link rel="stylesheet" href="/css/main.css" />
 
+	<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+	<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+	<script src="/js/fireworks.min.js"></script>
+	<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+	<script src="/js/background.min.js"></script>
+	<div id="cursor"></div>
+	<link rel="stylesheet" href="/css/cursor.min.css">
+	<script src="/js/cursor.min.js"></script>
+
+
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
     <div id="layout">
@@ -176,7 +186,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/SSL/" style="color: #03a9f4">-SSL</a>
+                            <a href="/tags/SSL/" style="color: #ff7d73">-SSL</a>
                         </span>
                         
                     </span>
@@ -203,7 +213,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="color: #00bcd4">-基础知识</a>
+                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="color: #ff7d73">-基础知识</a>
                         </span>
                         
                     </span>
@@ -262,7 +272,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/Networking-Konwledge-Understand-Common-Protocols/" style="color: #ffa2c4">-Networking Konwledge -Understand Common Protocols</a>
+                            <a href="/tags/Networking-Konwledge-Understand-Common-Protocols/" style="color: #ff7d73">-Networking Konwledge -Understand Common Protocols</a>
                         </span>
                         
                     </span>
@@ -298,7 +308,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/Networking-Konwledge-Understand-Common-Protocols/" style="color: #ffa2c4">-Networking Konwledge -Understand Common Protocols</a>
+                            <a href="/tags/Networking-Konwledge-Understand-Common-Protocols/" style="color: #00a596">-Networking Konwledge -Understand Common Protocols</a>
                         </span>
                         
                     </span>
@@ -334,7 +344,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/WEB/" style="color: #ff7d73">WEB</a>
+                            <a href="/tags/WEB/" style="color: #00a596">WEB</a>
                         </span>
                         
                     </span>
@@ -370,7 +380,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/WEB/" style="color: #00a596">-WEB</a>
+                            <a href="/tags/WEB/" style="color: #ff7d73">-WEB</a>
                         </span>
                         
                     </span>
@@ -406,7 +416,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/Mysql/" style="color: #00a596">Mysql</a>
+                            <a href="/tags/Mysql/" style="color: #03a9f4">Mysql</a>
                         </span>
                         
                     </span>
@@ -442,7 +452,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/JAVA/" style="color: #00bcd4">-JAVA</a>
+                            <a href="/tags/JAVA/" style="color: #03a9f4">-JAVA</a>
                         </span>
                         
                     </span>
@@ -478,7 +488,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/JAVA/" style="color: #03a9f4">-JAVA</a>
+                            <a href="/tags/JAVA/" style="color: #00bcd4">-JAVA</a>
                         </span>
                         
                     </span>
@@ -586,7 +596,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CTF/" style="color: #ffa2c4">-CTF</a>
+                            <a href="/tags/CTF/" style="color: #03a9f4">-CTF</a>
                         </span>
                         
                     </span>
@@ -622,7 +632,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/JAVA/" style="color: #ffa2c4">JAVA</a>
+                            <a href="/tags/JAVA/" style="color: #ff7d73">JAVA</a>
                         </span>
                         
                     </span>
@@ -658,7 +668,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/WEB/" style="color: #03a9f4">WEB</a>
+                            <a href="/tags/WEB/" style="color: #00bcd4">WEB</a>
                         </span>
                         
                     </span>
@@ -694,7 +704,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/Mysql/" style="color: #ffa2c4">Mysql</a>
+                            <a href="/tags/Mysql/" style="color: #03a9f4">Mysql</a>
                         </span>
                         
                     </span>
@@ -730,7 +740,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/WEB/" style="color: #03a9f4">WEB</a>
+                            <a href="/tags/WEB/" style="color: #00bcd4">WEB</a>
                         </span>
                         
                     </span>
@@ -766,7 +776,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="color: #00a596">基础知识</a>
+                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="color: #ff7d73">基础知识</a>
                         </span>
                         
                     </span>
@@ -802,7 +812,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/JAVA/" style="color: #ff7d73">JAVA</a>
+                            <a href="/tags/JAVA/" style="color: #03a9f4">JAVA</a>
                         </span>
                         
                     </span>
@@ -838,7 +848,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS1-3/" style="color: #00a596">CALSS1-3</a>
+                            <a href="/tags/CALSS1-3/" style="color: #ff7d73">CALSS1-3</a>
                         </span>
                         
                     </span>
@@ -924,7 +934,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS5-class6/" style="color: #00a596">CALSS5/class6</a>
+                            <a href="/tags/CALSS5-class6/" style="color: #00bcd4">CALSS5/class6</a>
                         </span>
                         
                     </span>
@@ -960,7 +970,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/JAVA/" style="color: #00bcd4">JAVA</a>
+                            <a href="/tags/JAVA/" style="color: #03a9f4">JAVA</a>
                         </span>
                         
                     </span>
@@ -996,7 +1006,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS7/" style="color: #00bcd4">CALSS7</a>
+                            <a href="/tags/CALSS7/" style="color: #ff7d73">CALSS7</a>
                         </span>
                         
                     </span>
@@ -1032,7 +1042,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS8/" style="color: #00a596">CALSS8</a>
+                            <a href="/tags/CALSS8/" style="color: #ff7d73">CALSS8</a>
                         </span>
                         
                     </span>
@@ -1068,7 +1078,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS9-CLASS11/" style="color: #00a596">CALSS9-CLASS11</a>
+                            <a href="/tags/CALSS9-CLASS11/" style="color: #ff7d73">CALSS9-CLASS11</a>
                         </span>
                         
                     </span>
@@ -1104,7 +1114,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="color: #03a9f4">漏洞</a>
+                            <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="color: #ff7d73">漏洞</a>
                         </span>
                         
                         <span class="tag">
@@ -1150,7 +1160,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/web/" style="color: #00a596">web</a>
+                            <a href="/tags/web/" style="color: #ff7d73">web</a>
                         </span>
                         
                     </span>
@@ -1186,7 +1196,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS22-23/" style="color: #03a9f4">CALSS22-23</a>
+                            <a href="/tags/CALSS22-23/" style="color: #ffa2c4">CALSS22-23</a>
                         </span>
                         
                     </span>
@@ -1222,7 +1232,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/CALSS24/" style="color: #03a9f4">CALSS24</a>
+                            <a href="/tags/CALSS24/" style="color: #00bcd4">CALSS24</a>
                         </span>
                         
                     </span>
@@ -1258,7 +1268,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/tags/Moectf2023/" style="color: #ff7d73">Moectf2023</a>
+                            <a href="/tags/Moectf2023/" style="color: #00a596">Moectf2023</a>
                         </span>
                         
                     </span>

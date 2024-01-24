@@ -38,6 +38,16 @@
 
 <link rel="stylesheet" href="/css/main.css" />
 
+	<canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+	<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+	<script src="/js/fireworks.min.js"></script>
+	<canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+	<script src="/js/background.min.js"></script>
+	<div id="cursor"></div>
+	<link rel="stylesheet" href="/css/cursor.min.css">
+	<script src="/js/cursor.min.js"></script>
+
+
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
     <div id="layout">
@@ -151,33 +161,11 @@
         
         
         <span>
-            <a href="/tags/CALSS1-3/" style="background: #00a596">
+            <a href="/tags/CALSS1-3/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
                 CALSS1-3
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/CALSS5-class6/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                CALSS5/class6
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/CALSS7/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                CALSS7
             </a>
         </span>
         
@@ -197,7 +185,29 @@
         
         
         <span>
-            <a href="/tags/CALSS8/" style="background: #00a596">
+            <a href="/tags/CALSS5-class6/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                CALSS5/class6
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/CALSS7/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                CALSS7
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/CALSS8/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -208,11 +218,22 @@
         
         
         <span>
-            <a href="/tags/CALSS9-CLASS11/" style="background: #ffa2c4">
+            <a href="/tags/CALSS9-CLASS11/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
                 CALSS9-CLASS11
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/CALSS22-23/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                CALSS22-23
             </a>
         </span>
         
@@ -230,33 +251,11 @@
         
         
         <span>
-            <a href="/tags/CTF/" style="background: #ffa2c4">
+            <a href="/tags/CTF/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
                 -CTF
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/CTF/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                CTF
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/CALSS22-23/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                CALSS22-23
             </a>
         </span>
         
@@ -274,51 +273,18 @@
         
         
         <span>
-            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background: #00a596">
+            <a href="/tags/CTF/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
-                基础知识
+                CTF
             </a>
         </span>
         
         
         
         <span>
-            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                -基础知识
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/JAVA/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                -JAVA
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/JAVA/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                JAVA
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/WEB/" style="background: #00bcd4">
+            <a href="/tags/WEB/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -329,7 +295,51 @@
         
         
         <span>
-            <a href="/tags/Moectf2023/" style="background: #03a9f4">
+            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                -基础知识
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                基础知识
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/JAVA/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                -JAVA
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/JAVA/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                JAVA
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/Moectf2023/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -340,7 +350,7 @@
         
         
         <span>
-            <a href="/tags/Mysql/" style="background: #00a596">
+            <a href="/tags/Mysql/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -351,7 +361,7 @@
         
         
         <span>
-            <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="background: #ffa2c4">
+            <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -362,7 +372,7 @@
         
         
         <span>
-            <a href="/tags/web/" style="background: #ff7d73">
+            <a href="/tags/web/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -422,7 +432,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/tags/CALSS4/" style="color: #03a9f4">CALSS4</a>
+                        <a href="/tags/CALSS4/" style="color: #ffa2c4">CALSS4</a>
                     </span>
                     
                 </span>
