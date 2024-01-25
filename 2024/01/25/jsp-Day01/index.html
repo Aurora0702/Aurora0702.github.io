@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>PHP反序列化2 | Aurora0702</title>
+    <title>jsp-Day01 | Aurora0702</title>
     <meta name="author" content="Qing" />
     <meta name="description" content="May everything you work for have a romantic outcome in the future ．" />
     <meta name="keywords" content="" />
@@ -172,22 +172,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>PHP反序列化2</h1>
+        <h1>jsp-Day01</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/11/18
+            2024/1/25
         </span>
         
         <span class="category">
-            <a href="/categories/%E6%BC%8F%E6%B4%9E/">
+            <a href="/categories/jsp/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                漏洞
+                jsp
             </a>
         </span>
         
@@ -200,12 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="color: #03a9f4">漏洞</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/web/" style="color: #00bcd4">web</a>
+                <a href="/tags/jsp/" style="color: #03a9f4">jsp</a>
             </span>
             
         </span>
@@ -213,99 +208,37 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="PHP反序列化2😶‍🌫️"><a href="#PHP反序列化2😶‍🌫️" class="headerlink" title="PHP反序列化2😶‍🌫️"></a>PHP反序列化2😶‍🌫️</h1><p>POP链，魔术方法</p>
-<p>分析代码逻辑，构造payload</p>
-<hr>
+        <h1 id="JSP-Day01"><a href="#JSP-Day01" class="headerlink" title="JSP-Day01"></a>JSP-Day01</h1><hr>
 <span id="more"></span>
 
-<h1 id="其他魔术方法"><a href="#其他魔术方法" class="headerlink" title="其他魔术方法"></a>其他魔术方法</h1><ul>
-<li><p><em><strong>__destruct()</strong></em></p>
-<pre><code>1.用户主动销毁对象
-2.程序结束的时候有引擎自动销毁
+<h1 id="什么是JSP"><a href="#什么是JSP" class="headerlink" title="什么是JSP"></a>什么是JSP</h1><p>借用一下菜鸟教程上对jsp的解释</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1706178899115.png" alt="1706178899115"></p>
+<h1 id="初次尝试jsp"><a href="#初次尝试jsp" class="headerlink" title="初次尝试jsp"></a>初次尝试jsp</h1><pre><code>工具：IDEA 2023
+环境：JDK17
 </code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701083712683.png" alt="1701083712683"></p>
-</li>
-<li><p><em><strong>__toString()</strong></em></p>
-<img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084181165.png" alt="1701084181165" style="zoom:150%;">
-
-<p>如果没有</p>
-<pre><code class="php">echo $a;
-</code></pre>
-<p>则不会调用这个方法</p>
-<p>对象被当作字符串一样调用的时候使用这个方法</p>
-</li>
-<li><p><em><strong>__callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法时触发</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084919628.png" alt="1701084919628"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084935543.png" alt="1701084935543"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084971264.png" alt="1701084971264"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701085067302.png" alt="1701085067302"></p>
-<p>执行结果：</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701085042623.png" alt="1701085042623"></p>
-</li>
-<li><p><em><strong>get() &#x2F;&#x2F;获得一个类的成员变量时调用,用于从不可访问的属性读取数据（不可访问的属性包括：1.属性是私有型。2.类中不存在的成员变量）</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086187245.png" alt="1701086187245"></p>
-<p>不存在的属性被调用</p>
-</li>
-<li><p><em><strong>__set() &#x2F;&#x2F;用于将数据写入不可访问的属性</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086367645.png" alt="1701086367645"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701086425120.png" alt="1701086425120"></p>
-</li>
-<li><p><em><strong>__sleep() ：在serialize之前被调用，可以指定要序列化的对象属性</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701087582663.png" alt="1701087582663"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701087558719.png" alt="1701087558719"></p>
-</li>
-<li><p><em><strong>__wakeup ：反序列化恢复对象之前调用该方法</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088079461.png" alt="1701088079461"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088092513.png" alt="1701088092513"></p>
-</li>
-<li><p><em><strong>__isset()     &#x2F;&#x2F;在不可访问的属性上调用iset()或empty()触发</strong></em></p>
-</li>
-<li><p><em><strong>__unset()   &#x2F;&#x2F;在不可访问的属性上使用unset()时触发</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088623375.png" alt="1701088623375"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088715378.png" alt="1701088715378"></p>
-</li>
-<li><p><em><strong>__invoke()    &#x2F;&#x2F;当尝试以调用函数的方式调用一个对象时</strong></em></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089557895.png" alt="1701089557895"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089577412.png" alt="1701089577412"></p>
-<p>把对象当做函数去应用了</p>
-</li>
-</ul>
-<h1 id="对象变量属性"><a href="#对象变量属性" class="headerlink" title="对象变量属性"></a>对象变量属性</h1><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><p> 公有类型</p>
-<h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><p>私有类型</p>
-<p>该类型的属性或方法只能在该类中使用</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701088989740.png" alt="1701088989740"></p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><h4 id="："><a href="#：" class="headerlink" title="**&lt;和上面的 *__invoke()* 结合&gt;**："></a>**&lt;和上面的 *__invoke()* 结合&gt;**：</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089296210.png" alt="1701089296210"></p>
-<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701089168811.png" alt="1701089168811"></p>
-<h4 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h4><p>只输出脸变得原因是：这里的 <em><strong>sex</strong></em> 为 <em><strong>public</strong></em> 不是私有类，所以只有 <em><strong>name ，age</strong></em> 这两个被 <em><strong>private</strong></em> 修饰的调用方法并且输出结果</p>
-<h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2><p> 受保护类型</p>
-<p>在子类中可以调用父类方法</p>
-<h4 id="实例2"><a href="#实例2" class="headerlink" title="实例2  &lt;序列化时san’zhe&gt;"></a>实例2  &lt;序列化时san’zhe&gt;</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701134700629.png" alt="1701134700629"></p>
-<ul>
-<li>当变量被private修饰的时候  **序列化之后的格式为： **</li>
-</ul>
-<pre><code class="php">     %00类名%00成员名
-</code></pre>
-<p>在这里没有显示**%00** 所以一般对输出的及如果进行编码</p>
-<ul>
-<li>当变量被protected修饰的时候 **序列化之后的格式为： **</li>
-</ul>
-<pre><code class="php">     %00*%00成员名
-</code></pre>
-<h1 id="语言特性漏洞"><a href="#语言特性漏洞" class="headerlink" title="语言特性漏洞"></a>语言特性漏洞</h1><p>上一个笔记里的题目中的***__wakeup()*** 方法的绕过</p>
-<h2 id="wakeup-方法绕过"><a href="#wakeup-方法绕过" class="headerlink" title="__wakeup()方法绕过"></a>__wakeup()方法绕过</h2><ul>
-<li><p>漏洞影响的版本</p>
-<p>PHP5 &lt; 5.6.25</p>
-<p>PHP7 &lt; 7.0.10</p>
-</li>
-<li><p>原因</p>
-<p>如果存在 <em><strong>_wakeup()</strong></em> 方法，则调用 <em><strong>unserilize()</strong></em> 方法前先调用  <em><strong>_wakeup()</strong></em> 方法 </p>
-</li>
-<li><p>绕过</p>
-<p>当序列化字符串表示对象属性个数的值大于真实的属性个数的时候就会绕过 <em><strong>_wakeup()</strong></em> 方法</p>
-</li>
-</ul>
-<h1 id="原生类"><a href="#原生类" class="headerlink" title="原生类"></a>原生类</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701138441516.png" alt="1701138441516"></p>
-<p>查看各个方法有哪些原生类</p>
+<h2 id="IDEA使用滑铁卢"><a href="#IDEA使用滑铁卢" class="headerlink" title="IDEA使用滑铁卢"></a>IDEA使用滑铁卢</h2><p>第一次尝试就遇到了很多问题</p>
+<p>先是配置tomcat的问题，在之前有配置过tomcat但是没有完全整好，在运行的时候出现了问题</p>
+<p>在尝试点击浏览器标示运行的时候出现了提示</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/ecdf880e1ef74cd1f5a1c6be408f179.png" alt="ecdf880e1ef74cd1f5a1c6be408f179"></p>
+<h2 id="IDEA配置tomcat过程"><a href="#IDEA配置tomcat过程" class="headerlink" title="IDEA配置tomcat过程"></a>IDEA配置tomcat过程</h2><h3 id="提前下载tomact"><a href="#提前下载tomact" class="headerlink" title="提前下载tomact"></a>提前下载tomact</h3><p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/">Apache Tomcat® - Welcome!</a></p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1706181994871.png" alt="1706181994871"></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125192752294.png" alt="image-20240125192752294"></p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>在这里面我们点击这个，选择你安装tomcat的位置，我这里已经配置过了所以有显示</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125192820729.png" alt="image-20240125192820729"></p>
+<p>整好之后就点击右下角 <em><strong>Apply</strong></em> </p>
+<h3 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h3><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125193143134.png" alt="image-20240125193143134"></p>
+<p>点这里</p>
+<p>进行同样的配置工作</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125193208729.png" alt="image-20240125193208729"></p>
+<p>这样就可以美美使用了</p>
+<h2 id="IDEA导包"><a href="#IDEA导包" class="headerlink" title="IDEA导包&lt;解决关于IDEA无法使用HttpServlet的问题&gt;"></a>IDEA导包&lt;解决关于IDEA无法使用HttpServlet的问题&gt;</h2><p>在初次使用idea来写jsp的过程中发现<strong>HttpServlet</strong>报错的问题</p>
+<p>去搜了一下发现是没导入<strong>Tomca</strong>t下的<strong>Servlet ja</strong>r包</p>
+<p>IDEA需要手工导入</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125193926598.png" alt="image-20240125193926598"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125193958607.png" alt="image-20240125193958607"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125194045071.png" alt="image-20240125194045071"></p>
+<p>导入就好了</p>
+<h2 id="运行起来"><a href="#运行起来" class="headerlink" title="运行起来"></a>运行起来</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240125194128021.png" alt="image-20240125194128021"></p>
 
     </div>
     
