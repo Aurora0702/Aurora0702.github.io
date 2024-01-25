@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/WEB/" style="color: #ffa2c4">-WEB</a>
+                <a href="/tags/WEB/" style="color: #00bcd4">-WEB</a>
             </span>
             
         </span>
@@ -220,20 +220,73 @@
 <p>请求头和请求体之间用一个空行隔开</p>
 <p>4.请求体：</p>
 <p>  要发送的数据（一般post提交会使用）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#请求行</span><br><span class="line">1.请求行由三个标记组成: </span><br><span class="line">  请求方法、请求URL和HTTP版本，它们用空格分隔</span><br><span class="line">  例如: </span><br><span class="line">GET /index.html HTTP/1.1</span><br><span class="line"></span><br><span class="line">2.HTTP 规划定义了8种可能的请求方法:</span><br><span class="line">  GET:检索URL中标识资源的一个简单请求</span><br><span class="line">  HEAD:与GET方法相同，服务器只返回状态行和头标，并不返回请求文档</span><br><span class="line">  POST:服务器接受被写入客户端输出流中的数据的请求</span><br><span class="line">  PUT:服务器保存请求数据作为指定URL新内容的请求</span><br><span class="line">  DELETE:服务器删除URL中命令的资源的请求</span><br><span class="line">  OPTIONS:关于服务器支持的请求方法信息的请求</span><br><span class="line">  TRACE: web服务器反馈Http请求和其头标的请求</span><br><span class="line">  CONNECT : 已文档化，但当前未实现的一个方法，预留做隧道处理</span><br></pre></td></tr></table></figure>
+<pre><code>#请求行
+1.请求行由三个标记组成: 
+  请求方法、请求URL和HTTP版本，它们用空格分隔
+  例如: 
+GET /index.html HTTP/1.1
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#请求头</span><br><span class="line">由关键字/值对组成，每行一对，关键字和值用冒号分享。请求头标通知服务器腾于客户端的功能和标识。</span><br><span class="line">  HOST:主机或域名地址</span><br><span class="line">  </span><br><span class="line">  Accept:指浏览器或其他客户可以接爱的MIME文件格式。Servlet可以根据它判断并返回适当的文件格式。</span><br><span class="line">  </span><br><span class="line">  User-Agent:是客户浏览器名称</span><br><span class="line">  </span><br><span class="line">  Host:对应网址URL中的web名称和端口号。</span><br><span class="line">  </span><br><span class="line">  Accept-Langeuage: 指出浏览器可以接受的语言种类，如en或en-us，指英语.</span><br><span class="line">  </span><br><span class="line">  connection:用来告诉服务器是否可以维持固定的HTTP连接。http是无连接14的，HTTP/1.1使用Keep-Alive为默认值，这样，当浏览器需要多个文件时(比个HTML文件和相关的图形文件)，不需要每次都建立连接</span><br><span class="line">  </span><br><span class="line">  Cookie: 浏览器用这个属性向服务器发送Cookie。Cookie是在浏览器中寄存的小型数据体，它可以记载和服务器相关的用户信息，也可以用来实现会话功能。</span><br><span class="line">  </span><br><span class="line">  Referer:表明产生请求的网页URL。如比从网页/icconcept/index.jsp中点击一个链接到网页/icwork/search，在向服务器发送的GET/icwork/search中的请求中，Referer是http://hostname:8080/icconcept/index.jsp。这个属性可以用来跟踪web请求是从什么网站来的。</span><br><span class="line">  </span><br><span class="line">  Content-Type:用来表名request的内容类型。可以用HttpServletReques的getContentType() 方法取得。</span><br><span class="line">  </span><br><span class="line">  Accept-charset: 指出浏览器可以接受的字符编码。英文浏览器的默认值是IOS-8859-1。</span><br><span class="line">  </span><br><span class="line">  Accept-Encoding:指出浏览器可以接受的编码方式。编码方式不同于文件格式，它是为了压缩文件并加速文件传递速度。浏览器在接收到web响应之后先解码，然后再检查文件格式。</span><br></pre></td></tr></table></figure>
+2.HTTP 规划定义了8种可能的请求方法:
+  GET:检索URL中标识资源的一个简单请求
+  HEAD:与GET方法相同，服务器只返回状态行和头标，并不返回请求文档
+  POST:服务器接受被写入客户端输出流中的数据的请求
+  PUT:服务器保存请求数据作为指定URL新内容的请求
+  DELETE:服务器删除URL中命令的资源的请求
+  OPTIONS:关于服务器支持的请求方法信息的请求
+  TRACE: web服务器反馈Http请求和其头标的请求
+  CONNECT : 已文档化，但当前未实现的一个方法，预留做隧道处理
+</code></pre>
+<pre><code>#请求头
+由关键字/值对组成，每行一对，关键字和值用冒号分享。请求头标通知服务器腾于客户端的功能和标识。
+  HOST:主机或域名地址
+  
+  Accept:指浏览器或其他客户可以接爱的MIME文件格式。Servlet可以根据它判断并返回适当的文件格式。
+  
+  User-Agent:是客户浏览器名称
+  
+  Host:对应网址URL中的web名称和端口号。
+  
+  Accept-Langeuage: 指出浏览器可以接受的语言种类，如en或en-us，指英语.
+  
+  connection:用来告诉服务器是否可以维持固定的HTTP连接。http是无连接14的，HTTP/1.1使用Keep-Alive为默认值，这样，当浏览器需要多个文件时(比个HTML文件和相关的图形文件)，不需要每次都建立连接
+  
+  Cookie: 浏览器用这个属性向服务器发送Cookie。Cookie是在浏览器中寄存的小型数据体，它可以记载和服务器相关的用户信息，也可以用来实现会话功能。
+  
+  Referer:表明产生请求的网页URL。如比从网页/icconcept/index.jsp中点击一个链接到网页/icwork/search，在向服务器发送的GET/icwork/search中的请求中，Referer是http://hostname:8080/icconcept/index.jsp。这个属性可以用来跟踪web请求是从什么网站来的。
+  
+  Content-Type:用来表名request的内容类型。可以用HttpServletReques的getContentType() 方法取得。
+  
+  Accept-charset: 指出浏览器可以接受的字符编码。英文浏览器的默认值是IOS-8859-1。
+  
+  Accept-Encoding:指出浏览器可以接受的编码方式。编码方式不同于文件格式，它是为了压缩文件并加速文件传递速度。浏览器在接收到web响应之后先解码，然后再检查文件格式。
+</code></pre>
+<pre><code>#空行
+最后一个请求头标之后是空行，发送回车符和退行，通知服务器以下不再有头标。
+</code></pre>
+<pre><code>#请求数据
+使用post传送，最常使用的是Content-Type和Content-Length 头标。
+</code></pre>
+<h2 id="Response返回数据包数据格式"><a href="#Response返回数据包数据格式" class="headerlink" title="Response返回数据包数据格式"></a>Response返回数据包数据格式</h2><pre><code>#Response返回数据包数据格式
+个响应由四个部分组成;状态行、响应头标、空行、响应数据。
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#空行</span><br><span class="line">最后一个请求头标之后是空行，发送回车符和退行，通知服务器以下不再有头标。</span><br></pre></td></tr></table></figure>
+1.状态行:协议版本、数字形式的状态代码和状态描述，个元素之间以空格分隔
+2.响应头标:包含服务器类型、日期、长度、内容类型等
+3.空行:响应头与响应体之间用空行隔开
+4.响应数据:浏览器会将实体内容中的数据取出来，生成相应的页面
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#请求数据</span><br><span class="line">使用post传送，最常使用的是Content-Type和Content-Length 头标。</span><br></pre></td></tr></table></figure>
+HTTP响应码:
+1xx:信息，请求收到，继续处理10
+2xx:成功，行为被成功地接受、理解和采纳
+3xx:重定向，为了完成请求，必须进一步执行的动作
+4xx:客户端错误
+5xx:服务器错误
 
-
-
-<h2 id="Response返回数据包数据格式"><a href="#Response返回数据包数据格式" class="headerlink" title="Response返回数据包数据格式"></a>Response返回数据包数据格式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#Response返回数据包数据格式</span><br><span class="line">个响应由四个部分组成;状态行、响应头标、空行、响应数据。</span><br><span class="line"></span><br><span class="line">1.状态行:协议版本、数字形式的状态代码和状态描述，个元素之间以空格分隔</span><br><span class="line">2.响应头标:包含服务器类型、日期、长度、内容类型等</span><br><span class="line">3.空行:响应头与响应体之间用空行隔开</span><br><span class="line">4.响应数据:浏览器会将实体内容中的数据取出来，生成相应的页面</span><br><span class="line"></span><br><span class="line">HTTP响应码:</span><br><span class="line">1xx:信息，请求收到，继续处理10</span><br><span class="line">2xx:成功，行为被成功地接受、理解和采纳</span><br><span class="line">3xx:重定向，为了完成请求，必须进一步执行的动作</span><br><span class="line">4xx:客户端错误</span><br><span class="line">5xx:服务器错误</span><br><span class="line"></span><br><span class="line">常见的 HTTP 状态码：</span><br><span class="line">200 - 请求成功</span><br><span class="line">301 - 资源（网页等）被永久转移到其它URL</span><br><span class="line">404 - 请求的资源（网页等）不存在</span><br><span class="line">500 - 内部服务器错误</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
+常见的 HTTP 状态码：
+200 - 请求成功
+301 - 资源（网页等）被永久转移到其它URL
+404 - 请求的资源（网页等）不存在
+500 - 内部服务器错误
+</code></pre>
 <p>具体的可以查看：</p>
 <p>[HTTP响应码](<a target="_blank" rel="noopener" href="https://www.runoob.com/http/http-status-codes.html">HTTP 状态码 | 菜鸟教程 (runoob.com)</a>)</p>
 <p>很多工具的原理采用的都是探测HTTP的状态码。</p>
@@ -243,28 +296,60 @@
 <p>在这个上面貌似方便一点。</p>
 <h2 id="1-浏览器信息伪造"><a href="#1-浏览器信息伪造" class="headerlink" title="1.浏览器信息伪造"></a>1.浏览器信息伪造</h2><p><img src="/2023/09/16/Day2/1.1.png"></p>
 <p>根据他的要求直接修改这（ User-Agent:客户浏览器名称）就行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 MicroMessenger/6.6.1 NetType/2G </span><br></pre></td></tr></table></figure>
-
+<pre><code>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 MicroMessenger/6.6.1 NetType/2G 
+</code></pre>
 <p><img src="/2023/09/16/Day2/1.2.png" alt="1.2">好嘟，成功啦！</p>
 <p><img src="/2023/09/16/Day2/1.3.png" alt="1.3"></p>
 <p>这里记一下User-Agent相关的东西:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">浏览器通常使用的格式：</span><br><span class="line">User-Agent: Mozilla/&lt;version&gt; (&lt;system-information&gt;) &lt;platform&gt; (&lt;platform-details&gt;) &lt;extensions&gt;</span><br><span class="line"></span><br><span class="line">其中：</span><br><span class="line">&lt;product&gt;</span><br><span class="line">产品识别码。</span><br><span class="line"></span><br><span class="line">&lt;product-version&gt;</span><br><span class="line">产品版本号。</span><br><span class="line"></span><br><span class="line">&lt;comment&gt;</span><br><span class="line">零个或多个关于组成产品信息的注释</span><br><span class="line"></span><br><span class="line">eg：</span><br><span class="line">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36</span><br><span class="line"></span><br><span class="line">解析一下：</span><br><span class="line">第一部分：Mozilla/5.0</span><br><span class="line">  默认都带上这个值</span><br><span class="line"></span><br><span class="line">第二部分：(Windows NT 10.0; Win64; x64)</span><br><span class="line">  表示操作系统版本，Windows NT 10.0就是win10系统，Win64; x64表示的是64位系统</span><br><span class="line"></span><br><span class="line">第三部分：AppleWebKit/537.36 (KHTML, like Gecko)</span><br><span class="line">  表示搜索引擎，也就是浏览器内核</span><br><span class="line"></span><br><span class="line">第四部分：Chrome/79.0.3945.117 Safari/537.36</span><br><span class="line">  表示浏览器的版本</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">关于操作系统版本可以看这个：https://zhuanlan.zhihu.com/p/146290394</span><br></pre></td></tr></table></figure>
+<pre><code>浏览器通常使用的格式：
+User-Agent: Mozilla/&lt;version&gt; (&lt;system-information&gt;) &lt;platform&gt; (&lt;platform-details&gt;) &lt;extensions&gt;
+
+其中：
+&lt;product&gt;
+产品识别码。
+
+&lt;product-version&gt;
+产品版本号。
+
+&lt;comment&gt;
+零个或多个关于组成产品信息的注释
+
+eg：
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36
+
+解析一下：
+第一部分：Mozilla/5.0
+  默认都带上这个值
+
+第二部分：(Windows NT 10.0; Win64; x64)
+  表示操作系统版本，Windows NT 10.0就是win10系统，Win64; x64表示的是64位系统
+
+第三部分：AppleWebKit/537.36 (KHTML, like Gecko)
+  表示搜索引擎，也就是浏览器内核
+
+第四部分：Chrome/79.0.3945.117 Safari/537.36
+  表示浏览器的版本
 
 
-
+关于操作系统版本可以看这个：https://zhuanlan.zhihu.com/p/146290394
+</code></pre>
 <p>还有他其中提到的微信NetType：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">从微信6.0开始，其内嵌的浏览器在User Agent字符串中增加了NetType字段用于标识客户端（手机）当前的网络环境，经测试，该字段至少有以下3个取值：</span><br><span class="line">NetType/WIFI</span><br><span class="line">NetType/2G</span><br><span class="line">NetType/3G+</span><br><span class="line">分别对应于Wifi、2G、3G以上网络环境。</span><br><span class="line"></span><br><span class="line">因此，Web服务器可以据此识别客户端网络环境并提供有针对性的内容。</span><br></pre></td></tr></table></figure>
+<pre><code>从微信6.0开始，其内嵌的浏览器在User Agent字符串中增加了NetType字段用于标识客户端（手机）当前的网络环境，经测试，该字段至少有以下3个取值：
+NetType/WIFI
+NetType/2G
+NetType/3G+
+分别对应于Wifi、2G、3G以上网络环境。
 
-
-
+因此，Web服务器可以据此识别客户端网络环境并提供有针对性的内容。
+</code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lilin_emcc/article/details/40145113">微信6.0内嵌浏览器User-Agent字符串增加了NetType字段_微信nettype_quark~的博客-CSDN博客</a></p>
 <h2 id="2-来源页伪造"><a href="#2-来源页伪造" class="headerlink" title="2.来源页伪造"></a>2.来源页伪造</h2><p><img src="/2023/09/16/Day2/2.1.png" alt="2.1"></p>
 <p>又又付费之后……</p>
 <p><img src="/2023/09/16/Day2/2.2.png" alt="2.2"></p>
 <p>他说只能从 google.com 来访问，要求还怪多的嘞，老样子。</p>
 <p>这次需要修改的是</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Referer:表明产生请求的网页URL。这个属性可以用来跟踪web请求是从什么网站来的。</span><br></pre></td></tr></table></figure>
-
+<pre><code> Referer:表明产生请求的网页URL。这个属性可以用来跟踪web请求是从什么网站来的。
+</code></pre>
 <p><img src="/2023/09/16/Day2/2.3.png" alt="2.3"></p>
 <p>直接把后面的 index.html 修改成 google.com</p>
 <p>发送，得到key。</p>
@@ -275,8 +360,8 @@
 <p><img src="/2023/09/16/Day2/3.1.png" alt="3.1"></p>
 <p>发现登录之后给了这么一段话：<img src="/2023/09/16/Day2/3.2.png" alt="3.2"></p>
 <p>同样的操作，我们只需要加一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For：127.0.0.1</span><br></pre></td></tr></table></figure>
-
+<pre><code>X-Forwarded-For：127.0.0.1
+</code></pre>
 <p>重新发包，之后就得到key。</p>
 <p><img src="/2023/09/16/Day2/3.3.png" alt="3.3"></p>
 <p>php中获取ip地址：</p>

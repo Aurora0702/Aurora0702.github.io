@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Mysql/" style="color: #00a596">Mysql</a>
+                <a href="/tags/Mysql/" style="color: #ffa2c4">Mysql</a>
             </span>
             
         </span>
@@ -216,87 +216,135 @@
 <p>小tips：</p>
 <p>  使用过程中关键词要大写，比如USE，SELECT……（其实不区分，只是看起来显眼）</p>
 <h2 id="关于库（databases）"><a href="#关于库（databases）" class="headerlink" title="关于库（databases）"></a>关于库（databases）</h2><p><img src="/2023/09/16/Mysql/1.1.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1.查看当前所有的库：</span><br><span class="line">  show databases；</span><br><span class="line"></span><br><span class="line">2.创建库：</span><br><span class="line">  create database database_name;</span><br><span class="line"></span><br><span class="line">3.删除库：</span><br><span class="line">  drop database database_name;</span><br><span class="line"></span><br><span class="line">4.使用某一个指定库：</span><br><span class="line">  use database database_name;</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">  use  数据库名 —打开指定数据库（如果表名或者字段名是特殊字符，则需要带``）</span><br><span class="line">  </span><br><span class="line">  eg：数据库名字为中文</span><br><span class="line">       use &#x27;数据库&#x27;</span><br><span class="line">       </span><br><span class="line">5.删除指定的数据库：</span><br><span class="line">  drop database database_name;</span><br><span class="line">  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="mysql">1.查看当前所有的库：
+  show databases；
 
+2.创建库：
+  create database database_name;
 
+3.删除库：
+  drop database database_name;
 
+4.使用某一个指定库：
+  use database database_name;
+
+注：
+  use  数据库名 —打开指定数据库（如果表名或者字段名是特殊字符，则需要带``）
+  
+  eg：数据库名字为中文
+       use &#39;数据库&#39;
+       
+5.删除指定的数据库：
+  drop database database_name;
+  
+</code></pre>
 <h2 id="关于表（table）"><a href="#关于表（table）" class="headerlink" title="关于表（table）"></a>关于表（table）</h2><p>使用table之前得先进入库中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE database database_name;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Mysql">USE database database_name;
+</code></pre>
 <p>好嘟，现在可以对表进行操作：</p>
 <p>1.查看库中所有的表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> show tables；
+</code></pre>
 <p>2.查看表的结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc table_name;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">desc table_name;
+</code></pre>
 <p>3.创建一个新表：</p>
 <ul>
 <li>表名</li>
 <li>表字段名</li>
 <li>定义每个表字段</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name (column_name column_type);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">  CREATE TABLE table_name (column_name column_type);
+</code></pre>
 <p> eg:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table user(</span><br><span class="line">     use_name  VARCHAR(25),</span><br><span class="line">     user_birthday DATETIME</span><br><span class="line">     );</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">create table user(
+     use_name  VARCHAR(25),
+     user_birthday DATETIME
+     );
+</code></pre>
 <p>   换成中文：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">建立一个新表，表中数据有字段类型为VARCHAR(25)的 user_name 和 DATETIME型的 user_birthday。</span><br></pre></td></tr></table></figure>
-
+<pre><code> 建立一个新表，表中数据有字段类型为VARCHAR(25)的 user_name 和 DATETIME型的 user_birthday。
+</code></pre>
 <p><img src="/2023/09/16/Mysql/1.4.png" alt="1.4"></p>
 <p>eg：</p>
 <p>建立一个“学生”表Student，它由学号Sno、姓名Sname、性别Ssex、年龄Sage、所在系Sdept五个属性组成。其中学号不能为空，值是唯一的，并且姓名取值也唯一。 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Student </span><br><span class="line">(     Sno       CHAR(5) PRIMARY KEY,     </span><br><span class="line">                    /* 列级完整性约束，Sno取值唯一*/</span><br><span class="line">       Sname CHAR(18) UNIQUE,</span><br><span class="line">       Ssex    CHAR(2), </span><br><span class="line">       Sage    INT, </span><br><span class="line">       Sdept  CHAR(15)</span><br><span class="line">); </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">CREATE TABLE Student 
+(     Sno       CHAR(5) PRIMARY KEY,     
+                    /* 列级完整性约束，Sno取值唯一*/
+       Sname CHAR(18) UNIQUE,
+       Ssex    CHAR(2), 
+       Sage    INT, 
+       Sdept  CHAR(15)
+); 
+</code></pre>
 <p>常用的完整性约束：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.    实体完整性约束： PRIMARY  KEY</span><br><span class="line"></span><br><span class="line">2.    参照完整性约束:    FOREIGN  KEY </span><br><span class="line"></span><br><span class="line">3.    用户自定义完整性约束 ：</span><br><span class="line"></span><br><span class="line">   ​      非空值约束：not  null </span><br><span class="line"></span><br><span class="line">   ​      唯一性约束：unique </span><br><span class="line"></span><br><span class="line">   ​      check约束</span><br><span class="line"></span><br><span class="line">   ​      default默认约束</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>1.    实体完整性约束： PRIMARY  KEY
 
+2.    参照完整性约束:    FOREIGN  KEY 
 
+3.    用户自定义完整性约束 ：
 
+   ​      非空值约束：not  null 
+
+   ​      唯一性约束：unique 
+
+   ​      check约束
+
+   ​      default默认约束
+
+</code></pre>
 <p>4.修改表名：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table_oldname rename to table_newname；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">alter table table_oldname rename to table_newname；
+</code></pre>
 <p>5.修改基本的表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt;</span><br><span class="line">([ MODIFY COLUMN &lt;列名&gt; &lt;新数据类型&gt; ] //修改列的数据类型，可能会破坏已有的数据</span><br><span class="line"> [ ADD [COLUMN] &lt;列名&gt; &lt;数据类型&gt;]  //增加一个新列，新增列一律为空值</span><br><span class="line"> [DROP COLUMN &lt;列名&gt;]    //删除列   </span><br><span class="line"> [ADD PRIMARY KEY(列名[,.. n ] )] //增加主码</span><br><span class="line"> [ADD FOREIGN KEY(列名)RFERNECES表名(列名)]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> ALTER TABLE &lt;表名&gt;
+ ([ MODIFY COLUMN &lt;列名&gt; &lt;新数据类型&gt; ] //修改列的数据类型，可能会破坏已有的数据
+  [ ADD [COLUMN] &lt;列名&gt; &lt;数据类型&gt;]  //增加一个新列，新增列一律为空值
+  [DROP COLUMN &lt;列名&gt;]    //删除列   
+  [ADD PRIMARY KEY(列名[,.. n ] )] //增加主码
+  [ADD FOREIGN KEY(列名)RFERNECES表名(列名)]);
+</code></pre>
 <p>删除某一列的时候：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name DROP COLUMN field_name;</span><br><span class="line">//大写，否则会出现问题</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">ALTER TABLE table_name DROP COLUMN field_name;
+//大写，否则会出现问题
+</code></pre>
 <p><img src="/2023/09/16/Mysql/1.5.png" alt="1.5"></p>
 <p>6.删除表中的所有数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from table_name;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">delete from table_name;
+</code></pre>
 <p>5.一键删除所有的表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table table_name;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">  drop table table_name;
+</code></pre>
 <p>6.创建临时表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create temporary table table_name ;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">create temporary table table_name ;
+</code></pre>
 <p>创建的过程和创建表的过程一样</p>
 <p>7.查看表的内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show columns form table_naem;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">show columns form table_naem;
+</code></pre>
 <p>3.复制表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table new_name like old_name;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into new_name select * form old_name;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="mysqwl\">create table new_name like old_name;
+</code></pre>
+<pre><code class="mysql">insert into new_name select * form old_name;
+</code></pre>
 <p><img src="/2023/09/16/Mysql/1.2.png"></p>
 <p><img src="/2023/09/16/Mysql/1.3.png" alt="1.3"></p>
 <h2 id="关于索引"><a href="#关于索引" class="headerlink" title="关于索引"></a>关于索引</h2><p>1.建立索引</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE [UNIQUE] [CLUSTER] INDEX &lt;索引名&gt; </span><br><span class="line">   ON &lt;表名&gt;(&lt;列名&gt;[&lt;次序&gt;][,&lt;列名&gt;[&lt;次序&gt;] ]…)；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> CREATE [UNIQUE] [CLUSTER] INDEX &lt;索引名&gt; 
+    ON &lt;表名&gt;(&lt;列名&gt;[&lt;次序&gt;][,&lt;列名&gt;[&lt;次序&gt;] ]…)；
+</code></pre>
 <p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为学生-课程数据库中的Student，Couse，SC三个表建立索引。其中Student表按学号升序建唯一索引，Couse表按课程号升序建唯一索引，SC 表按学号降序和课程号升序建唯一索引。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX Stsno ON Student(Sno ASC);</span><br><span class="line">CREATE UNIQUE INDEX Cocno ON Couse(Cno); </span><br><span class="line">CREATE UNIQUE INDEX SCno ON SC(Sno DESC,Cno);</span><br></pre></td></tr></table></figure>
-
+<pre><code>为学生-课程数据库中的Student，Couse，SC三个表建立索引。其中Student表按学号升序建唯一索引，Couse表按课程号升序建唯一索引，SC 表按学号降序和课程号升序建唯一索引。
+</code></pre>
+<pre><code class="mysql">CREATE UNIQUE INDEX Stsno ON Student(Sno ASC);
+CREATE UNIQUE INDEX Cocno ON Couse(Cno); 
+CREATE UNIQUE INDEX SCno ON SC(Sno DESC,Cno);
+</code></pre>
 <p>2.删除索引</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> DROP INDEX &lt;索引名&gt;   ON 表名；</span><br><span class="line">或者</span><br><span class="line">         ALTER TABLE  表名  DROP INDEX &lt;索引名&gt; ;       </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> DROP INDEX &lt;索引名&gt;   ON 表名；
+或者
+         ALTER TABLE  表名  DROP INDEX &lt;索引名&gt; ;       
+</code></pre>
 
     </div>
     

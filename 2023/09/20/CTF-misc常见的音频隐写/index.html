@@ -222,15 +222,11 @@
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>看到题目，第一步是先听一下音频中有没有什么关键的信息，比如摩斯电码（有间隔的长短电波），SSTV（连续刺耳的电波），拨号隐写之类的。如果不知道是什么声音先自行百度，听过就不会忘。然后打开以上工具看一看是否存在什么隐写，如果都没有办法的话可以欣赏一下音乐就下号了。</p>
 <p>解题过程中可能会遇到文件头被损毁的情况，查看这个文件的16进制，修复头或者查看隐藏信息</p>
 <p>wav文件头：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">52494646E6AD250357415645666D7420</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code>52494646E6AD250357415645666D7420
+</code></pre>
 <h2 id="Audacity"><a href="#Audacity" class="headerlink" title="Audacity"></a>Audacity</h2><p>这个工具大多用来查看wav文件，查看波形图，有的题目他可能会把flag写到音频中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">很常见的就是藏在多视图，波形图，频谱图中。</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code>很常见的就是藏在多视图，波形图，频谱图中。
+</code></pre>
 <h2 id="题目中有key的"><a href="#题目中有key的" class="headerlink" title="题目中有key的"></a>题目中有key的</h2><p><strong>这类题目大多使用：<em>silenteye、deepsound</em></strong></p>
 <p>偏向傻瓜式的操作了</p>
 <h2 id="拨号隐写"><a href="#拨号隐写" class="headerlink" title="拨号隐写"></a>拨号隐写</h2><p>经常打10086的时候对方可能说需要XX服务请按1，需要XX服务请按2，对于不同的数字有不同的声音，就可以隐写一些数据。可以通过DTMF提取出来。<br>DTMF脚本地址：<a target="_blank" rel="noopener" href="https://github.com/ribt/dtmf-decoder">https://github.com/ribt/dtmf-decoder</a></p>
@@ -238,10 +234,12 @@
 <p>这里强推虚拟声卡e2eSoft这个工具。SSTV正常解法需要一台设备播放一台设备收音，还容易收到杂音的干扰，虚拟声卡就可以很好的避免这个问题。而且，播放SSTV给人一种美国间谍在秘密通信的感觉。</p>
 <h2 id="MP3隐写"><a href="#MP3隐写" class="headerlink" title="MP3隐写"></a>MP3隐写</h2><p>使用工具</p>
 <p>通过输入指令操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 隐藏信息</span><br><span class="line"># —E 读取隐藏信息文件的内容，-P 设置密码</span><br><span class="line">encode.exe -E hidden_text.txt -P pass svega.wav svega_stego.mp3</span><br><span class="line"># 解密信息</span><br><span class="line">decode.exe -X svega_stego.mp3 -P pass</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code># 隐藏信息
+# —E 读取隐藏信息文件的内容，-P 设置密码
+encode.exe -E hidden_text.txt -P pass svega.wav svega_stego.mp3
+# 解密信息
+decode.exe -X svega_stego.mp3 -P pass
+</code></pre>
 <p>学习链接;</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51652400/article/details/123504708">ctf总结</a></p>
 

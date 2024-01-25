@@ -211,108 +211,134 @@
         <h1 id="Mysql2"><a href="#Mysql2" class="headerlink" title="Mysql2"></a>Mysql2</h1><h1 id="选择语句-SELECT"><a href="#选择语句-SELECT" class="headerlink" title="选择语句  SELECT"></a>选择语句  SELECT</h1><span id="more"></span>
 
 <p>1.获取所有列</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mYSQL">SELECT *
+</code></pre>
 <p>2.使用 <code>SELECT FROM</code>查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * ；</span><br><span class="line">FROM customers;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Mysql">SELECT * ；
+FROM customers;
+</code></pre>
 <p>会返回表的所有字段数据</p>
 <p>3.WHERE语句可以筛选结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * ；</span><br><span class="line">FROM customers;</span><br><span class="line">where customer_id = 1;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">SELECT * ；
+FROM customers;
+where customer_id = 1;
+</code></pre>
 <p>4.ODER BY 语句进行排序</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * ；</span><br><span class="line">FROM customers;</span><br><span class="line">--where customer_id = 1;</span><br><span class="line">ORDER BY first_name;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">SELECT * ；
+FROM customers;
+--where customer_id = 1;
+ORDER BY first_name;
+</code></pre>
 <p>5.查询某一个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 1,2</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">SELECT 1,2
+</code></pre>
 <p>注：语句是有顺序的，按照逻辑书写</p>
 <p>6.查询的数据位于一个区间</p>
 <p>TWEEN ……AND……</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sno,Sname,Sdept,Sage </span><br><span class="line">FROM Student </span><br><span class="line">WHERE Sage BETWEEN 18 AND 20;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> SELECT Sno,Sname,Sdept,Sage 
+ FROM Student 
+ WHERE Sage BETWEEN 18 AND 20;
+</code></pre>
 <p>7.确定集合</p>
 <p>查询’网络工程系’, ‘计算机系’, ‘信息工程系’的学生的姓名和年龄。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sname,Sage FROM Student </span><br><span class="line">  WHERE Sdept IN (&#x27;网络工程系&#x27;, &#x27;计算机系&#x27;, &#x27;信息工程系&#x27;);</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">  SELECT Sname,Sage FROM Student 
+    WHERE Sdept IN (&#39;网络工程系&#39;, &#39;计算机系&#39;, &#39;信息工程系&#39;);
+</code></pre>
 <p>8.字符匹配</p>
 <p>LIKE,NOT LIKE </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where &lt;属性列&gt; [ Not ] LIKE &lt;匹配串&gt; [ escape&lt;换码字符&gt;]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="MYSQL">where &lt;属性列&gt; [ Not ] LIKE &lt;匹配串&gt; [ escape&lt;换码字符&gt;]
+</code></pre>
 <p>查找指定的属性列值与&lt;匹配串&gt;相匹配的元组。匹配串可以是一个完整的字符串，也可以含有通配符 % 和 _ 。</p>
 <p>通配符 % (百分号)代表任意长度（长度可以为0）的字符串。 例：a%b 表示以a开头，以b结尾的任意长度的字符串。    如： acb、ab、absorb等都满足该匹配串。</p>
 <p>通配符 _ (下划线)代表任意单个字符。 例：a_b 表示以a开头，以b结尾的长度为3的任意字符串。    如： acb、adb等都满足该匹配串。</p>
 <p>9.涉及空值的查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sno,Cno FROM SC </span><br><span class="line">          WHERE Grade IS NULL;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT Cno,Sno FROM SC </span><br><span class="line">          WHERE Grade IS NOT NULL;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">SELECT Sno,Cno FROM SC 
+          WHERE Grade IS NULL;
+</code></pre>
+<pre><code class="mysql">SELECT Cno,Sno FROM SC 
+          WHERE Grade IS NOT NULL;
+</code></pre>
 <p>10.多重条件查询</p>
 <p>用 <strong>AND</strong>连接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sno </span><br><span class="line">         FROM Student </span><br><span class="line">         WHERE Sdept=‘网络工程系&#x27; AND Sage&gt;18;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">SELECT Sno 
+         FROM Student 
+         WHERE Sdept=‘网络工程系&#39; AND Sage&gt;18;
+</code></pre>
 <p>11.排序操作</p>
 <p>​    <strong>ORDER BY</strong>子句：对查询结果进行排序</p>
 <p>​          升序：<strong>ASC</strong></p>
 <p>​          降序：<strong>DESC</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sno,Sage FROM Student </span><br><span class="line">        WHERE Sdept=&#x27;软件工程&#x27; </span><br><span class="line">        ORDER BY Sage DESC;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> SELECT Sno,Sage FROM Student 
+         WHERE Sdept=&#39;软件工程&#39; 
+         ORDER BY Sage DESC;
+</code></pre>
 <p>12.聚集函数</p>
 <ul>
 <li><p>​     计数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT（*）COUNT（[DISTINCT|ALL] &lt;列名&gt;）</span><br></pre></td></tr></table></figure>
+<pre><code class="mysql">COUNT（*）COUNT（[DISTINCT|ALL] &lt;列名&gt;）
+</code></pre>
 </li>
 <li><p>​      计算总和</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUM（[DISTINCT|ALL] &lt;列名&gt;）</span><br></pre></td></tr></table></figure>
-
-
+<pre><code class="mysql">   SUM（[DISTINCT|ALL] &lt;列名&gt;）
+</code></pre>
 </li>
 <li><p>计算平均值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AVG（[DISTINCT|ALL] &lt;列名&gt;）</span><br></pre></td></tr></table></figure>
-
-
+<pre><code class="mysql">AVG（[DISTINCT|ALL] &lt;列名&gt;）
+</code></pre>
 </li>
 <li><p>最大最小值</p>
 </li>
 </ul>
 <p> 	</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MAX（[DISTINCT|ALL] &lt;列名&gt;）</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MIN（[DISTINCT|ALL] &lt;列名&gt;）</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">MAX（[DISTINCT|ALL] &lt;列名&gt;）
+</code></pre>
+<pre><code class="mysql"> MIN（[DISTINCT|ALL] &lt;列名&gt;）
+</code></pre>
 <p>13.分组查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sdept,COUNT( * )  学生数 </span><br><span class="line">   FROM Student GROUP BY Sdept;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="MySQL">  SELECT Sdept,COUNT( * )  学生数 
+     FROM Student GROUP BY Sdept;
+</code></pre>
 <p>eg：</p>
 <p>查询平均成绩在80分以上的学生的学号和平均成绩。     </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Sno,AVG(Grade) 平均成绩     </span><br><span class="line">FROM SC GROUP BY Sno      </span><br><span class="line">HAVING AVG(Grade)&gt;=80;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="mysql">  SELECT Sno,AVG(Grade) 平均成绩     
+  FROM SC GROUP BY Sno      
+  HAVING AVG(Grade)&gt;=80;
+</code></pre>
 <p>14.多表查询</p>
 <p>查询每个学生的基本信息及学生选修课的情况。      </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Student.*,SC.*        </span><br><span class="line">FROM Student,SC            </span><br><span class="line">WHERE Student.Sno=SC.Sno ;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> SELECT Student.*,SC.*        
+ FROM Student,SC            
+ WHERE Student.Sno=SC.Sno ;
+</code></pre>
 <p>15.自然连接查询。    </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT Student.*,SC.Cno,SC.Grade</span><br><span class="line">FROM Student,SC</span><br><span class="line">WHERE Student.Sno = SC. Sno;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> SELECT Student.*,SC.Cno,SC.Grade
+ FROM Student,SC
+ WHERE Student.Sno = SC. Sno;
+</code></pre>
 <p>eg:</p>
 <p>查询选修了‘001’课程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select Sname,Grade</span><br><span class="line">from Student,SC</span><br><span class="line">where Student.Sno=SC.Sno</span><br><span class="line">and Cno=&#x27;001&#x27;and Grade&gt;75;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">select Sname,Grade
+from Student,SC
+where Student.Sno=SC.Sno
+and Cno=&#39;001&#39;and Grade&gt;75;
+</code></pre>
 <p>查询不同课程成绩相同的学生的学号、课程号和成绩。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.Sno,a.Cno,b.Cno,a.Grade </span><br><span class="line">       FROM SC a , SC b </span><br><span class="line">       WHERE a.Grade=b.Grade AND a.Sno=b.Sno AND a.Cno!=b.Cno</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">SELECT a.Sno,a.Cno,b.Cno,a.Grade 
+       FROM SC a , SC b 
+       WHERE a.Grade=b.Grade AND a.Sno=b.Sno AND a.Cno!=b.Cno
+</code></pre>
 <p>16.外连接</p>
 <p>外连接的语法格式为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;表名&gt; LEFT | RIGHT [OUTER] JOIN &lt;表名&gt;ON&lt;连接条件&gt;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">&lt;表名&gt; LEFT | RIGHT [OUTER] JOIN &lt;表名&gt;ON&lt;连接条件&gt;
+</code></pre>
 <p>其中：表名为需连接的表， </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LEFT [OUTER] JOIN 称为左外连接，RIGHT [OUTER] JOIN称为右外连接。</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> LEFT [OUTER] JOIN 称为左外连接，RIGHT [OUTER] JOIN称为右外连接。
+</code></pre>
 <p>查询选修了的课程情况及已开设的所有选修课的课程名。   </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT SC.*,Cname</span><br><span class="line">FROM SC RIGHT JOIN  Course ON      </span><br><span class="line">SC.Cno=Course.Cno;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> SELECT SC.*,Cname
+ FROM SC RIGHT JOIN  Course ON      
+ SC.Cno=Course.Cno;
+</code></pre>
 <p>17.集合查询</p>
 <p>集合操作的种类 </p>
 <ul>
@@ -320,16 +346,22 @@
 <li>交操作INTERSECT</li>
 </ul>
 <p>   差操作EXCEPT其语法格式为：   </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;SELECT语句&gt;     UNION[ALL]|INTERSECT|EXCEPT&lt; SELECT语句&gt;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql"> &lt;SELECT语句&gt;     UNION[ALL]|INTERSECT|EXCEPT&lt; SELECT语句&gt;
+</code></pre>
 <p>18.嵌套查询</p>
 <p>  子查询时不能使用 <strong>ODRDER BY</strong>子句</p>
 <p>  eg：查询比所有“计算机”系的学生年龄都大的学生信息。     </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Student        </span><br><span class="line">WHERE Sage &gt; ALL             </span><br><span class="line">（SELECT Sage  </span><br><span class="line">      FROM Student </span><br><span class="line">      WHERE Sdept= &#x27;计算机&#x27;）;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">  SELECT * FROM Student        
+  WHERE Sage &gt; ALL             
+  （SELECT Sage  
+        FROM Student 
+        WHERE Sdept= &#39;计算机&#39;）;
+</code></pre>
 <h1 id="数据的修改"><a href="#数据的修改" class="headerlink" title="数据的修改"></a>数据的修改</h1><p> 语句的格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE  &lt;表名&gt;    </span><br><span class="line">SET  &lt;列名&gt;=&lt;表达式&gt;[，&lt;列名&gt;=&lt;表达式&gt;]…  </span><br><span class="line">    [WHERE &lt;条件&gt;]；</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">UPDATE  &lt;表名&gt;    
+SET  &lt;列名&gt;=&lt;表达式&gt;[，&lt;列名&gt;=&lt;表达式&gt;]…  
+    [WHERE &lt;条件&gt;]；
+</code></pre>
 <p>SET子句</p>
 <ul>
 <li>指定修改方式</li>
@@ -344,21 +376,31 @@
 <p>eg：</p>
 <ol>
 <li><p>将选修“离散数学”的学生成绩提高5%。  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UPDATE SC   </span><br><span class="line">SET Grade=Grade*1.05 </span><br><span class="line">WHERE Cno IN    </span><br><span class="line">    (SELECT Cno     </span><br><span class="line">       FROM Course    </span><br><span class="line">       WHERE Cname= &#x27;离散数学&#x27;);</span><br></pre></td></tr></table></figure>
-
-
+<pre><code>   UPDATE SC   
+   SET Grade=Grade*1.05 
+   WHERE Cno IN    
+       (SELECT Cno     
+          FROM Course    
+          WHERE Cname= &#39;离散数学&#39;);
+</code></pre>
 </li>
 <li><p>将姓名是“李华”的同学的年龄改为20，所在系改为“计算机”。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE Student      </span><br><span class="line">SET Sage= 20,Sdept= &#x27;计算机&#x27;    </span><br><span class="line">WHERE Sname= &#x27;李华&#x27;;</span><br></pre></td></tr></table></figure>
-
-
+<pre><code class="mysql"> UPDATE Student      
+ SET Sage= 20,Sdept= &#39;计算机&#39;    
+ WHERE Sname= &#39;李华&#39;;
+</code></pre>
 </li>
 <li><p>将所有学生的成绩增加10分。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATE SC SET Grade=Grade+10;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="mysql"> UPDATE SC SET Grade=Grade+10;
+</code></pre>
+</li>
 </ol>
 <h1 id="决MySQL中中文报错"><a href="#决MySQL中中文报错" class="headerlink" title="决MySQL中中文报错"></a>决MySQL中中文报错</h1><p>在实践MySQL语句中遇到了一个问题：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用char(n)数据类型的时候，中文字符输入乱码，无法显示。</span><br><span class="line">查询解决方案，改变编码格式。</span><br><span class="line">采用命令： </span><br><span class="line">    set name gbk;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">用char(n)数据类型的时候，中文字符输入乱码，无法显示。
+查询解决方案，改变编码格式。
+采用命令： 
+    set name gbk;
+</code></pre>
 <p><img src="/2023/09/30/Mysql2/bug.png" alt="bug"></p>
 <p><img src="/2023/09/30/Mysql2/solve.png" alt="solve"></p>
 

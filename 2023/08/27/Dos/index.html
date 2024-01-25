@@ -191,7 +191,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="color: #00a596">-基础知识</a>
+                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="color: #00bcd4">-基础知识</a>
             </span>
             
         </span>
@@ -202,27 +202,92 @@
         <h1 id="Dos命令"><a href="#Dos命令" class="headerlink" title="Dos命令"></a>Dos命令</h1><span id="more"></span>
 
 <p>  DOS（磁盘操作系统）命令，是DOS操作系统的命令，是一种面向磁盘的操作命令，主要包括目录操作类命令、磁盘操作类命令、文件操作类命令和其它命令。</p>
-<h2 id="1-打开dos操作的方法"><a href="#1-打开dos操作的方法" class="headerlink" title="1.打开dos操作的方法"></a>1.打开dos操作的方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.直接搜索cmd（命令提示符）</span><br><span class="line">2.win+R 输入cmd 打开</span><br></pre></td></tr></table></figure>
+<h2 id="1-打开dos操作的方法"><a href="#1-打开dos操作的方法" class="headerlink" title="1.打开dos操作的方法"></a>1.打开dos操作的方法</h2><pre><code>1.直接搜索cmd（命令提示符）
+2.win+R 输入cmd 打开
+</code></pre>
+<h2 id="2-和目录相关的命令"><a href="#2-和目录相关的命令" class="headerlink" title="2.和目录相关的命令"></a>2.和目录相关的命令</h2><pre><code>1.命令：dir
+  作用：浏览当前文件夹的内容（带&lt;dir&gt;标识的为文件夹，否则为文件）
+  其他用法：
+  dir 指定路径
+  dir d:\
+  dir d:\pic
+  dir /a #浏览所有内容，包括隐藏内容
+2.命令：盘符:
+  作用：切换分区, 如：c: d: e:
+3.命令：cd ..
+  作用：退出一级目录
+4.命令：cd 文件夹名
+ 作用：进入文件夹
+5.Tab键：补全路径功能
+6.命令：cd \
+  作用：直接退到根目录
+7.命令：md 文件夹 [文件夹 文件夹 ....]
+8.命令：rd 文件夹 [文件夹 文件夹 ....]
+  作用：删除空文件夹
+9.命令：rd 文件夹 /s/q   
+       （/s是递归删除，/q是无提示删除）
+  作用：无提示递归删除非空文件夹
+10.路径：
+  1).相对路径：相对于当前文件位置的路径，如：  
+    a.引用上级文件： ../cover1.jpg
+    b.引用同级文件： cover1.jpg
+    c.引用下级文件：cover/cover1.jpg
+    d.引用上上级文件： ../../cover1.jpg
+  2).绝对路径：从根开始写路径,如： E:\write\dos命令\c9190c8430454eb3fb7c88a7beb6e7e.png
 
-<h2 id="2-和目录相关的命令"><a href="#2-和目录相关的命令" class="headerlink" title="2.和目录相关的命令"></a>2.和目录相关的命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">1.命令：dir</span><br><span class="line">  作用：浏览当前文件夹的内容（带&lt;dir&gt;标识的为文件夹，否则为文件）</span><br><span class="line">  其他用法：</span><br><span class="line">  dir 指定路径</span><br><span class="line">  dir d:\</span><br><span class="line">  dir d:\pic</span><br><span class="line">  dir /a #浏览所有内容，包括隐藏内容</span><br><span class="line">2.命令：盘符:</span><br><span class="line">  作用：切换分区, 如：c: d: e:</span><br><span class="line">3.命令：cd ..</span><br><span class="line">  作用：退出一级目录</span><br><span class="line">4.命令：cd 文件夹名</span><br><span class="line"> 作用：进入文件夹</span><br><span class="line">5.Tab键：补全路径功能</span><br><span class="line">6.命令：cd \</span><br><span class="line">  作用：直接退到根目录</span><br><span class="line">7.命令：md 文件夹 [文件夹 文件夹 ....]</span><br><span class="line">8.命令：rd 文件夹 [文件夹 文件夹 ....]</span><br><span class="line">  作用：删除空文件夹</span><br><span class="line">9.命令：rd 文件夹 /s/q   </span><br><span class="line">       （/s是递归删除，/q是无提示删除）</span><br><span class="line">  作用：无提示递归删除非空文件夹</span><br><span class="line">10.路径：</span><br><span class="line">  1).相对路径：相对于当前文件位置的路径，如：  </span><br><span class="line">    a.引用上级文件： ../cover1.jpg</span><br><span class="line">    b.引用同级文件： cover1.jpg</span><br><span class="line">    c.引用下级文件：cover/cover1.jpg</span><br><span class="line">    d.引用上上级文件： ../../cover1.jpg</span><br><span class="line">  2).绝对路径：从根开始写路径,如： E:\write\dos命令\c9190c8430454eb3fb7c88a7beb6e7e.png</span><br><span class="line"></span><br><span class="line">*注释*</span><br><span class="line">./ 当前目录</span><br><span class="line">../ 父级目录</span><br><span class="line">/ 根目录</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
+*注释*
+./ 当前目录
+../ 父级目录
+/ 根目录
+ 
+</code></pre>
 <p>举个例子：</p>
 <p><img src="/2023/08/27/Dos/write\dos命令\c9190c8430454eb3fb7c88a7beb6e7e.png" alt="c9190c8430454eb3fb7c88a7beb6e7e"></p>
-<h2 id="3-和文件相关的命令"><a href="#3-和文件相关的命令" class="headerlink" title="3.和文件相关的命令"></a>3.和文件相关的命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1.创建文件方法：</span><br><span class="line">  echo 字符串 &gt;&gt;[路径\]文件名.扩展名</span><br><span class="line">  注释：&gt;&gt;和&gt;都可以将命令的输出内容输入到某文件中，若文件不存在，则同时创建该文件</span><br><span class="line">  ·&gt;&gt;为追加</span><br><span class="line">  ·&gt;为覆盖</span><br><span class="line">  ·&gt;nul为不显示回显</span><br><span class="line">  ·2&gt;为错误信息输出并覆盖</span><br><span class="line">  ·2&gt;&gt;为错误信息输出并追加</span><br><span class="line">  ·2&gt;nul 经典用法：屏幕上不要有任何的报错</span><br><span class="line">  如：rd . /s/q 2&gt;nul</span><br><span class="line">2.显示文件内容命令：</span><br><span class="line">  type 文件名.扩展名</span><br><span class="line">  作用：浏览一个文件的内容</span><br><span class="line">3.命令：del 文件名.扩展名</span><br><span class="line">  作用：删除文件</span><br><span class="line">  ·del *.txt #删除所有txt结尾的文件</span><br><span class="line">  ·del *.* #删除所有文件</span><br><span class="line">  ·del *.* /s /q #无提示删除所有文件</span><br><span class="line">4.修改文件或文件夹隐藏属性</span><br><span class="line">  命令：attrib</span><br><span class="line">  ·attrib +h 文件全名/文件夹名 #隐藏文件或文件夹</span><br><span class="line">  ·attrib +s +h 文件全名/文件夹名 #提升为被系统保护的文件</span><br><span class="line">  注释：+改为-为取消修改文件属性</span><br><span class="line">5.命令：copy [路径\]源文件全名 目标路径[\新文件全名]</span><br><span class="line">  作用：复制文件</span><br><span class="line">6.命令：move [路径\]源文件全名 目标路径[\新文件全名]</span><br><span class="line">  作用：移动文件</span><br></pre></td></tr></table></figure>
-
-
-
+<h2 id="3-和文件相关的命令"><a href="#3-和文件相关的命令" class="headerlink" title="3.和文件相关的命令"></a>3.和文件相关的命令</h2><pre><code>1.创建文件方法：
+  echo 字符串 &gt;&gt;[路径\]文件名.扩展名
+  注释：&gt;&gt;和&gt;都可以将命令的输出内容输入到某文件中，若文件不存在，则同时创建该文件
+  ·&gt;&gt;为追加
+  ·&gt;为覆盖
+  ·&gt;nul为不显示回显
+  ·2&gt;为错误信息输出并覆盖
+  ·2&gt;&gt;为错误信息输出并追加
+  ·2&gt;nul 经典用法：屏幕上不要有任何的报错
+  如：rd . /s/q 2&gt;nul
+2.显示文件内容命令：
+  type 文件名.扩展名
+  作用：浏览一个文件的内容
+3.命令：del 文件名.扩展名
+  作用：删除文件
+  ·del *.txt #删除所有txt结尾的文件
+  ·del *.* #删除所有文件
+  ·del *.* /s /q #无提示删除所有文件
+4.修改文件或文件夹隐藏属性
+  命令：attrib
+  ·attrib +h 文件全名/文件夹名 #隐藏文件或文件夹
+  ·attrib +s +h 文件全名/文件夹名 #提升为被系统保护的文件
+  注释：+改为-为取消修改文件属性
+5.命令：copy [路径\]源文件全名 目标路径[\新文件全名]
+  作用：复制文件
+6.命令：move [路径\]源文件全名 目标路径[\新文件全名]
+  作用：移动文件
+</code></pre>
 <h2 id="4-ping命令"><a href="#4-ping命令" class="headerlink" title="4.ping命令"></a>4.ping命令</h2><p>ping命令是个使用频率极高的网络诊断工具，它是TCP&#x2F;IP协议的一部分，用于确定本地主机是否能与另一台主机交换数据报。根据返回的信息，我们可以推断TCP&#x2F;IP参数设置是否正确以及运行是否正常。需要注意的是，成功与另一台主机进行一次或两次数据报交换并不表示TCP&#x2F;IP配置就是正确的，必须成功执行大量的数据报交换，才能确信TCP&#x2F;IP的正确性。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">·ping -n num IP地址   #发送num个IP包</span><br><span class="line">·ping -t IP地址   #不停发送IP包，Ctrl+C停止</span><br><span class="line">·ping -l size IP地址   #发送size大小的IP包</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="5-ipconfig"><a href="#5-ipconfig" class="headerlink" title="5.ipconfig"></a>5.ipconfig</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">·ipconfig  #查看IP地址</span><br><span class="line">·ipconfig -all  #查看网卡详细，包括MAC地址</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="6-关机"><a href="#6-关机" class="headerlink" title="6.关机"></a>6.关机</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令：shutdown</span><br><span class="line">作用：定时关机或重启</span><br><span class="line">shutdown -s -t 秒 #定时关机</span><br><span class="line">shutdown -s -f -t 秒 #定时强制关机</span><br><span class="line">shutdown -r -t 秒 #定时重启，同上加-f,为强制重启</span><br><span class="line">shutdown -a #取消定时</span><br><span class="line">shutdown -l #注销，同logoff命令相同</span><br><span class="line">例如：shutdown -s -t -f 0 #立即强制关机</span><br></pre></td></tr></table></figure>
-
+<pre><code class="text">·ping -n num IP地址   #发送num个IP包
+·ping -t IP地址   #不停发送IP包，Ctrl+C停止
+·ping -l size IP地址   #发送size大小的IP包
+</code></pre>
+<h2 id="5-ipconfig"><a href="#5-ipconfig" class="headerlink" title="5.ipconfig"></a>5.ipconfig</h2><pre><code class="text">·ipconfig  #查看IP地址
+·ipconfig -all  #查看网卡详细，包括MAC地址
+</code></pre>
+<h2 id="6-关机"><a href="#6-关机" class="headerlink" title="6.关机"></a>6.关机</h2><pre><code>命令：shutdown
+作用：定时关机或重启
+shutdown -s -t 秒 #定时关机
+shutdown -s -f -t 秒 #定时强制关机
+shutdown -r -t 秒 #定时重启，同上加-f,为强制重启
+shutdown -a #取消定时
+shutdown -l #注销，同logoff命令相同
+例如：shutdown -s -t -f 0 #立即强制关机
+</code></pre>
 <p>其他的还是用的时候直接搜吧……</p>
 
     </div>

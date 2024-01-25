@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/SSL/" style="color: #00bcd4">-SSL</a>
+                <a href="/tags/SSL/" style="color: #ffa2c4">-SSL</a>
             </span>
             
         </span>
@@ -220,24 +220,46 @@
 </li>
 </ol>
 <h2 id="3-SSL的位置"><a href="#3-SSL的位置" class="headerlink" title="3.SSL的位置"></a>3.SSL的位置</h2><p>ssl位于应用层和TCP层之间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">初始：应用层数据直接递给传输层</span><br><span class="line"></span><br><span class="line">ssl加入后：应用层———&gt;ssl层---&gt;对数据加密，增加自己的ssl头</span><br></pre></td></tr></table></figure>
+<pre><code>初始：应用层数据直接递给传输层
 
-
-
+ssl加入后：应用层———&gt;ssl层---&gt;对数据加密，增加自己的ssl头
+</code></pre>
 <h2 id="4-SSL工作原理"><a href="#4-SSL工作原理" class="headerlink" title="4.SSL工作原理"></a>4.SSL工作原理</h2><h3 id="a-握手协议（Handshake-protocol）"><a href="#a-握手协议（Handshake-protocol）" class="headerlink" title="a).握手协议（Handshake protocol）"></a>a).握手协议（Handshake protocol）</h3><p>首先握手协议是在应用程序的数据传输之前使用的</p>
 <p>其次握手协议是客户机和服务器之间用ssl链接的时候使用的子协议。握手协议是ssl中复杂的协议，它包括客户机和服务器之间的一系列消息。它允许服务器和客户机相互验证，协商加密和MAC算法以及保密密钥，用来保护在SSL记录中发送的数据。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">每个握手协议包含以下3个字段</span><br><span class="line"></span><br><span class="line">（1）Type：表示10种消息类型之一</span><br><span class="line"></span><br><span class="line">（2）Length：表示消息长度字节数</span><br><span class="line"></span><br><span class="line">（3）Content：与消息相关的参数</span><br></pre></td></tr></table></figure>
+<pre><code>每个握手协议包含以下3个字段
 
+（1）Type：表示10种消息类型之一
 
+（2）Length：表示消息长度字节数
 
+（3）Content：与消息相关的参数
+</code></pre>
 <p><strong>握手协议的4个阶段：</strong></p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0122/0705/ef68ba41-183b-3972-ae7a-3a3ddf634fb0.png" alt="img"></p>
 <p>（英文的，下面浅说一下）</p>
 <p><strong>阶段一：启动逻辑连接，建立这个连接的安全能力</strong></p>
 <p>  客户机向服务器发出client hello消息并等待服务器响应</p>
 <p>  服务器向客户机返回server hello消息，对client hello消息中的信息进行确认。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Client hello消息包括Version，Random，Session id，Cipher suite，Compression method等信息。</span><br><span class="line"></span><br><span class="line">ClientHello：客户发送CilentHello信息，包含如下内容：</span><br><span class="line">   1.客户端可以支持的SSL最高版本号</span><br><span class="line">   2. 一个用于生成主秘密的32字节的随机数。</span><br><span class="line">   3.一个确定会话的会话ID。</span><br><span class="line">   4.一个客户端可以支持的密码套件列表。（密码套件格式：每个套件都以“SSL”开头，紧跟着的是密钥交换算法。用“With”这个词把密钥交换算法、加密算法、散列算法分开，例如：SSL_DHE_RSA_WITH_DES_CBC_SHA,表示把DHE_RSA(带有RSA数字签名的暂时Diffie-HellMan)定义为密钥交换算法；把DES_CBC定义为加密算法；把SHA定义为散列算法）</span><br><span class="line">   5.一个客户端可以支持的压缩算法列表。</span><br><span class="line"> </span><br><span class="line">ServerHello：服务器用ServerHello信息应答客户，包括下列内容：</span><br><span class="line">  1.一个SSL版本号：取客户端支持的最高版本号和服务端支持的最高版本号中的较低者。</span><br><span class="line">  2.一个用于生成主秘密的32字节的随机数。（客户端一个、服务端一个）</span><br><span class="line">  3.会话ID</span><br><span class="line">  4.从客户端的密码套件列表中选择的一个密码套件</span><br><span class="line">  5.从客户端的压缩方法的列表中选择的压缩方法</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">————————————————</span><br><span class="line">原文链接：https://blog.csdn.net/chengqiuming/article/details/70139813</span><br></pre></td></tr></table></figure>
+<pre><code>Client hello消息包括Version，Random，Session id，Cipher suite，Compression method等信息。
 
+ClientHello：客户发送CilentHello信息，包含如下内容：
+   1.客户端可以支持的SSL最高版本号
+   2. 一个用于生成主秘密的32字节的随机数。
+   3.一个确定会话的会话ID。
+   4.一个客户端可以支持的密码套件列表。（密码套件格式：每个套件都以“SSL”开头，紧跟着的是密钥交换算法。用“With”这个词把密钥交换算法、加密算法、散列算法分开，例如：SSL_DHE_RSA_WITH_DES_CBC_SHA,表示把DHE_RSA(带有RSA数字签名的暂时Diffie-HellMan)定义为密钥交换算法；把DES_CBC定义为加密算法；把SHA定义为散列算法）
+   5.一个客户端可以支持的压缩算法列表。
+ 
+ServerHello：服务器用ServerHello信息应答客户，包括下列内容：
+  1.一个SSL版本号：取客户端支持的最高版本号和服务端支持的最高版本号中的较低者。
+  2.一个用于生成主秘密的32字节的随机数。（客户端一个、服务端一个）
+  3.会话ID
+  4.从客户端的密码套件列表中选择的一个密码套件
+  5.从客户端的压缩方法的列表中选择的压缩方法
+ 
+
+————————————————
+原文链接：https://blog.csdn.net/chengqiuming/article/details/70139813
+</code></pre>
 <p>这个阶段之后，客户端服务端知道了下列内容：<br>1.SSL版本<br>2.密钥交换算法、散列算法和加密算法<br>3.压缩方法<br>4.有关密钥生成的两个随机数</p>
 <p><strong>阶段二：服务器鉴别与密钥交换</strong></p>
 <p>在这个阶段，服务器启动SSL，是本阶段消息的唯一发送方，客户机是唯一的接收方.</p>
@@ -267,8 +289,9 @@
 <p><img src="https://pic3.zhimg.com/80/v2-5b9e83fec099fba99d7f83bccca35e0a_1440w.webp" alt="img"></p>
 <h3 id="c-警报协议（Alert-protocol）"><a href="#c-警报协议（Alert-protocol）" class="headerlink" title="c).警报协议（Alert protocol）"></a>c).警报协议（Alert protocol）</h3><p>客户机和服务器发现错误时，向对方发送一个警报消息。如果是致命错误，则算法立即关闭SSL连接，双方还会先删除相关的会话号，秘密和密钥。每个警报消息共2个字节，第1个字节表示错误类型，如果是警报，则值为1，如果是致命错误，则值为2；第2个字节制定实际错误类型。</p>
 <p>文章参考如下，讲解很详细都配图了，比较好懂：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.https://blog.csdn.net/chengqiuming/article/details/70139813</span><br><span class="line">2.https://zhuanlan.zhihu.com/p/114612812</span><br></pre></td></tr></table></figure>
-
+<pre><code>1.https://blog.csdn.net/chengqiuming/article/details/70139813
+2.https://zhuanlan.zhihu.com/p/114612812
+</code></pre>
 
     </div>
     

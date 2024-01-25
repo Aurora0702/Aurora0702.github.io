@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/CALSS4/" style="color: #ffa2c4">CALSS4</a>
+                <a href="/tags/CALSS4/" style="color: #00a596">CALSS4</a>
             </span>
             
         </span>
@@ -221,30 +221,41 @@
 <h1 id="Nginx目录重定向"><a href="#Nginx目录重定向" class="headerlink" title="Nginx目录重定向"></a>Nginx目录重定向</h1><h2 id="nginx配置文件中的-alias-和-root"><a href="#nginx配置文件中的-alias-和-root" class="headerlink" title="nginx配置文件中的 alias 和 root"></a>nginx配置文件中的 alias 和 root</h2><p> 在Nginx中可以使用 <strong>alias</strong> 指令来创建别名，将请求映射到指定的目录。</p>
 <ol>
 <li><p>alias后面跟着的指定目录是准确的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /c/ &#123;</span><br><span class="line">    alias /a/ </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>location /c/ &#123;
+    alias /a/ 
+    &#125;
+</code></pre>
 <p>如果访问站点<a target="_blank" rel="noopener" href="http://location/c%E8%AE%BF%E9%97%AE%E7%9A%84%E5%B0%B1%E6%98%AF/a/%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF">http://location/c访问的就是/a/目录下的站点信息</a></p>
 <p><strong>使用 alias时：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">会到 alias后定义的目录中寻找资源 =====&gt; alias后面必须要用 &#x27;/&#x27; 结束，否则会找不到文件的</span><br></pre></td></tr></table></figure>
-
+<pre><code>会到 alias后定义的目录中寻找资源 =====&gt; alias后面必须要用 &#39;/&#39; 结束，否则会找不到文件的
+</code></pre>
 <p><strong>注：</strong></p>
 <p>可以在 </p>
 </li>
 <li><p>root后面跟着的指定目录是上级目录，并且要求是：</p>
 <p>该上级目录下要含有和location后面指定名称的同名目录才可以，在末尾加不加 ‘ &#x2F; ‘ 无所谓</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /c/ &#123;</span><br><span class="line">      root /a/</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>location /c/ &#123;
+      root /a/
+      &#125;
+</code></pre>
 <p>如果访问站点<a target="_blank" rel="noopener" href="http://location/c%E8%AE%BF%E9%97%AE%E7%9A%84%E5%B0%B1%E6%98%AF/a/c%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF%E3%80%82">http://location/c访问的就是/a/c目录下的站点信息。</a></p>
 <p><strong>使用 root时：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">会到 root + location寻找资源 =====&gt; &#x27;/&#x27;: root则可有可无</span><br></pre></td></tr></table></figure></li>
+<pre><code>会到 root + location寻找资源 =====&gt; &#39;/&#39;: root则可有可无
+</code></pre>
+</li>
 </ol>
 <p><strong>eg：</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">location /img/ &#123;</span><br><span class="line">    alias /<span class="keyword">var</span>/www/image/;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">location /img/ &#123;</span><br><span class="line">    root /<span class="keyword">var</span>/www/image;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件。</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">location /img/ &#123;
+    alias /var/www/image/;
+&#125;
+#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件
 
 
-
-
-
+location /img/ &#123;
+    root /var/www/image;
+&#125;
+#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件。
+</code></pre>
 <h1 id="Nginx中的反向代理配置"><a href="#Nginx中的反向代理配置" class="headerlink" title="Nginx中的反向代理配置"></a>Nginx中的反向代理配置</h1><p>当访问的时候，打开的是指定的网站。</p>
 <p>没有出现302，无法缓出来js，css。</p>
 <p>访问时候Nginx会请求网站，返回网站内容。 </p>
@@ -253,22 +264,25 @@
 <p><img src="/2023/10/28/0x004/1.6.png" alt="1.6"></p>
 <p><strong>不是跳转，而是Nginx帮助请求，反馈给我们，类似于VPN的工作原理</strong></p>
 <p><img src="/2023/10/28/0x004/1.5.png" alt="1.5"></p>
-<h1 id="监听IP"><a href="#监听IP" class="headerlink" title="监听IP"></a>监听IP</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php-cgi.exe -b 127.0.0.1:9000</span><br></pre></td></tr></table></figure>
-
-
-
+<h1 id="监听IP"><a href="#监听IP" class="headerlink" title="监听IP"></a>监听IP</h1><pre><code>php-cgi.exe -b 127.0.0.1:9000
+</code></pre>
 <ul>
 <li><p>只允许当前计算机访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:9000</span><br></pre></td></tr></table></figure>
+<pre><code>127.0.0.1:9000
+</code></pre>
 </li>
 <li><p>允许所有计算机访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.0.0.0:9000</span><br></pre></td></tr></table></figure>
+<pre><code>0.0.0.0:9000
+</code></pre>
 </li>
 <li><p>只允许局域网IP为192.168.66.0&#x2F;24的计算机访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.66.33:9000</span><br></pre></td></tr></table></figure>
+<pre><code>192.168.66.33:9000
+</code></pre>
 </li>
 <li><p>允许所有能访问该公网的IP的加算计访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公网IP:9000</span><br></pre></td></tr></table></figure></li>
+<pre><code>公网IP:9000
+</code></pre>
+</li>
 </ul>
 <h1 id="一些零碎点"><a href="#一些零碎点" class="headerlink" title="一些零碎点"></a>一些零碎点</h1><ol>
 <li>浏览器中没有设定指定端口时候 http默认访问 80 端口</li>

@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" style="color: #ff7d73">十大常见漏洞</a>
+                <a href="/tags/%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" style="color: #ffa2c4">十大常见漏洞</a>
             </span>
             
         </span>
@@ -253,19 +253,35 @@
 <p>（6）@@version_compile_os 操作系统版本</p>
 <h2 id="注入流程"><a href="#注入流程" class="headerlink" title="注入流程"></a>注入流程</h2><ul>
 <li><p>判断是否存在注入点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、逻辑值</span><br><span class="line">    and 1 = 1		页面正常</span><br><span class="line">    and 1 = 2		页面异常</span><br><span class="line">    则可能存在注入点</span><br><span class="line"></span><br><span class="line">2、order by</span><br><span class="line">		通过order by 判断注入的字段数</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<pre><code class="mysql">1、逻辑值
+    and 1 = 1		页面正常
+    and 1 = 2		页面异常
+    则可能存在注入点
 
-
+2、order by
+        通过order by 判断注入的字段数
+    
+</code></pre>
 </li>
 <li><p>信息收集</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">数据库版本：version()</span><br><span class="line">数据库名字：database()</span><br><span class="line">数据库用户：user()</span><br><span class="line">操作系统：@@version_compile_os</span><br></pre></td></tr></table></figure>
+<pre><code class="MySQL">数据库版本：version()
+数据库名字：database()
+数据库用户：user()
+操作系统：@@version_compile_os
+</code></pre>
 </li>
 <li><p>版本探测的意义</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在mysql5.0以后的版本存在一个information_schema数据库、里面存储记录数据库名、表名、列名的数据库</span><br><span class="line">相当于可以通过information_schema这个数据库获取到数据库下面的表名和列名。</span><br></pre></td></tr></table></figure>
+<pre><code>在mysql5.0以后的版本存在一个information_schema数据库、里面存储记录数据库名、表名、列名的数据库
+相当于可以通过information_schema这个数据库获取到数据库下面的表名和列名。
+</code></pre>
 </li>
 <li><p>获取相关信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">information_schema.tables			#information_schema下面的所有表名</span><br><span class="line">information_schema.columns		#information_schema下面所有的列名</span><br><span class="line">table_name										#表名</span><br><span class="line">column_name										#列名</span><br><span class="line">table_schema									#数据库名</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">information_schema.tables			#information_schema下面的所有表名
+information_schema.columns		#information_schema下面所有的列名
+table_name										#表名
+column_name										#列名
+table_schema									#数据库名
+</code></pre>
 <h2 id="抵御"><a href="#抵御" class="headerlink" title="抵御"></a>抵御</h2><p>使⽤参数化查询数据库服务器不会把参数的内容当作 sql 指令的⼀部分来执⾏，是在数据库完成 sql 指令的编译后才套⽤参数运⾏<br>简单的说: 参数化能防注⼊的原因在于, 语句是语句，参数是参数，参数的值并不是语句的⼀部分，数据库只按语句的语义跑</p>
 </li>
 </ul>

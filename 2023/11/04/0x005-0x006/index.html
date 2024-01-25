@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/CALSS5-class6/" style="color: #ff7d73">CALSS5/class6</a>
+                <a href="/tags/CALSS5-class6/" style="color: #03a9f4">CALSS5/class6</a>
             </span>
             
         </span>
@@ -231,7 +231,9 @@
 <li><p>来宾用户</p>
 </li>
 <li><p>管理员用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UAS管理员</span><br><span class="line">非USA管理员</span><br></pre></td></tr></table></figure>
+<pre><code>UAS管理员
+非USA管理员
+</code></pre>
 </li>
 <li><p>系统用户</p>
 </li>
@@ -264,10 +266,13 @@
 <li><p>localhost只允许本计算机进行连接</p>
 </li>
 <li><p>% 允许所有的计算机进行连接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@%</span><br></pre></td></tr></table></figure>
+<pre><code class="MySQL">root@%
+</code></pre>
 </li>
 <li><p>设定IP的话也会变化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@192.168.66.6</span><br></pre></td></tr></table></figure></li>
+<pre><code>root@192.168.66.6
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
@@ -276,8 +281,8 @@
 <p>简化版的示意图</p>
 <p><strong>看着访问的是网址，实际上本身而言还是建立IP连接（和远程计算机）</strong></p>
 <h2 id="查看😲"><a href="#查看😲" class="headerlink" title="查看😲"></a>查看😲</h2><h3 id="性能监视器"><a href="#性能监视器" class="headerlink" title="性能监视器"></a>性能监视器</h3><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1699496638489.png" alt="1699496638489"></p>
-<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
-
+<h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><pre><code>netstat -ano
+</code></pre>
 <p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1699496824382.png" alt="1699496824382"></p>
 <h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><h3 id="A记录："><a href="#A记录：" class="headerlink" title="A记录："></a><code>A记录</code>：</h3><p>​      将域名指向一个IPv4地址（例如：100.100.100.100），需要增加A记录</p>
 <h3 id="CNAME记录："><a href="#CNAME记录：" class="headerlink" title="CNAME记录："></a><code>CNAME记录</code>：</h3><p>   如果将域名指向一个域名，实现与被指向域名相同的访问效果，需要增加CNAME记录。这个域名一般是主机服务商提供的一个域名</p>
@@ -288,7 +293,8 @@
 <h3 id="SRV记录："><a href="#SRV记录：" class="headerlink" title="SRV记录："></a><code>SRV记录</code>：</h3><p>   添加服务记录服务器服务记录时会添加此项，SRV记录了哪台计算机提供了哪个服务。格式为：服务的名字.协议的类型（例如：_example-server._tcp）。</p>
 <p>参考资料：</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; [DNS解析中的A记录、AAAA记录、CNAME记录、MX记录、NS记录、TXT记录、SRV记录、URL转发等 - petercao - 博客园 (cnblogs.com)](https://www.cnblogs.com/bluestorm/p/10345334.html)</span><br></pre></td></tr></table></figure>
+<pre><code>&gt; [DNS解析中的A记录、AAAA记录、CNAME记录、MX记录、NS记录、TXT记录、SRV记录、URL转发等 - petercao - 博客园 (cnblogs.com)](https://www.cnblogs.com/bluestorm/p/10345334.html)
+</code></pre>
 </blockquote>
 <h1 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h1><h2 id="什么是？"><a href="#什么是？" class="headerlink" title="什么是？"></a>什么是？</h2><p>DNS劫持又叫做域名劫持，指攻击者利用其他攻击手段，篡改了某个域名的解析结果，使得指向该域名的IP变成了另一个IP，导致对相应网址的访问被劫持到另一个不可达的或者假冒的网址，从而实现非法窃取用户信息或者破坏正常网络服务的目的。</p>
 <h2 id="防范"><a href="#防范" class="headerlink" title="防范"></a>防范</h2><p>查看是HTTP还是HTTPS</p>

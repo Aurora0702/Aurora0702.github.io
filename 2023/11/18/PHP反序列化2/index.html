@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="color: #00bcd4">漏洞</a>
+                <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="color: #03a9f4">漏洞</a>
             </span>
             
             <span class="tag">
@@ -220,16 +220,17 @@
 
 <h1 id="其他魔术方法"><a href="#其他魔术方法" class="headerlink" title="其他魔术方法"></a>其他魔术方法</h1><ul>
 <li><p><em><strong>__destruct()</strong></em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.用户主动销毁对象</span><br><span class="line">2.程序结束的时候有引擎自动销毁</span><br></pre></td></tr></table></figure>
-
+<pre><code>1.用户主动销毁对象
+2.程序结束的时候有引擎自动销毁
+</code></pre>
 <p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701083712683.png" alt="1701083712683"></p>
 </li>
 <li><p><em><strong>__toString()</strong></em></p>
 <img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1701084181165.png" alt="1701084181165" style="zoom:150%;">
 
 <p>如果没有</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="php">echo $a;
+</code></pre>
 <p>则不会调用这个方法</p>
 <p>对象被当作字符串一样调用的时候使用这个方法</p>
 </li>
@@ -282,18 +283,14 @@
 <ul>
 <li>当变量被private修饰的时候  **序列化之后的格式为： **</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">00</span>类名%<span class="number">00</span>成员名</span><br></pre></td></tr></table></figure>
-
+<pre><code class="php">     %00类名%00成员名
+</code></pre>
 <p>在这里没有显示**%00** 所以一般对输出的及如果进行编码</p>
 <ul>
 <li>当变量被protected修饰的时候 **序列化之后的格式为： **</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%<span class="number">00</span>*%<span class="number">00</span>成员名</span><br></pre></td></tr></table></figure>
-
-
-
-
-
+<pre><code class="php">     %00*%00成员名
+</code></pre>
 <h1 id="语言特性漏洞"><a href="#语言特性漏洞" class="headerlink" title="语言特性漏洞"></a>语言特性漏洞</h1><p>上一个笔记里的题目中的***__wakeup()*** 方法的绕过</p>
 <h2 id="wakeup-方法绕过"><a href="#wakeup-方法绕过" class="headerlink" title="__wakeup()方法绕过"></a>__wakeup()方法绕过</h2><ul>
 <li><p>漏洞影响的版本</p>

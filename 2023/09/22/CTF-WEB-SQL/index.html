@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/CTF/" style="color: #ff7d73">-CTF</a>
+                <a href="/tags/CTF/" style="color: #00bcd4">-CTF</a>
             </span>
             
         </span>
@@ -214,27 +214,42 @@
 
 
 
-<h1 id="sql注入万能语句"><a href="#sql注入万能语句" class="headerlink" title="sql注入万能语句"></a>sql注入万能语句</h1><h2 id="‘or-1-1"><a href="#‘or-1-1" class="headerlink" title="‘or 1&#x3D;1#"></a><strong>‘or 1&#x3D;1#</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;or 1=1 #</span><br></pre></td></tr></table></figure>
-
+<h1 id="sql注入万能语句"><a href="#sql注入万能语句" class="headerlink" title="sql注入万能语句"></a>sql注入万能语句</h1><h2 id="‘or-1-1"><a href="#‘or-1-1" class="headerlink" title="‘or 1&#x3D;1#"></a><strong>‘or 1&#x3D;1#</strong></h2><pre><code class="mysql">&#39;or 1=1 #
+</code></pre>
 <p>一般在我们登陆的时候都需要输入：username和password</p>
 <p>输入之后程序通过验证机制来判断我们所输入的账户和密码的而正确性，并保护我们的信息</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">       <span class="variable">$conn</span>=@<span class="title function_ invoke__">mysql_connect</span>(<span class="string">&quot;localhost&quot;</span>,<span class="string">&#x27;root&#x27;</span>,<span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;数据库连接失败！&quot;</span>);;</span><br><span class="line">       <span class="title function_ invoke__">mysql_select_db</span>(<span class="string">&quot;injection&quot;</span>,<span class="variable">$conn</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;您要选择的数据库不存在&quot;</span>);</span><br><span class="line">       <span class="variable">$name</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">       <span class="variable">$pwd</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">       <span class="variable">$sql</span>=<span class="string">&quot;select * from users where username=&#x27;<span class="subst">$name</span>&#x27; and password=&#x27;<span class="subst">$pwd</span>&#x27;&quot;</span>;</span><br><span class="line">       <span class="variable">$query</span>=<span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql</span>);</span><br><span class="line">       <span class="variable">$arr</span>=<span class="title function_ invoke__">mysql_fetch_array</span>(<span class="variable">$query</span>);</span><br><span class="line">       <span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$arr</span>))&#123;</span><br><span class="line">              <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location:manager.php&quot;</span>);</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              <span class="keyword">echo</span> <span class="string">&quot;您的用户名或密码输入有误，&lt;a href=\&quot;Login.php\&quot;&gt;请重新登录！&lt;/a&gt;&quot;</span>;</span><br><span class="line">       &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code class="php">&lt;?php
+       $conn=@mysql_connect(&quot;localhost&quot;,&#39;root&#39;,&#39;&#39;) or die(&quot;数据库连接失败！&quot;);;
+       mysql_select_db(&quot;injection&quot;,$conn) or die(&quot;您要选择的数据库不存在&quot;);
+       $name=$_POST[&#39;username&#39;];
+       $pwd=$_POST[&#39;password&#39;];
+       $sql=&quot;select * from users where username=&#39;$name&#39; and password=&#39;$pwd&#39;&quot;;
+       $query=mysql_query($sql);
+       $arr=mysql_fetch_array($query);
+       if(is_array($arr))&#123;
+              header(&quot;Location:manager.php&quot;);
+       &#125;else&#123;
+              echo &quot;您的用户名或密码输入有误，&lt;a href=\&quot;Login.php\&quot;&gt;请重新登录！&lt;/a&gt;&quot;;
+       &#125;
+?&gt;
+</code></pre>
 <p>这个段代码就是验证我们输入的账户和密码是否正确的一个方式。</p>
 <p>拿出一个重要的语句来讲：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span>=<span class="string">&quot;select * from users where username=&#x27;<span class="subst">$name</span>&#x27; and password=&#x27;<span class="subst">$pwd</span>&#x27;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">$sql=&quot;select * from users where username=&#39;$name&#39; and password=&#39;$pwd&#39;&quot;;
 
+1
+</code></pre>
 <p>通过阅读和一点sql语言的基础知识很容易知道上面的代码主要是在进行数据库中的查询，如果正确就登陆进去了，如果不正确当然无法登录。</p>
 <p>如果我们在用户名中输入;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">’or 1=1# </span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">’or 1=1# 
+</code></pre>
 <p>那么我们的代码就变成了这样;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username=&#x27;’or 1=1#  and password=aabcd </span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">select * from users where username=&#39;’or 1=1#  and password=aabcd 
+</code></pre>
 <p>其中 # 在sql是注释的意思。</p>
 <p>而且在sql中where相当于判断句，这句话又是由 or 连接的，所以 username&#x3D;’’   和  1&#x3D;1 中有一个为真就为真，这句话就成立。1&#x3D;1肯定为真，那么这段话就变成了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user </span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">select * from user 
+</code></pre>
 <p>那么它根本就不会在乎你password上输入的是什么东西了，也无法去判断你的username到底在不在表中。</p>
 <p>所以要谨慎使用这样子的判断，会存在很大的漏洞。</p>
 <p>学习链接：</p>

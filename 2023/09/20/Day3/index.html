@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/WEB/" style="color: #00bcd4">WEB</a>
+                <a href="/tags/WEB/" style="color: #ffa2c4">WEB</a>
             </span>
             
         </span>
@@ -240,10 +240,16 @@
 <p>   直接可以搜漏洞。</p>
 <p>  内部的话只能一步一步找。</p>
 <p>4.源码获取</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="#总结"></a>#总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">关注应用分类及脚本类型估摸出可能存在的漏洞（其中框架类除外），在获取源码后可进行本地安全测试或代码审计，也可以分析其目录工作原理（数据库备份，bak文件等等），未获取源码采用各种方法获取。</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bak</span><br><span class="line">备份文件</span><br><span class="line">bak是一个备份文件，为文件格式扩展名。、</span><br><span class="line">  这类文件一般在.bak前面加上应该有原来的扩展名</span><br><span class="line">     比如：</span><br><span class="line">        windows.dll.bak  或是  windows_dll.bak</span><br><span class="line">  有的则是由原文件的后缀名和bak混合而成。</span><br></pre></td></tr></table></figure>
-
+<h2 id="总结"><a href="#总结" class="headerlink" title="#总结"></a>#总结</h2><pre><code>关注应用分类及脚本类型估摸出可能存在的漏洞（其中框架类除外），在获取源码后可进行本地安全测试或代码审计，也可以分析其目录工作原理（数据库备份，bak文件等等），未获取源码采用各种方法获取。
+</code></pre>
+<pre><code>bak
+备份文件
+bak是一个备份文件，为文件格式扩展名。、
+  这类文件一般在.bak前面加上应该有原来的扩展名
+     比如：
+        windows.dll.bak  或是  windows_dll.bak
+  有的则是由原文件的后缀名和bak混合而成。
+</code></pre>
 <p>  可以根据她默认的备份储存位置找到信息。</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>1.在线cms识别平台，不能完全依赖……</p>
 <p>2.查看特殊的文件名和文件地址</p>

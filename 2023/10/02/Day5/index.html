@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/WEB/" style="color: #ff7d73">WEB</a>
+                <a href="/tags/WEB/" style="color: #00a596">WEB</a>
             </span>
             
         </span>
@@ -226,8 +226,8 @@
 <p>2.通过参数的传递，数据语言拼接到原来的语句后，执行恶意的数据操作。实现自定义的数据查询。</p>
 <p>3.可控变量</p>
 <p>通过参数传递可以改变它的值</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span>=<span class="string">&quot;SELECT * FROM users WHERE id=&#x27;<span class="subst">$id</span>&#x27; LIMIT 0,1&quot;</span>;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="php">$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+</code></pre>
 <p>其中id为变量可以修改</p>
 <p><strong>4.sql注入产生的原理</strong></p>
 <ul>
@@ -237,13 +237,11 @@
 </ul>
 <p> 5.get注入和post注入</p>
 <p>​    get注入：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/sqli-labs-master/Less-1/?id=1</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="php">http://127.0.0.1/sqli-labs-master/Less-1/?id=1
+</code></pre>
 <p>特征：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=××</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="php">?id=××
+</code></pre>
 <p>6.注入测试正确</p>
 <p><img src="/2023/10/02/Day5/1.1.png" alt="1.1"></p>
 <p>a.注入给了y没有给x</p>
@@ -270,10 +268,17 @@
 <p>9.MySQL数据库</p>
 <p> 一级一级的获取，无法一次性获取</p>
 <p><strong>10.如何判断注点</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1、逻辑值</span><br><span class="line">    and 1 = 1		页面正常</span><br><span class="line">    and 1 = 2		页面异常</span><br><span class="line">    则可能存在注入点</span><br><span class="line"></span><br><span class="line">正常和之前没有什么区别，不正常指和原来页面有很大的区别</span><br><span class="line"></span><br><span class="line">2、order by</span><br><span class="line">		通过order by 判断注入的字段数</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<pre><code class="mysql">1、逻辑值
+    and 1 = 1		页面正常
+    and 1 = 2		页面异常
+    则可能存在注入点
 
+正常和之前没有什么区别，不正常指和原来页面有很大的区别
 
-
+2、order by
+        通过order by 判断注入的字段数
+    
+</code></pre>
 <p>原理：</p>
 <p><strong>sql语句可以进行拼接，说白了就是看你输入的东西对现在这个页面有没有影响。</strong></p>
 <p>注：出现404或者返回主页面，说明有检测可能没有漏洞</p>
@@ -281,14 +286,21 @@
 <p>猜解列名数量，字段数  **ORDER BY ** 语句</p>
 <p>错误和正确的数量值</p>
 <p>12.信息收集</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">数据库版本：version()</span><br><span class="line">数据库名字：database()</span><br><span class="line">数据库用户：user()  </span><br><span class="line">操作系统：@@version_compile_os</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">数据库版本：version()
+数据库名字：database()
+数据库用户：user()  
+操作系统：@@version_compile_os
+</code></pre>
 <p><strong>爆出什么在什么地方写</strong></p>
 <p>13.必要知识点</p>
 <p>  在mysql5.0以后的版本存在一个<strong>information_schema</strong>数据库、里面存储记录数据库名、表名、列名的数据库。相当于可以通过information_schema这个数据库获取到数据库下面的表名和列名。</p>
 <p>14.获取相关信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">information_schema.tables			#information_schema下面的所有表名</span><br><span class="line">information_schema.columns		#information_schema下面所有的列名</span><br><span class="line">table_name										#表名</span><br><span class="line">column_name										#列名</span><br><span class="line">table_schema									#数据库名</span><br></pre></td></tr></table></figure>
-
+<pre><code class="mysql">information_schema.tables			#information_schema下面的所有表名
+information_schema.columns		#information_schema下面所有的列名
+table_name										#表名
+column_name										#列名
+table_schema									#数据库名
+</code></pre>
 
     </div>
     

@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/CALSS1-3/" style="color: #ff7d73">CALSS1-3</a>
+                <a href="/tags/CALSS1-3/" style="color: #ffa2c4">CALSS1-3</a>
             </span>
             
         </span>
@@ -295,13 +295,17 @@
 <p>在同一个局域网的，当前路径下</p>
 <ol>
 <li><p>A类IP</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.*.*.*</span><br></pre></td></tr></table></figure>
+<pre><code>10.*.*.*
+</code></pre>
 </li>
 <li><p>B类IP</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172.*.*.*</span><br></pre></td></tr></table></figure>
+<pre><code>172.*.*.*
+</code></pre>
 </li>
 <li><p>C类IP</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.*.*.*</span><br></pre></td></tr></table></figure></li>
+<pre><code>192.*.*.*
+</code></pre>
+</li>
 </ol>
 <ul>
 <li><h4 id="广域网IP"><a href="#广域网IP" class="headerlink" title="广域网IP"></a>广域网IP</h4><p>国家级路由器——大型省级路由器——各个路由器——个人（唯一的IP）</p>
@@ -314,21 +318,22 @@
 <li><p>c段</p>
 <p>192.168.66.0&#x2F;24</p>
 <p>是指</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.66.1—192.168.66.255</span><br></pre></td></tr></table></figure>
-
-
+<pre><code>192.168.66.1—192.168.66.255
+</code></pre>
 </li>
 <li><p>b段</p>
 <p>192.168.0.0&#x2F;16</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.0——192.168.1.255</span><br></pre></td></tr></table></figure>
-
+<pre><code>192.168.1.0——192.168.1.255
+</code></pre>
 <p>​    255个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.2.0——192.168.2.255</span><br></pre></td></tr></table></figure>
-
+<pre><code>192.168.2.0——192.168.2.255
+</code></pre>
 <p>​    255个</p>
 </li>
 <li><p>a段</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.0.0.0/8  </span><br></pre></td></tr></table></figure></li>
+<pre><code>192.0.0.0/8  
+</code></pre>
+</li>
 </ul>
 <h2 id="端口与协议"><a href="#端口与协议" class="headerlink" title="端口与协议"></a>端口与协议</h2><h3 id="通信协议分类"><a href="#通信协议分类" class="headerlink" title="通信协议分类"></a>通信协议分类</h3><ul>
 <li>DNS协议</li>
@@ -340,8 +345,8 @@
 </ul>
 <h3 id="端口知识"><a href="#端口知识" class="headerlink" title="端口知识"></a>端口知识</h3><ol>
 <li><p>默认可使用端口1-65535</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">端口号的数量为65535是因为16位二进制可以表示2的16次方个不同的数值，且0被保留为无效端口。底层原理涉及端口号的二进制表示和分类，以及为了减少端口冲突和提供足够的端口号供应用程序选择而做出的设计选择。</span><br></pre></td></tr></table></figure>
-
+<pre><code>端口号的数量为65535是因为16位二进制可以表示2的16次方个不同的数值，且0被保留为无效端口。底层原理涉及端口号的二进制表示和分类，以及为了减少端口冲突和提供足够的端口号供应用程序选择而做出的设计选择。
+</code></pre>
 <p>可以分为三大类：</p>
 <ul>
 <li><p>公认端口（Well Known Ports）：</p>
@@ -357,20 +362,34 @@
 </li>
 </ul>
 <p>常用端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">21：FTP服务所开放的端口，用于上传、下载文件。</span><br><span class="line">22：SSH端口，用于通过命令行模式远程连接Linux服务器或vps。</span><br><span class="line">23：Telnet端口，用于Telnet远程登录服务器。</span><br><span class="line">25：SMTP服务所开放的端口，用于发送邮件。</span><br><span class="line">80：HTTP用于HTTP服务提供访问功能，例如，IIS、Apache、Nginx 等服务。</span><br><span class="line">110：POP3用于POP3 协议，POP3 是电子邮件收发的协议。</span><br><span class="line">143：IMAP用于IMAP（Internet Message Access Protocol）协议，IMAP 是用于电子邮件的接收的协议。</span><br><span class="line">443：HTTPS 用于HTTPS服务提供访问功能。HTTPS 是一种能提供加密和通过安全端口传输的一种协议。</span><br><span class="line">1433：SQL Server SQL Server的TCP 端口，用于供SQL Server对外提供服务。</span><br><span class="line">1434：SQL Server SQL Server的UDP端口，用于返回SQL Server使用了哪个 TCP/IP 端口。</span><br><span class="line">1521：Oracle通信端口，服务器上部署了Oracle SQL需要放行的端口。</span><br><span class="line">3306：MySQL数据库对外提供服务的端口。</span><br><span class="line">3389：远程桌面服务端口，可以通过这个端口远程连接服务器。</span><br><span class="line">8080：代理端口,同80端口一样，8080 端口常用于WWW代理服务，实现网页浏览。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>21：FTP服务所开放的端口，用于上传、下载文件。
+22：SSH端口，用于通过命令行模式远程连接Linux服务器或vps。
+23：Telnet端口，用于Telnet远程登录服务器。
+25：SMTP服务所开放的端口，用于发送邮件。
+80：HTTP用于HTTP服务提供访问功能，例如，IIS、Apache、Nginx 等服务。
+110：POP3用于POP3 协议，POP3 是电子邮件收发的协议。
+143：IMAP用于IMAP（Internet Message Access Protocol）协议，IMAP 是用于电子邮件的接收的协议。
+443：HTTPS 用于HTTPS服务提供访问功能。HTTPS 是一种能提供加密和通过安全端口传输的一种协议。
+1433：SQL Server SQL Server的TCP 端口，用于供SQL Server对外提供服务。
+1434：SQL Server SQL Server的UDP端口，用于返回SQL Server使用了哪个 TCP/IP 端口。
+1521：Oracle通信端口，服务器上部署了Oracle SQL需要放行的端口。
+3306：MySQL数据库对外提供服务的端口。
+3389：远程桌面服务端口，可以通过这个端口远程连接服务器。
+8080：代理端口,同80端口一样，8080 端口常用于WWW代理服务，实现网页浏览。
+</code></pre>
 </li>
 <li><p>访问的时候没有加端口<strong>自动访问80端口</strong></p>
 <p>127.0.0.1</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:80/</span><br></pre></td></tr></table></figure>
-
+<pre><code>http://127.0.0.1:80/
+</code></pre>
 <p>计算机默认的IP地址，就相当于访问当前计算机地址</p>
 <p><strong>3.端口好比是两个盒子，每个上面开洞，两个洞之间连接，网络好比是绳子，但是还要同一语言（协议），IP扮演一个全球唯一的门牌号.</strong></p>
 <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p>不准确说法–在电脑里面找寻找文件。</p>
 <p>静态资源服务，通过本地 文件系统 提供服务；</p>
-<h2 id="工作进程数量"><a href="#工作进程数量" class="headerlink" title="工作进程数量"></a>工作进程数量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker_processes</span><br></pre></td></tr></table></figure>
-
+<h2 id="工作进程数量"><a href="#工作进程数量" class="headerlink" title="工作进程数量"></a>工作进程数量</h2><pre><code>worker_processes
+</code></pre>
 <h2 id="3访问127-0-0-1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？"><a href="#3访问127-0-0-1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？" class="headerlink" title="3访问127.0.0.1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？"></a><strong>3访问127.0.0.1到底访问的是什么？访问的页面到底怎么可以看到那么多东西？</strong></h2><h3 id="关于127-0-0-1的解释"><a href="#关于127-0-0-1的解释" class="headerlink" title="关于127.0.0.1的解释"></a>关于127.0.0.1的解释</h3><ol>
 <li><p><strong>location &#x2F;</strong> 重定向目录</p>
 <p><img src="/2023/10/17/0x000-0x003/1.3.png" alt="1.3"></p>
@@ -378,8 +397,8 @@
 <li><p>实际上访问的是计算机上的一个文件：</p>
 <p><strong>index.html</strong></p>
 <p><img src="/2023/10/17/0x000-0x003/1.2.png" alt="1.2"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1</span><br></pre></td></tr></table></figure>
-
+<pre><code>127.0.0.1
+</code></pre>
 <p>访问的是文件，把index.html读取后返回给了浏览器。</p>
 <p><img src="/2023/10/17/0x000-0x003/1.1.png" alt="1.1"></p>
 <p>浏览器：不仅仅可以访问某个目标，渲染服务端发过来的 <strong>html的内容，以及js、css都会运行</strong>。相当于解析器。</p>
@@ -391,14 +410,16 @@
 </li>
 <li><p><strong>index：</strong></p>
 <p><strong>网站默认首页文件名称</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1</span><br></pre></td></tr></table></figure>
-
+<pre><code>127.0.0.1
+</code></pre>
 <ol>
 <li>没有指定访问文件名称，则默认访问网页首页</li>
 <li>如果指定，则默认访问这个文件</li>
 <li>如果有文件夹，则</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/文件夹名称/文件名</span><br></pre></td></tr></table></figure></li>
+<pre><code>127.0.0.1/文件夹名称/文件名
+</code></pre>
+</li>
 </ul>
 <p>当有人访问这个nginx端口时候默认从那一个目录下面读取 <strong>index.html</strong></p>
 </li>
