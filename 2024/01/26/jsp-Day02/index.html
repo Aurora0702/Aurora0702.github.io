@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Moectf2023复盘2 | Aurora0702</title>
+    <title>jsp-Day02 | Aurora0702</title>
     <meta name="author" content="Qing" />
     <meta name="description" content="May everything you work for have a romantic outcome in the future ．" />
     <meta name="keywords" content="" />
@@ -172,22 +172,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>Moectf2023复盘2</h1>
+        <h1>jsp-Day02</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/1/24
+            2024/1/26
         </span>
         
         <span class="category">
-            <a href="/categories/CTF/">
+            <a href="/categories/jsp/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                CTF
+                jsp
             </a>
         </span>
         
@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Moectf2023/" style="color: #ff7d73">Moectf2023</a>
+                <a href="/tags/jsp/" style="color: #00a596">jsp</a>
             </span>
             
         </span>
@@ -208,29 +208,18 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Moectf2023复盘-WEB2"><a href="#Moectf2023复盘-WEB2" class="headerlink" title="Moectf2023复盘-WEB2"></a>Moectf2023复盘-WEB2</h1><p>1. </p>
-<hr>
+        <h1 id="jsp-Day02"><a href="#jsp-Day02" class="headerlink" title="jsp-Day02"></a>jsp-Day02</h1><hr>
 <span id="more"></span>
 
-<h1 id="gas-gas-gas"><a href="#gas-gas-gas" class="headerlink" title="gas!gas!gas!"></a>gas!gas!gas!</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240124114205226.png" alt="image-20240124114205226"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240124114222743.png" alt="image-20240124114222743"></p>
-<h1 id="大海捞针"><a href="#大海捞针" class="headerlink" title="大海捞针"></a>大海捞针</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240124114803916.png" alt="image-20240124114803916"></p>
-<h1 id="moe图床"><a href="#moe图床" class="headerlink" title="moe图床"></a>moe图床</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129151407422.png" alt="image-20240129151407422"></p>
-<p>打开在线环境发现没有什么提示</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129151810215.png" alt="image-20240129151810215"></p>
-<p>随便上传一个文件试一试，我选择了一个图片触发弹窗</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129151921966.png" alt="image-20240129151921966"></p>
-<p> 准允许上传png格式的文件</p>
-<p>整了一个png格式上传</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129152038905.png"></p>
-<p>发现他还把地址泄露了</p>
-<p>返回上传页码，看一下他的源码</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/1706512942034.png" alt="1706512942034"></p>
-<p>这里有个php文件，尝试访问试一下，说不定可以发现他是如何判断文件上传的</p>
-<p>拿到了源码</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129152402431.png" alt="image-20240129152402431"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129162451593.png" alt="image-20240129162451593"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240129162432523.png" alt="image-20240129162432523"></p>
+<h1 id="jsp的工作原理"><a href="#jsp的工作原理" class="headerlink" title="jsp的工作原理"></a>jsp的工作原理</h1><p>如图所示，把网上找到的过程做成了时间轴：</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/%E8%AE%BF%E9%97%AEjsp%E9%A1%B5%E9%9D%A2.png" alt="访问jsp页面"></p>
+<p>个人理解：</p>
+<pre><code>在访问一个jsp网页的时候主要靠servlrt容器和HTTPServlet来进行一系列处理之后生成HTTP响应，将HTML和CSS以及JavaScript解析出来并且显示
+</code></pre>
+<p>JSP 技术可以让在 HTML 页面中嵌入 Java 代码，从而生成动态的网页内容。而且，由于 JSP 页面最终会被转译成 Servlet，所以可以在 JSP 页面中使用所有 Servlet 的特性</p>
+<p>参考</p>
+<pre><code>https://zhuanlan.zhihu.com/p/642209812
+</code></pre>
 
     </div>
     
