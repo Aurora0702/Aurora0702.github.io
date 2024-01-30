@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/jsp/" style="color: #ff7d73">jsp</a>
+                <a href="/tags/jsp/" style="color: #ffa2c4">jsp</a>
             </span>
             
         </span>
@@ -208,15 +208,57 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="jsp-Day02"><a href="#jsp-Day02" class="headerlink" title="jsp-Day02"></a>jsp-Day02</h1><hr>
+        <h1 id="jsp-Day02"><a href="#jsp-Day02" class="headerlink" title="jsp-Day02"></a>jsp-Day02</h1><ol>
+<li>JSP的工作原理</li>
+<li>JSP生命周期</li>
+<li>JSP编译</li>
+<li>JSP初始化</li>
+<li>JSP执行</li>
+<li>JSP清理</li>
+</ol>
+<hr>
 <span id="more"></span>
 
-<h1 id="jsp的工作原理"><a href="#jsp的工作原理" class="headerlink" title="jsp的工作原理"></a>jsp的工作原理</h1><p>如图所示，把网上找到的过程做成了时间轴：</p>
+<h1 id="JSP的工作原理"><a href="#JSP的工作原理" class="headerlink" title="JSP的工作原理"></a>JSP的工作原理</h1><p>如图所示，把网上找到的过程做成了时间轴：</p>
 <p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/%E8%AE%BF%E9%97%AEjsp%E9%A1%B5%E9%9D%A2.png" alt="访问jsp页面"></p>
 <p>个人理解：</p>
 <pre><code>在访问一个jsp网页的时候主要靠servlrt容器和HTTPServlet来进行一系列处理之后生成HTTP响应，将HTML和CSS以及JavaScript解析出来并且显示
 </code></pre>
 <p>JSP 技术可以让在 HTML 页面中嵌入 Java 代码，从而生成动态的网页内容。而且，由于 JSP 页面最终会被转译成 Servlet，所以可以在 JSP 页面中使用所有 Servlet 的特性</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130100925445.png" alt="image-20240130100925445"></p>
+<h1 id="JSP生命周期"><a href="#JSP生命周期" class="headerlink" title="JSP生命周期"></a>JSP生命周期</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130101047231.png" alt="image-20240130101047231"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130101106748.png" alt="image-20240130101106748"></p>
+<h1 id="JSP编译"><a href="#JSP编译" class="headerlink" title="JSP编译"></a>JSP编译</h1><p>当浏览器请求JSP页面时，JSP引擎会首先去检查是否需要编译这个文件。如果这个文件没有被编译过，或者在上次编译后被更改过，则编译这个JSP文件。</p>
+<p>编译的过程包括三个步骤：</p>
+<ul>
+<li>解析JSP文件。</li>
+<li>将JSP文件转为servlet。</li>
+<li>编译servlet。</li>
+</ul>
+<h1 id="JSP初始化"><a href="#JSP初始化" class="headerlink" title="JSP初始化"></a>JSP初始化</h1><p>容器载入JSP文件后，它会在为请求提供任何服务前调用 <em><strong>jspInit()</strong></em> 方法。如果需要执行自定义的JSP初始化任务，复写jspInit()方法就行了，就像下面这样：</p>
+<pre><code class="jsp">public void jspInit()&#123;
+  // 初始化代码
+&#125;
+</code></pre>
+<p>一般来讲程序只初始化一次，servlet也是如此。通常情况下可以在jspInit()方法中初始化数据库连接、打开文件和创建查询表。</p>
+<h1 id="JSP执行"><a href="#JSP执行" class="headerlink" title="JSP执行"></a>JSP执行</h1><p>这一阶段描述了JSP生命周期中一切与请求相关的交互行为，直到被销毁。</p>
+<p>当JSP网页完成初始化后，JSP引擎将会调用***_jspService()***方法。</p>
+<p><em><strong>_jspService()<em><strong>方法需要一个</strong></em>HttpServletRequest</strong></em>对象和一个<em><strong>HttpServletResponse</strong></em>对象作为它的参数，就像下面这样：</p>
+<pre><code class="jsp">void _jspService(HttpServletRequest request,
+                 HttpServletResponse response)
+&#123;
+   // 服务端处理代码
+&#125;
+</code></pre>
+<p>_jspService()方法在每个<em><strong>request</strong></em>中被调用一次并且负责产生与之相对应的response，并且它还负责产生所有7个HTTP方法的回应，比如GET、POST、DELETE等等。</p>
+<h1 id="JSP清理"><a href="#JSP清理" class="headerlink" title="JSP清理"></a>JSP清理</h1><p>JSP生命周期的销毁阶段描述了当一个JSP网页从容器中被移除时所发生的一切。</p>
+<p>jspDestroy()方法在JSP中等价于servlet中的销毁方法。当您需要执行任何清理工作时复写jspDestroy()方法，比如释放数据库连接或者关闭文件夹等等。</p>
+<p>jspDestroy()方法的格式如下：</p>
+<pre><code class="jsp">public void jspDestroy()
+&#123;
+   // 清理代码
+&#125;
+</code></pre>
 <p>参考</p>
 <pre><code>https://zhuanlan.zhihu.com/p/642209812
 </code></pre>

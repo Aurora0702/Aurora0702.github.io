@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Categories: CTF | Aurora0702</title>
+    <title>jsp-Day03 | Aurora0702</title>
     <meta name="author" content="Qing" />
     <meta name="description" content="May everything you work for have a romantic outcome in the future ．" />
     <meta name="keywords" content="" />
@@ -31,6 +31,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -166,93 +170,20 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        
-        <span>
-            <a href="/categories/WEB2/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                WEB2
-            </a>
+            <div class="article">
+    <div>
+        <h1>jsp-Day03</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/30
         </span>
         
-        
-        
-        <span>
-            <a href="/categories/CTF/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CTF
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/categories/WEB/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                -WEB
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                -基础知识
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/JAVA/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                -JAVA
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/MySQL/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                MySQL
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E6%BC%8F%E6%B4%9E/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                漏洞
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/jsp/" style="background: #00a596">
+        <span class="category">
+            <a href="/categories/jsp/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -261,162 +192,142 @@
         </span>
         
         
-        
-        <span>
-            <a href="/categories/%E7%BD%91%E5%AE%89/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                网安
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/jsp/" style="color: #ffa2c4">jsp</a>
+            </span>
+            
         </span>
         
-        
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/1/24</div>
-            <a href="/2024/01/24/Moectf2023%E5%A4%8D%E7%9B%982/">
-                <h3>Moectf2023复盘2</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/CTF/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        CTF
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/Moectf2023/" style="color: #ffa2c4">Moectf2023</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="jsp-Day03"><a href="#jsp-Day03" class="headerlink" title="jsp-Day03"></a>jsp-Day03</h1><hr>
+<span id="more"></span>
+
+<h1 id="JSP-语法"><a href="#JSP-语法" class="headerlink" title="JSP 语法"></a>JSP 语法</h1><h2 id="脚本程序"><a href="#脚本程序" class="headerlink" title="脚本程序"></a>脚本程序</h2><p>脚本程序可以包含任意量的Java语句、变量、方法或表达式，只要它们在脚本语言中是有效的。</p>
+<h3 id="脚本程序语法格式"><a href="#脚本程序语法格式" class="headerlink" title="脚本程序语法格式"></a>脚本程序语法格式</h3><pre><code class="jsp">&lt;% 代码片段 %&gt;
+</code></pre>
+<p>与其等价的XML语句格式为：</p>
+<pre><code class="jsp">&lt;jsp:scriptlet&gt;
+   代码片段
+&lt;/jsp:scriptlet&gt;
+</code></pre>
+<h2 id="中文编码问题"><a href="#中文编码问题" class="headerlink" title="中文编码问题"></a>中文编码问题</h2><p>想要中文正常显示需要在文件头部添加：</p>
+<pre><code class="jsp">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+</code></pre>
+<h2 id="JSP声明"><a href="#JSP声明" class="headerlink" title="JSP声明"></a>JSP声明</h2><p>一个声明语句可以声明一个或多个变量、方法，供后面的Java代码使用。在JSP文件中，您必须先声明这些变量和方法然后才能使用它们。</p>
+<p>JSP声明的语法格式：</p>
+<pre><code class="jsp">&lt;%! declaration; [ declaration; ]+ ... %&gt;
+</code></pre>
+<p>或者，您也可以编写与其等价的XML语句，就像下面这样：</p>
+<pre><code class="jsp">&lt;jsp:declaration&gt;
+   代码片段
+&lt;/jsp:declaration&gt;
+</code></pre>
+<p>例如：</p>
+<pre><code class="jsp">&lt;%! int i = 0; %&gt; 
+&lt;%! int a, b, c; %&gt; 
+&lt;%! Circle a = new Circle(2.0); %&gt; 
+</code></pre>
+<h2 id="JSP表达式"><a href="#JSP表达式" class="headerlink" title="JSP表达式"></a>JSP表达式</h2><p>语法格式</p>
+<pre><code class="jsp">&lt;%= 表达式 %&gt;
+</code></pre>
+<p>尝试一下</p>
+<pre><code class="jsp">&lt;%--
+  Created by IntelliJ IDEA.
+  User: cwq
+  Date: 2024/1/30
+  Time: 10:29
+  To change this template use File | Settings | File Templates.
+--%&gt;
+
+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+         pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Have A Try&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;
+    今天的日期是: &lt;%= (new java.util.Date()).toLocaleString()%&gt;
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130192526964.png" alt="image-20240130192526964"></p>
+<h2 id="JSP注释"><a href="#JSP注释" class="headerlink" title="JSP注释"></a>JSP注释</h2><pre><code class="jsp">&lt;%-- 该部分注释在网页中不会被显示--%&gt; 
+</code></pre>
+<p>这里的注释内容不会发送至浏览器甚至不会被编译</p>
+<h2 id="JSP指令"><a href="#JSP指令" class="headerlink" title="JSP指令"></a>JSP指令</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130192825555.png" alt="image-20240130192825555"></p>
+<h2 id="JSP行为"><a href="#JSP行为" class="headerlink" title="JSP行为"></a>JSP行为</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130192853592.png" alt="image-20240130192853592"></p>
+<h2 id="JSP隐含对象"><a href="#JSP隐含对象" class="headerlink" title="JSP隐含对象"></a>JSP隐含对象</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130192920894.png" alt="image-20240130192920894"></p>
+<h2 id="JSP控制流语句"><a href="#JSP控制流语句" class="headerlink" title="JSP控制流语句"></a>JSP控制流语句</h2><h3 id="if…else语句"><a href="#if…else语句" class="headerlink" title="if…else语句"></a>if…else语句</h3><p>举例说明：</p>
+<pre><code class="jsp">&lt;% if (day == 1 || day == 7) &#123; %&gt;
+      &lt;p&gt;今天是周末&lt;/p&gt;
+&lt;% &#125; else &#123; %&gt;
+      &lt;p&gt;今天不是周末&lt;/p&gt;
+&lt;% &#125; %&gt;
+</code></pre>
+<h3 id="switch…case语句"><a href="#switch…case语句" class="headerlink" title="switch…case语句"></a>switch…case语句</h3><p>举例说明</p>
+<pre><code class="jsp">&lt;% 
+switch(day) &#123;
+case 0:
+   out.println(&quot;星期天&quot;);
+   break;
+case 1:
+   out.println(&quot;星期一&quot;);
+   break;
+case 2:
+   out.println(&quot;星期二&quot;);
+   break;
+case 3:
+   out.println(&quot;星期三&quot;);
+   break;
+case 4:
+   out.println(&quot;星期四&quot;);
+   break;
+case 5:
+   out.println(&quot;星期五&quot;);
+   break;
+default:
+   out.println(&quot;星期六&quot;);
+&#125;
+%&gt;
+</code></pre>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><pre><code class="jsp">&lt;%for ( fontSize = 1; fontSize &lt;= 3; fontSize++)&#123; %&gt;
+   &lt;font color=&quot;green&quot; size=&quot;&lt;%= fontSize %&gt;&quot;&gt;
+    菜鸟教程
+   &lt;/font&gt;&lt;br /&gt;
+&lt;%&#125;%&gt;
+</code></pre>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240130193635822.png" alt="image-20240130193635822"></p>
+<p>改用while来写</p>
+<pre><code class="jsp">&lt;%while ( fontSize &lt;= 3)&#123; %&gt;
+   &lt;font color=&quot;green&quot; size=&quot;&lt;%= fontSize %&gt;&quot;&gt;
+    菜鸟教程
+   &lt;/font&gt;&lt;br /&gt;
+&lt;%fontSize++;%&gt;
+&lt;%&#125;%&gt;
+</code></pre>
+<h3 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h3><p>switch语句其实和平时没有什么变化，只需要在外面嵌套一个 <em><strong>&lt;% %&gt;</strong></em></p>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/1/23</div>
-            <a href="/2024/01/23/Moectf2023%E5%A4%8D%E7%9B%98/">
-                <h3>Moectf2023复盘</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/CTF/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        CTF
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/Moectf2023/" style="color: #00a596">Moectf2023</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/9/22</div>
-            <a href="/2023/09/22/CTF-WEB-SQL/">
-                <h3>CTF-WEB-SQL</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/CTF/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        CTF
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/CTF/" style="color: #00a596">-CTF</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/9/20</div>
-            <a href="/2023/09/20/CTF-misc%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99/">
-                <h3>CTF-misc常见的音频隐写</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/CTF/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        CTF
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/CTF/" style="color: #ffa2c4">CTF</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
     
 </div>
 
@@ -448,6 +359,12 @@
         
     </div>
     <script src="/js/main.js"></script>
+    
+    
+
+
+
+
     
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
