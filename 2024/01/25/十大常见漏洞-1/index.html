@@ -208,11 +208,60 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="十大常见漏洞"><a href="#十大常见漏洞" class="headerlink" title="十大常见漏洞&lt;6-10&gt;"></a>十大常见漏洞&lt;6-10&gt;</h1><p>1. </p>
-<hr>
+        <h1 id="十大常见漏洞"><a href="#十大常见漏洞" class="headerlink" title="十大常见漏洞&lt;6-10&gt;"></a>十大常见漏洞&lt;6-10&gt;</h1><hr>
 <span id="more"></span>
 
-<h1 id="6️⃣"><a href="#6️⃣" class="headerlink" title="6️⃣"></a>6️⃣</h1><h1 id="7️⃣"><a href="#7️⃣" class="headerlink" title="7️⃣"></a>7️⃣</h1><h1 id="8️⃣"><a href="#8️⃣" class="headerlink" title="8️⃣"></a>8️⃣</h1><h1 id="9️⃣"><a href="#9️⃣" class="headerlink" title="9️⃣"></a>9️⃣</h1><h1 id="🔟"><a href="#🔟" class="headerlink" title="🔟"></a>🔟</h1>
+<h1 id="6️⃣CSRF（跨站请求伪造-）"><a href="#6️⃣CSRF（跨站请求伪造-）" class="headerlink" title="6️⃣CSRF（跨站请求伪造 ）"></a>6️⃣CSRF（跨站请求伪造 ）</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>攻击者利用目标用户的身份，执行某些非法的操作</p>
+<ol>
+<li>跨站点的请求：请求的来源可以是非本站</li>
+<li>请求是伪造的：请求的发出不是用户的本意</li>
+</ol>
+<h2 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h2><blockquote>
+<p>• 篡改目标站点上的用户数据<br>• 盗取用户隐私数据<br>• 作为其他攻击的辅助攻击手法<br>• 传播 CSRF 蠕虫</p>
+</blockquote>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><blockquote>
+<p>1、检查HTTP Referer是否是同域<br>2、限制Session Cookie的生命周期，减少被攻击的概率<br>3、使用验证码<br>4、使用一次性token</p>
+</blockquote>
+<h1 id="7️⃣SSRF（服务器端请求伪造）"><a href="#7️⃣SSRF（服务器端请求伪造）" class="headerlink" title="7️⃣SSRF（服务器端请求伪造）"></a>7️⃣SSRF（服务器端请求伪造）</h1><h2 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h2><blockquote>
+<p>SSRF(Server-Side Request Forgery）：服务器端请求伪造，该漏洞通常由攻击者构造的请求传递给服务端，服务器端对传回的请求未作特殊处理直接执行而造成的。</p>
+</blockquote>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/v2-e62aab2eca656b443e64ebfd018c63e7_1440w.webp" alt="img"></p>
+<p>SSRF</p>
+<h2 id="危害-1"><a href="#危害-1" class="headerlink" title="危害"></a>危害</h2><blockquote>
+<p>• 扫描内网（主机、端口）<br>• 向内部任意主机的任意端口发送精心构造的payload<br>• 攻击内网的Web应用<br>• 读取任意文件<br>• 拒绝服务攻击</p>
+</blockquote>
+<h2 id="防御-1"><a href="#防御-1" class="headerlink" title="防御"></a>防御</h2><blockquote>
+<p>• 统一错误信息，避免用户根据错误信息来判断远程服务器的端口状态<br>• 限制请求的端口为http的常用端口，比如：80、443、8080等<br>• 禁用不需要的协议，仅允许http和https<br>• 根据请求需求，可以将特定域名加入白名单，拒绝白名单之外的请求<br>• 后台代码对请求来源进行验证</p>
+</blockquote>
+<h1 id="8️⃣XXE（XML外部实体注入）"><a href="#8️⃣XXE（XML外部实体注入）" class="headerlink" title="8️⃣XXE（XML外部实体注入）"></a>8️⃣XXE（XML外部实体注入）</h1><h2 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h2><blockquote>
+<p>XXE漏洞全称为 XML External Entity Injection，即XML外部实体注入<br>XXE漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载， 导致用户可以控制外部的加载文件，造成XXE漏洞。</p>
+</blockquote>
+<h2 id="危害-2"><a href="#危害-2" class="headerlink" title="危害"></a>危害</h2><blockquote>
+<p>• 任意文件读取<br>• 内网端口探测<br>• 拒绝服务攻击<br>• 钓鱼</p>
+</blockquote>
+<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><blockquote>
+<p>RCE（Remot Command&#x2F;Code Execute），远程命令&#x2F;代码执行<br>远程命令执行：用户可以控制系统命令执行函数的参数，也称命令注入<br>远程代码执行：用户输入的参数可以作为代码执行，也称代码注入<br>命令执行可以看作是一种特殊的代码执行，代码执行相对会更加灵活</p>
+</blockquote>
+<h1 id="9️⃣远程命令执行漏洞"><a href="#9️⃣远程命令执行漏洞" class="headerlink" title="9️⃣远程命令执行漏洞"></a>9️⃣远程命令执行漏洞</h1><h2 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h2><blockquote>
+<p>应用程序中有时会调用一些系统命令函数，比如php中使用system、exec、shell_exec等 函数可以执行系统命令，当攻击者可以控制这些函数中的参数时，就可以将恶意命令拼接 到正常命令中，从而造成命令执行攻击。<br>命令执行漏洞，属于高危漏洞之一，也可以算是一种特殊的代码执行</p>
+</blockquote>
+<h2 id="命令注入漏洞产生原因有两点"><a href="#命令注入漏洞产生原因有两点" class="headerlink" title="命令注入漏洞产生原因有两点"></a>命令注入漏洞产生原因有两点</h2><blockquote>
+<p>1、用户可以控制输入的内容<br>2、用户输入的内容被当作命令执行</p>
+</blockquote>
+<h2 id="防御方式"><a href="#防御方式" class="headerlink" title="防御方式"></a>防御方式</h2><blockquote>
+<p>尽量不要使用命令执行函数<br>客户端提交的变量在进入执行命令函数方法之前，一定要做好过 滤，对敏感字符进行转义<br>在使用动态函数之前，确保使用的函数是指定的函数之一<br>对PHP语言来说，不能完全控制的危险函数最好不要使用</p>
+</blockquote>
+<h1 id="🔟反序列化漏洞"><a href="#🔟反序列化漏洞" class="headerlink" title="🔟反序列化漏洞"></a>🔟反序列化漏洞</h1><h2 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h2><p>原因是程序没有对用户输入的反序列化字符串进行检测，导致反序列化过程可以被恶意控制，进而造成代码执行、getshell等一系列安全问题。</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/v2-e5688da0738b6b4ae689ab67033dc2ec_1440w.webp" alt="img"></p>
+<p>反序列化</p>
+<h2 id="危害-3"><a href="#危害-3" class="headerlink" title="危害"></a>危害</h2><blockquote>
+<p>• 不安全的反序列化，主要造成的危害是远程代码执行<br>• 如果无法远程代码执行，也可能导致权限提升、任意文件读取、拒绝服务攻击等</p>
+</blockquote>
+<h2 id="防御方式-1"><a href="#防御方式-1" class="headerlink" title="防御方式"></a>防御方式</h2><blockquote>
+<p>• 应该尽量避免用户输入反序列化的参数<br>• 如果确实需要对不受信任的数据源进行反序列化，需要确保数据未被篡改，比如使用数字签名来检查数据的完整性<br>• 严格控制反序列化相关函数的参数，坚持用户所输入的信息都是不可靠的原则<br>• 对于反序列化后的变量内容进行检查，以确定内容没有被污染<br>• 做好代码审计相关工作，提高开发人员的安全意识</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/534750140">常见十大漏洞总结（原理、危害、防御） - 知乎 (zhihu.com)</a></p>
+
     </div>
     
     
