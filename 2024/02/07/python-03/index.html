@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>jsp-Day04 | Aurora0702</title>
+    <title>python-03 | Aurora0702</title>
     <meta name="author" content="Qing" />
     <meta name="description" content="May everything you work for have a romantic outcome in the future ．" />
     <meta name="keywords" content="" />
@@ -172,22 +172,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>jsp-Day04</h1>
+        <h1>python-03</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/1/31
+            2024/2/7
         </span>
         
         <span class="category">
-            <a href="/categories/jsp/">
+            <a href="/categories/python/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                jsp
+                python
             </a>
         </span>
         
@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/jsp/" style="color: #ffa2c4">jsp</a>
+                <a href="/tags/python/" style="color: #00a596">python</a>
             </span>
             
         </span>
@@ -208,94 +208,69 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="jsp-Day04"><a href="#jsp-Day04" class="headerlink" title="jsp-Day04"></a>jsp-Day04</h1><ol>
-<li>三大指令</li>
-<li>九大对象</li>
-</ol>
+        <h1 id="python-03"><a href="#python-03" class="headerlink" title="python-03"></a>python-03</h1><ul>
+<li><strong>列表</strong></li>
+<li><strong>关于步长的踩坑</strong></li>
+</ul>
 <hr>
 <span id="more"></span>
 
-<h1 id="JSP三大指令"><a href="#JSP三大指令" class="headerlink" title="JSP三大指令"></a>JSP三大指令</h1><ol>
-<li><pre><code class="jsp">&lt;%@ page ... %&gt;
-</code></pre>
-<p> 定义网页依赖属性，比如脚本语言、error页面、缓存需求等等</p>
+<h1 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、列表</h1><h2 id="1-1、基础知识"><a href="#1-1、基础知识" class="headerlink" title="1.1、基础知识"></a>1.1、基础知识</h2><ul>
+<li><p>能装东西的东西&lt;和c、java很相似&gt;</p>
 </li>
-<li><pre><code class="jsp">`&lt;%@ include ... %&gt;` 
-</code></pre>
-<p>包含其他文件（静态包含）</p>
+<li><p>在python中用【】来表示一个列表，用逗号分隔开</p>
 </li>
-<li><pre><code class="jsp">&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
-</code></pre>
-<p> 引入标签库的定义</p>
+<li><p>什么都可以装到列表中</p>
 </li>
-</ol>
-<h1 id="JSP-九大对象"><a href="#JSP-九大对象" class="headerlink" title="JSP 九大对象"></a>JSP 九大对象</h1><p>从本质上说 JSP 就是一个Servlet，JSP 引擎在调用 JSP 对应的 jspServlet 时，会传递或创建 9 个与 web 开发相关的对象供 jspServlet 使用。 JSP 技术的设计者为便于开发人员在编写 JSP 页面时获得这些 web 对象的引用，特意定义了 9 个相应的变量，开发人员在JSP页面中通过这些变量就可以快速获得这 9 大对象的引用。</p>
-<p>如下：</p>
-<table>
-<thead>
-<tr>
-<th>变量名</th>
-<th>类型</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pageContext</td>
-<td>PageContext</td>
-<td>当前页面共享数据，还可以获取其他8个内置对象</td>
-</tr>
-<tr>
-<td>request</td>
-<td>HttpServletRequest</td>
-<td>客户端请求对象，包含了所有客户端请求信息</td>
-</tr>
-<tr>
-<td>session</td>
-<td>HttpSession</td>
-<td>请求会话</td>
-</tr>
-<tr>
-<td>application</td>
-<td>ServletContext</td>
-<td>全局对象，所有用户间共享数据</td>
-</tr>
-<tr>
-<td>response</td>
-<td>HttpServletResponse</td>
-<td>响应对象，主要用于服务器端设置响应信息</td>
-</tr>
-<tr>
-<td>page</td>
-<td>Object</td>
-<td>当前Servlet对象,<code>this</code></td>
-</tr>
-<tr>
-<td>out</td>
-<td>JspWriter</td>
-<td>输出对象，数据输出到页面上</td>
-</tr>
-<tr>
-<td>config</td>
-<td>ServletConfig</td>
-<td>Servlet的配置对象</td>
-</tr>
-<tr>
-<td>exception</td>
-<td>Throwable</td>
-<td>异常对象</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>request</strong>：此对象是 <code>HttpServletRequest</code> 类型的实例，代表客户端发送到服务器的请求。</li>
-<li><strong>response</strong>：此对象是 <code>HttpServletResponse</code> 类型的实例，代表服务器返回给客户端的响应。</li>
-<li><strong>session</strong>：此对象是 <code>HttpSession</code> 类型的实例，代表与客户端的会话，可以用于跨多个请求存储信息。</li>
-<li><strong>application</strong>：此对象是 <code>ServletContext</code> 类型的实例，代表整个应用的上下文。</li>
-<li><strong>out</strong>：此对象是 <code>JspWriter</code> 类型的实例，用于向客户端发送响应内容。</li>
-<li><strong>pageContext</strong>：此对象是 <code>PageContext</code> 类型的实例，提供对 JSP 页面的各种环境信息的访问。</li>
-<li><strong>page</strong>：此对象代表 JSP 页面本身的实例。</li>
-<li><strong>config</strong>：此对象是 <code>ServletConfig</code> 类型的实例，包含了 Servlet 的配置信息。</li>
-<li><strong>exception</strong>：此对象是 <code>Throwable</code> 类型的实例，只有在错误页面中才可用，表示发生的异常。</li>
+<li><p>列表的特型：索引和切片</p>
+</li>
+<li><p>列表的索引超过长度会报错</p>
+</li>
+<li><p>实例：</p>
+<pre><code class="python">list = [&quot;ccc&quot;, &quot;ddd&quot;, &quot;eee&quot;, &quot;fff&quot;, &quot;aaa&quot;, &quot;www&quot;]
+print(list[1:3])
+print(list[5:2:-1])
+</code></pre>
+</li>
 </ul>
+<h2 id="1-2、遍历和长度"><a href="#1-2、遍历和长度" class="headerlink" title="1.2、遍历和长度"></a>1.2、遍历和长度</h2><ul>
+<li><p><em><strong>for+in循环遍历</strong></em></p>
+<pre><code class="python">for c in list:
+    print(c)
+</code></pre>
+</li>
+<li><p><em><strong>len（）拿到长度</strong></em></p>
+<pre><code class="python">print(len(list))
+</code></pre>
+</li>
+</ul>
+<h1 id="二、列表的增删改查"><a href="#二、列表的增删改查" class="headerlink" title="二、列表的增删改查"></a>二、列表的增删改查</h1><h1 id="关于步长的踩坑"><a href="#关于步长的踩坑" class="headerlink" title="关于步长的踩坑"></a>关于步长的踩坑</h1><p>学习字符串的时候学到了步长，步长可以为负数，默认为正数1。</p>
+<p>在list的学习中同样是有步长这个概念的，在尝试写代码的过程中发现了我对步长为负数时的一个错误用法：</p>
+<ul>
+<li><p>出错思路：</p>
+<p>想要从3-5倒着输出</p>
+<pre><code class="python">print(s[3:5:-1])
+</code></pre>
+<p>但是发现什么都输出不了，也没有报错</p>
+</li>
+<li><p>正确思路：</p>
+<p>因为步长是负数的时候倒着数，那么人类思路是3-5倒着数，那换种思路就是5-3来进行逐个输出，python能接受的就是第二种情况。在他的理解中</p>
+<pre><code class="python">print(s[5:3:-1])
+</code></pre>
+<p>才是正确可以执行的</p>
+</li>
+<li><p>例子</p>
+<pre><code class="python">list = [&quot;ccc&quot;, &quot;ddd&quot;, &quot;eee&quot;, &quot;fff&quot;, &quot;aaa&quot;, &quot;www&quot;]
+print(list[1:3])
+print(list[5:2:-1])
+
+s = &quot;abcdefghijklmnopqrstuvwxyz&quot;
+print(s[3:6:-1])
+print(s[5:2:-1])
+</code></pre>
+</li>
+</ul>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240207223140253.png" alt="image-20240207223140253"></p>
 
     </div>
     
