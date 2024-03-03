@@ -200,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E8%AE%A1%E7%BD%91/" style="color: #00bcd4">计网</a>
+                <a href="/tags/%E8%AE%A1%E7%BD%91/" style="color: #ff7d73">计网</a>
             </span>
             
         </span>
@@ -260,12 +260,12 @@
 <li>access	接入网（链路） ——&gt; 只要和方的有关的<br>- host end system</li>
 <li>backbone  骨干网（链路）<br>- switch<br>- rounter<br>- 负载均衡设备<br>:::info<br>链路层的交换机，网络层的路由器（按照路由表对所到来的分组进行处理）<br>:::</li>
 </ul>
-<h2 id="协议：标准"><a href="#协议：标准" class="headerlink" title="协议：标准"></a>协议：标准</h2><p>遵照同样标准可以进行互操作<br>格式、次序、动作<br>:::info<br>PDU （Protocol Data Unit）：协议数据单元<br>:::<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40406528/1709371163142-1ea60394-08eb-4baa-84b7-143beda311ec.png#averageHue=%23fbf3f2&clientId=u141c00e6-b5b5-4&from=paste&height=122&id=udf7eacca&originHeight=229&originWidth=478&originalType=binary&ratio=1.875&rotation=0&showTitle=false&size=31378&status=done&style=none&taskId=ud05060a4-8451-4c5f-8da9-430da40e566&title=&width=254.93333333333334" alt="image.png"> </p>
+<h2 id="协议：标准"><a href="#协议：标准" class="headerlink" title="协议：标准"></a>协议：标准</h2><p>遵照同样标准可以进行互操作<br>格式、次序、动作<br>:::info<br>PDU （Protocol Data Unit）：协议数据单元<br>:::<br><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240303155555402.png" alt="image-20240303155555402"> </p>
 <h2 id="角度二：应用进程"><a href="#角度二：应用进程" class="headerlink" title="角度二：应用进程"></a>角度二：应用进程</h2><ul>
 <li>互联网&#x3D;分布式的应用进程+基础设施</li>
 <li>基础设施（主机、应用层以下的所有协议实体）向进程提供服务</li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709378490633-4c6e4862-8ebf-4fbf-bda8-d779cc3c8650.jpeg"><br>接入：把边缘的主机系统接入到核心<br>边缘：网络应用<br><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709380173049-6e19bde0-52f6-4009-8b92-5fa7fb159059.jpeg#averageHue=%23fbfaf9&clientId=ue4ce7ac2-9701-4&from=paste&height=609&id=u1b04b35c&originHeight=1142&originWidth=999&originalType=binary&ratio=1.875&rotation=0&showTitle=false&size=111579&status=done&style=none&taskId=ub36b5627-34b2-4813-bd1a-2dea35a03d9&title=&width=532.8" alt="f4b006181d689f6998812e916f77ef7.jpg"><br>分布式的应用</p>
+<h1 id="网络的边缘"><a href="#网络的边缘" class="headerlink" title="网络的边缘"></a>网络的边缘</h1><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20240303155618333.png" alt="image-20240303155618333"><br>接入：把边缘的主机系统接入到核心<br>边缘：网络应用<br><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/f4b006181d689f6998812e916f77ef7.jpg" alt="f4b006181d689f6998812e916f77ef7"><br>分布式的应用</p>
 <blockquote>
 <p>应用层以下都属于基础设施</p>
 </blockquote>
@@ -300,44 +300,6 @@
 <li>拥塞控制</li>
 </ol>
 <h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ol>
-<li>无连接的——&gt;不握手——&gt;事务性应用</li>
-<li>不可靠——&gt;减少时间的代价</li>
-</ol>
-<h1 id="网络的边缘"><a href="#网络的边缘" class="headerlink" title="网络的边缘"></a><strong>网络的边缘</strong></h1><p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709378490633-4c6e4862-8ebf-4fbf-bda8-d779cc3c8650.jpeg"><br>接入：把边缘的主机系统接入到核心<br>边缘：网络应用<br><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709380173049-6e19bde0-52f6-4009-8b92-5fa7fb159059.jpeg#averageHue=%23fbfaf9&clientId=ue4ce7ac2-9701-4&from=paste&height=609&id=u1b04b35c&originHeight=1142&originWidth=999&originalType=binary&ratio=1.875&rotation=0&showTitle=false&size=111579&status=done&style=none&taskId=ub36b5627-34b2-4813-bd1a-2dea35a03d9&title=&width=532.8" alt="f4b006181d689f6998812e916f77ef7.jpg"><br>分布式的应用</p>
-<blockquote>
-<p>应用层以下都属于基础设施</p>
-</blockquote>
-<h2 id="客户端—服务器模式-1"><a href="#客户端—服务器模式-1" class="headerlink" title="客户端—服务器模式"></a>客户端—服务器模式</h2><ol>
-<li>所有的资源在浏览器</li>
-<li>服务器先运行客户端再运行</li>
-<li>服务器农场———集中式的，会发生宕机</li>
-<li>可扩展性较低——达到阈值会断崖式下降</li>
-</ol>
-<h1 id="P2P模式-1"><a href="#P2P模式-1" class="headerlink" title="P2P模式"></a>P2P模式</h1><ol>
-<li>P2P——&gt;Peer To Peer 点对点技术</li>
-<li>P——&gt;Peer 对等体</li>
-<li>对等体：分布式应用进程   <ol>
-<li>对方可以请求我请求的节点</li>
-<li>莫种程度而言，它即使客户端也是服务器</li>
-<li>peer增多请求增多，提供资源节点也对应增多</li>
-</ol>
-</li>
-<li>分布式的文件发送中常用。eg：迅雷（文件分发请求增多，发送增多）</li>
-</ol>
-<p>:::danger<br>两种模式都要借助接触设施提供的通讯服务，进行通讯<br>网络应用使用基础设施提供的服务&#x2F;基础设施为网络应用提供的通讯服务<br>:::</p>
-<h2 id="通讯服务-1"><a href="#通讯服务-1" class="headerlink" title="通讯服务"></a>通讯服务</h2><h3 id="面向连接的服务模式-1"><a href="#面向连接的服务模式-1" class="headerlink" title="面向连接的服务模式"></a>面向连接的服务模式</h3><ul>
-<li>特点：先建立连接（握手），底层协议站做好准备（缓冲区，分配响应资源）</li>
-<li>面向连接：本身知道、底层（tcp）知道——&gt;网络不知道——&gt;通信的状态只在端系统维护</li>
-</ul>
-<h3 id="TCP-1"><a href="#TCP-1" class="headerlink" title="TCP"></a>TCP</h3><ol>
-<li>向上层提供的是可靠的不出错、不重复、不失序、不丢失）、保序的 </li>
-<li>流量控制机制：<ol>
-<li>协调接收方和发送方的数据</li>
-</ol>
-</li>
-<li>拥塞控制</li>
-</ol>
-<h3 id="UDP-1"><a href="#UDP-1" class="headerlink" title="UDP"></a>UDP</h3><ol>
 <li>无连接的——&gt;不握手——&gt;事务性应用</li>
 <li>不可靠——&gt;减少时间的代价</li>
 </ol>
