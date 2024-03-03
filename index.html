@@ -215,137 +215,7 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><ul>
-<li>服务是功能的一个体现，每一层的功能通过接口向上层提供服务</li>
-<li>可靠性：不出错，不重复，不丢失，不乱序</li>
-<li>tcp：可靠，但是耗时，损失了实时性</li>
-<li>udp：时效性较好，但是可靠性较低。事务性应用使用udp较多。</li>
-<li>传输层&lt;点到点&gt;是网络层所&lt;端到端 &gt;提供的端到端、主机到主机的服务基础上实现的 </li>
-<li>端到端包含若干的点到点</li>
-<li>点到点： point to point <p to p></p></li>
-<li>端到端：end to end <e to e></e></li>
-<li>物理层：把数据信号变为物理信号</li>
-<li>物理层是在media上实现的   &#x2F;&#x2F;在第0层层</li>
-</ul>
-<h1 id="什么是Internet"><a href="#什么是Internet" class="headerlink" title="什么是Internet?"></a>什么是Internet?</h1><ul>
-<li>网络的网络</li>
-<li>上层借助下层提供的服务来实现</li>
-<li>应用层借助于传输层所提供的服务交换应用报文</li>
-<li>相邻两个节点之间传输以帧为单位的数据</li>
-<li>链路层解决点到点的问题</li>
-<li>网络层：主机到目标主机。&#x2F;&#x2F;尽力而为</li>
-<li>传输层：在网络所提供的服务基础上做了加强个细分，把主机到主机的传输变为了进程到进程，不可靠到可靠</li>
-<li>应用进程：按照应用程序协议交换报文</li>
-</ul>
-<h1 id="什么是互联网？"><a href="#什么是互联网？" class="headerlink" title="什么是互联网？"></a>什么是互联网？</h1><ol>
-<li>网络：节点和边缘</li>
-<li>计算机网络：联网的计算机构成的系统</li>
-</ol>
-<p>互联网：以tcp和ip协议为主的一簇协议支撑工作的网络</p>
-<pre><code>internet小写代表互联网（内部网），Internet大写代表因特网。
-</code></pre>
-<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><ol>
-<li>主机节点 ——&gt;  方形<ol>
-<li>数据的源和接受目标</li>
-</ol>
-</li>
-<li>数据交换节点  ——&gt; 圆形<ol>
-<li>eg：路由器——&gt;转发数据的<ol>
-<li>路由器：链接两个不同类型的网</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>负载均衡设备</li>
-</ol>
-<p>方的——&gt;方的</p>
-<h2 id="链路："><a href="#链路：" class="headerlink" title="链路："></a>链路：</h2><p>把节点连在一起，边：</p>
-<ul>
-<li>access	接入网（链路） ——&gt; 只要和方的有关的<br>- host end system</li>
-<li>backbone  骨干网（链路）<br>- switch<br>- rounter<br>- 负载均衡设备<br>:::info<br>链路层的交换机，网络层的路由器（按照路由表对所到来的分组进行处理）<br>:::</li>
-</ul>
-<h2 id="协议：标准"><a href="#协议：标准" class="headerlink" title="协议：标准"></a>协议：标准</h2><p>遵照同样标准可以进行互操作<br>格式、次序、动作<br>:::info<br>PDU （Protocol Data Unit）：协议数据单元<br>:::<br><img src="https://cdn.nlark.com/yuque/0/2024/png/40406528/1709371163142-1ea60394-08eb-4baa-84b7-143beda311ec.png#averageHue=%23fbf3f2&clientId=u141c00e6-b5b5-4&from=paste&height=122&id=udf7eacca&originHeight=229&originWidth=478&originalType=binary&ratio=1.875&rotation=0&showTitle=false&size=31378&status=done&style=none&taskId=ud05060a4-8451-4c5f-8da9-430da40e566&title=&width=254.93333333333334" alt="image.png"> </p>
-<h2 id="角度二：应用进程"><a href="#角度二：应用进程" class="headerlink" title="角度二：应用进程"></a>角度二：应用进程</h2><ul>
-<li>互联网&#x3D;分布式的应用进程+基础设施</li>
-<li>基础设施（主机、应用层以下的所有协议实体）向进程提供服务</li>
-</ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709378490633-4c6e4862-8ebf-4fbf-bda8-d779cc3c8650.jpeg"><br>接入：把边缘的主机系统接入到核心<br>边缘：网络应用<br><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709380173049-6e19bde0-52f6-4009-8b92-5fa7fb159059.jpeg#averageHue=%23fbfaf9&clientId=ue4ce7ac2-9701-4&from=paste&height=609&id=u1b04b35c&originHeight=1142&originWidth=999&originalType=binary&ratio=1.875&rotation=0&showTitle=false&size=111579&status=done&style=none&taskId=ub36b5627-34b2-4813-bd1a-2dea35a03d9&title=&width=532.8" alt="f4b006181d689f6998812e916f77ef7.jpg"><br>分布式的应用</p>
-<blockquote>
-<p>应用层以下都属于基础设施</p>
-</blockquote>
-<h2 id="客户端—服务器模式"><a href="#客户端—服务器模式" class="headerlink" title="客户端—服务器模式"></a>客户端—服务器模式</h2><ol>
-<li>所有的资源在浏览器</li>
-<li>服务器先运行客户端再运行</li>
-<li>服务器农场———集中式的，会发生宕机</li>
-<li>可扩展性较低——达到阈值会断崖式下降</li>
-</ol>
-<h1 id="P2P模式"><a href="#P2P模式" class="headerlink" title="P2P模式"></a>P2P模式</h1><ol>
-<li>P2P——&gt;Peer To Peer 点对点技术</li>
-<li>P——&gt;Peer 对等体</li>
-<li>对等体：分布式应用进程   <ol>
-<li>对方可以请求我请求的节点</li>
-<li>莫种程度而言，它即使客户端也是服务器</li>
-<li>peer增多请求增多，提供资源节点也对应增多</li>
-</ol>
-</li>
-<li>分布式的文件发送中常用。eg：迅雷（文件分发请求增多，发送增多）</li>
-</ol>
-<p>:::danger<br>两种模式都要借助接触设施提供的通讯服务，进行通讯<br>网络应用使用基础设施提供的服务&#x2F;基础设施为网络应用提供的通讯服务<br>:::</p>
-<h2 id="通讯服务"><a href="#通讯服务" class="headerlink" title="通讯服务"></a>通讯服务</h2><h3 id="面向连接的服务模式"><a href="#面向连接的服务模式" class="headerlink" title="面向连接的服务模式"></a>面向连接的服务模式</h3><ul>
-<li>特点：先建立连接（握手），底层协议站做好准备（缓冲区，分配响应资源）</li>
-<li>面向连接：本身知道、底层（tcp）知道——&gt;网络不知道——&gt;通信的状态只在端系统维护</li>
-</ul>
-<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><ol>
-<li>向上层提供的是可靠的不出错、不重复、不失序、不丢失）、保序的 </li>
-<li>流量控制机制：<ol>
-<li>协调接收方和发送方的数据</li>
-</ol>
-</li>
-<li>拥塞控制</li>
-</ol>
-<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><ol>
-<li>无连接的——&gt;不握手——&gt;事务性应用</li>
-<li>不可靠——&gt;减少时间的代价</li>
-</ol>
-<h1 id="网络的边缘"><a href="#网络的边缘" class="headerlink" title="网络的边缘"></a><strong>网络的边缘</strong></h1><p><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709378490633-4c6e4862-8ebf-4fbf-bda8-d779cc3c8650.jpeg"><br>接入：把边缘的主机系统接入到核心<br>边缘：网络应用<br><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/40406528/1709380173049-6e19bde0-52f6-4009-8b92-5fa7fb159059.jpeg#averageHue=%23fbfaf9&clientId=ue4ce7ac2-9701-4&from=paste&height=609&id=u1b04b35c&originHeight=1142&originWidth=999&originalType=binary&ratio=1.875&rotation=0&showTitle=false&size=111579&status=done&style=none&taskId=ub36b5627-34b2-4813-bd1a-2dea35a03d9&title=&width=532.8" alt="f4b006181d689f6998812e916f77ef7.jpg"><br>分布式的应用</p>
-<blockquote>
-<p>应用层以下都属于基础设施</p>
-</blockquote>
-<h2 id="客户端—服务器模式-1"><a href="#客户端—服务器模式-1" class="headerlink" title="客户端—服务器模式"></a>客户端—服务器模式</h2><ol>
-<li>所有的资源在浏览器</li>
-<li>服务器先运行客户端再运行</li>
-<li>服务器农场———集中式的，会发生宕机</li>
-<li>可扩展性较低——达到阈值会断崖式下降</li>
-</ol>
-<h1 id="P2P模式-1"><a href="#P2P模式-1" class="headerlink" title="P2P模式"></a>P2P模式</h1><ol>
-<li>P2P——&gt;Peer To Peer 点对点技术</li>
-<li>P——&gt;Peer 对等体</li>
-<li>对等体：分布式应用进程   <ol>
-<li>对方可以请求我请求的节点</li>
-<li>莫种程度而言，它即使客户端也是服务器</li>
-<li>peer增多请求增多，提供资源节点也对应增多</li>
-</ol>
-</li>
-<li>分布式的文件发送中常用。eg：迅雷（文件分发请求增多，发送增多）</li>
-</ol>
-<p>:::danger<br>两种模式都要借助接触设施提供的通讯服务，进行通讯<br>网络应用使用基础设施提供的服务&#x2F;基础设施为网络应用提供的通讯服务<br>:::</p>
-<h2 id="通讯服务-1"><a href="#通讯服务-1" class="headerlink" title="通讯服务"></a>通讯服务</h2><h3 id="面向连接的服务模式-1"><a href="#面向连接的服务模式-1" class="headerlink" title="面向连接的服务模式"></a>面向连接的服务模式</h3><ul>
-<li>特点：先建立连接（握手），底层协议站做好准备（缓冲区，分配响应资源）</li>
-<li>面向连接：本身知道、底层（tcp）知道——&gt;网络不知道——&gt;通信的状态只在端系统维护</li>
-</ul>
-<h3 id="TCP-1"><a href="#TCP-1" class="headerlink" title="TCP"></a>TCP</h3><ol>
-<li>向上层提供的是可靠的不出错、不重复、不失序、不丢失）、保序的 </li>
-<li>流量控制机制：<ol>
-<li>协调接收方和发送方的数据</li>
-</ol>
-</li>
-<li>拥塞控制</li>
-</ol>
-<h3 id="UDP-1"><a href="#UDP-1" class="headerlink" title="UDP"></a>UDP</h3><ol>
-<li>无连接的——&gt;不握手——&gt;事务性应用</li>
-<li>不可靠——&gt;减少时间的代价</li>
-</ol>
-
+            <h1 id="第一章-计算机网络和因特网"><a href="#第一章-计算机网络和因特网" class="headerlink" title="第一章_计算机网络和因特网"></a>第一章_计算机网络和因特网</h1><hr>
             
         </div>
     </div>
@@ -359,7 +229,7 @@
         
         <span class="tag">
             
-            <a href="/tags/%E8%AE%A1%E7%BD%91/" style="color: #00bcd4">计网</a>
+            <a href="/tags/%E8%AE%A1%E7%BD%91/" style="color: #03a9f4">计网</a>
         </span>
         
     </div>
@@ -462,7 +332,7 @@
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">python</a>
+            <a href="/tags/python/" style="color: #ff7d73">python</a>
         </span>
         
     </div>
@@ -513,7 +383,7 @@
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">python</a>
+            <a href="/tags/python/" style="color: #00a596">python</a>
         </span>
         
     </div>
@@ -564,7 +434,7 @@
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ffa2c4">python</a>
+            <a href="/tags/python/" style="color: #00bcd4">python</a>
         </span>
         
     </div>
@@ -616,7 +486,7 @@
         
         <span class="tag">
             
-            <a href="/tags/jsp/" style="color: #ffa2c4">jsp</a>
+            <a href="/tags/jsp/" style="color: #ff7d73">jsp</a>
         </span>
         
     </div>
@@ -723,7 +593,7 @@
         
         <span class="tag">
             
-            <a href="/tags/jsp/" style="color: #00a596">jsp</a>
+            <a href="/tags/jsp/" style="color: #ff7d73">jsp</a>
         </span>
         
     </div>
@@ -777,7 +647,7 @@
         
         <span class="tag">
             
-            <a href="/tags/jsp/" style="color: #03a9f4">jsp</a>
+            <a href="/tags/jsp/" style="color: #ffa2c4">jsp</a>
         </span>
         
     </div>
@@ -825,7 +695,7 @@
         
         <span class="tag">
             
-            <a href="/tags/%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" style="color: #ff7d73">十大常见漏洞</a>
+            <a href="/tags/%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/" style="color: #03a9f4">十大常见漏洞</a>
         </span>
         
     </div>
