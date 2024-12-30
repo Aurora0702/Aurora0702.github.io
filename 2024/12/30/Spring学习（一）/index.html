@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>Spring学习（一） | Aurora0702</title>
+    <meta name="author" content="Qing" />
+    <meta name="description" content="May everything you work for have a romantic outcome in the future ．" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+	<canvas
+		id="fireworks"
+		style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+	></canvas>
+	<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+	<script src="/js/fireworks.min.js"></script>
+	
+	<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+	></canvas>
+	<script src="/js/background.min.js"></script>
+	
+	<div id="cursor"></div>
+	<link rel="stylesheet" href="/css/cursor.min.css" />
+	<script src="/js/cursor.min.js"></script>
+	
+	
+
+
+
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>AURORA0702</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;AURORA0702</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Spring学习（一）</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/30
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Spring/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Spring
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/Spring/" style="color: #ff7d73">Spring</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="Spring学习（一）"><a href="#Spring学习（一）" class="headerlink" title="Spring学习（一）"></a>Spring学习（一）</h1><ol>
+<li><p>教程：</p>
+<pre><code>【黑马程序员SSM框架教程_Spring+SpringMVC+Maven高级+SpringBoot+MyBatisPlus企业实用开发技术】 https://www.bilibili.com/video/BV1Fi4y1S7ix/?p=24&amp;share_source=copy_web&amp;vd_source=b9f387e2ec6b50199e3f89aab2257158
+</code></pre>
+</li>
+<li><p>只为了备考</p>
+</li>
+</ol>
+<hr>
+<span id="more"></span>
+
+<h1 id="一、Spring"><a href="#一、Spring" class="headerlink" title="一、Spring"></a>一、Spring</h1><h2 id="1-1-Spring-Framework系统架构"><a href="#1-1-Spring-Framework系统架构" class="headerlink" title="1.1 Spring Framework系统架构"></a>1.1 Spring Framework系统架构</h2><ol>
+<li>用于管理对象的</li>
+<li>AOP：面向切面编程</li>
+<li>不惊动其他功能的基础上去增加新的功能</li>
+<li>Aspects：AOP思想的体现</li>
+</ol>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241226201346498.png" alt="image-20241226201346498"></p>
+<h1 id="二、核心概念"><a href="#二、核心概念" class="headerlink" title="二、核心概念"></a>二、核心概念</h1><ul>
+<li>使用IoC容器管理bean（IoC）</li>
+<li>在IoC容器内将有依赖关系的bean进行关系绑定（DI）</li>
+<li>使用对象时不仅可以直接从IoC容器中获取，并且获取到的bean已经绑定了所有的依赖关系</li>
+</ul>
+<h2 id="2-1-IoC（Inversion-of-control）控制反转"><a href="#2-1-IoC（Inversion-of-control）控制反转" class="headerlink" title="2.1 IoC（Inversion of control）控制反转"></a>2.1 IoC（Inversion of control）控制反转</h2><ol>
+<li>使用对象时，在程序中不要主动使用new产生对象，转换为由外部提供对象 </li>
+<li>对象的创建控制权由程序转移到外部，这种思想称为控制反转</li>
+<li>目的：充分解耦</li>
+<li>Spring提供了一个容器，称为IoC容器，用来充当IoC思想中的“外部”</li>
+<li>主要就是对象创建权发生了变换（主动new ——&gt; IoC容器创建对象）</li>
+<li>IoC容器负责对象的创建、初始化等一系列工作，被创建或被管理的对象在IoC容器中统称为&#x3D;&#x3D;Bean&#x3D;&#x3D;</li>
+</ol>
+<h2 id="2-2-DI-Dependency-Injection-依赖注入"><a href="#2-2-DI-Dependency-Injection-依赖注入" class="headerlink" title="2.2 DI(Dependency Injection)依赖注入"></a>2.2 DI(Dependency Injection)依赖注入</h2><ol>
+<li>在容器中建立bean与bean之间的依赖关系的整个过程，称为依赖注入</li>
+</ol>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241226201923238.png" alt="image-20241226201923238"></p>
+<h2 id="2-3-具体实现"><a href="#2-3-具体实现" class="headerlink" title="2.3 具体实现+-+"></a>2.3 具体实现+-+</h2><h3 id="2-3-1-Ioc入门"><a href="#2-3-1-Ioc入门" class="headerlink" title="2.3.1 Ioc入门"></a>2.3.1 Ioc入门</h3><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><ol>
+<li>管理什么？（Service与Dao）</li>
+<li>如何将被管理的对象告知IoC容器？（配置）</li>
+<li>被管理的对象交给IoC容器，如何获取到IoC容器？（接口）</li>
+<li>IoC容器得到后，如何从容器中获取bean？（接口方法）</li>
+<li>使用Spring导入哪些坐标？（pom.xml）</li>
+</ol>
+<h4 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h4><ol>
+<li><p>配置bean</p>
+<pre><code class="java">&lt;/beans id=&quot;&quot; class=&quot;实现类的路径&quot; /&gt;
+</code></pre>
+</li>
+<li><p>bean标签表示配置bean</p>
+</li>
+<li><p>id属性给bean取名字（不可重复）</p>
+</li>
+<li><p>class属性表示给bean定义类型</p>
+</li>
+<li><p>获取Ioc容器</p>
+<pre><code class="java">ApplicationContext ctx = new classPathXmlApplicationContext(&quot;applicationContext.xm1&quot;);
+</code></pre>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241227111245874.png" alt="image-20241227111245874"></p>
+</li>
+<li><p>获取bean</p>
+<pre><code class="java">ctx.getBean(&quot;id&quot;);
+</code></pre>
+<p>考虑获取对象的类型问题，进行转变</p>
+<p>eg：</p>
+<pre><code class="java">&lt;bean id=&quot;bookDao&quot; class=&quot;com.itheima.dao.impl.BookDaoImpl&quot;/&gt;
+&lt;bean id=&quot;bookService&quot; class=&quot;com.itheima.service.impl.BookServiceImpl&quot;
+</code></pre>
+<p>在配置文件中（applicationContext.xml）中配置bean</p>
+<pre><code class="java">//获取IoC容器
+Application ctx = new ClassPathXmlAppicationContext(&quot;ApplicationContext.xml&quot;)
+//获取bean
+BookDao bookDao =(BookDao)ctx.getBean(&quot;bookDao&quot;);
+bookDao.save();//调用方法
+</code></pre>
+</li>
+</ol>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
+<li><p>导入Spring坐标</p>
+<pre><code class="xml">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework&lt;/groupId&gt;&lt;artifactId&gt;spring-context&lt;/artifactId&gt;&lt;version&gt;5.2.10.RELEASE&lt;/version&gt;&lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>定义Spring管理的类（接口）</p>
+</li>
+<li><p>创建Spring配置文件，配置对应的类作为Spring管理的bean</p>
+</li>
+<li><p>初始化IoC容器，通过容器获取bean</p>
+</li>
+</ol>
+<h3 id="2-3-2-DI入门"><a href="#2-3-2-DI入门" class="headerlink" title="2.3.2 DI入门"></a>2.3.2 DI入门</h3><h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><ol>
+<li>基于IoC管理bean</li>
+<li>不能继续使在Service中使用new形式创建的Dao对象</li>
+<li>Service中需要的Dao对象如何进入到Service中 ？ （提供方法，把对象传进去）</li>
+<li>Service与Dao间的关系如何描述？ （配置）</li>
+</ol>
+<h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><ol>
+<li><p>删除业务层中使用new创建的dao对象</p>
+</li>
+<li><p>提供依赖对象对应的setter方法</p>
+</li>
+<li><p>写配置文件（将dao层写入到service中）</p>
+<pre><code class="xml">&lt;bean id=&quot;bookService&quot; class=&quot;com.itheima.service.impl.BookServiceImpl&quot;&gt;
+    
+    &lt;!--7.配置server与dao的关系--&gt;
+    
+&lt;property name=&quot;bookDao&quot; ref=&quot;bookDao&quot;/&gt;&lt;/bean&gt;
+</code></pre>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241227142945976.png" alt="image-20241227142945976"></p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241227143128810.png" alt="image-20241227143128810"></p>
+</li>
+<li><p>property标签表示配置当前bean的属性</p>
+</li>
+<li><p>name属性表示配置哪一个具体的属性</p>
+</li>
+<li><p>ref属性表示参照哪一个bean</p>
+</li>
+</ol>
+<h4 id="bean基础配置"><a href="#bean基础配置" class="headerlink" title="bean基础配置"></a>bean基础配置</h4><p><strong><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241227143228349.png" alt="image-20241227143228349"></strong></p>
+<h4 id="bean别名配置"><a href="#bean别名配置" class="headerlink" title="bean别名配置"></a>bean别名配置</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241227143423024.png" alt="image-20241227143423024"></p>
+<h4 id="bean作用范围"><a href="#bean作用范围" class="headerlink" title="bean作用范围"></a>bean作用范围</h4><ol>
+<li><p>默认创建的是单例</p>
+</li>
+<li><p>非单例属性</p>
+<pre><code class="xml">&lt;bean id=&quot;bookDao&quot; name=&quot;dao&quot; class=&quot;com.itheima.dao.impl.BookDaoImpl&quot; scope=&quot;prototype&quot;/&gt;
+</code></pre>
+</li>
+<li><p>为什么bean是默认为单例？</p>
+<p>Spring管理的对象是可以复用的</p>
+</li>
+<li><p>适合交给容器进行管理的bean</p>
+<ul>
+<li>表现层对象</li>
+<li>业务层对象</li>
+<li>数据层对象</li>
+<li>工具对象</li>
+</ul>
+</li>
+<li><p>不适合交给容器进行管理的bean</p>
+<ul>
+<li>封装实体的域对象</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241227143705256.png" alt="image-20241227143705256"></p>
+<h3 id="2-3-3-bean的实例化"><a href="#2-3-3-bean的实例化" class="headerlink" title="2.3.3 bean的实例化"></a>2.3.3 bean的实例化</h3><p>实例化bean的三种方式</p>
+<h4 id="bean是如何创建的"><a href="#bean是如何创建的" class="headerlink" title="bean是如何创建的"></a>bean是如何创建的</h4><ol>
+<li>bean本质上就是对象，创建bean使用构造方法完成</li>
+<li>Spring创建bean的时候用的是无参构造方法 &#x3D;</li>
+</ol>
+<h4 id="方法一-构造方法"><a href="#方法一-构造方法" class="headerlink" title="方法一  构造方法"></a>方法一  构造方法</h4><ol>
+<li><p>提供可以访问的构造方法</p>
+</li>
+<li><p>无参构造方法如果不存在，将抛出异常BeancreationException</p>
+<pre><code class="xml">&lt;bean id=&quot;bookDao&quot; class=&quot;com.itheima.dao.impl.BookDaoImpl&quot;/&gt;
+</code></pre>
+</li>
+</ol>
+<h4 id="方法二-通过静态工厂创建对象"><a href="#方法二-通过静态工厂创建对象" class="headerlink" title="方法二  通过静态工厂创建对象"></a>方法二  通过静态工厂创建对象</h4><ol>
+<li><p>使用静态工厂创建对象</p>
+</li>
+<li><p>添加创建对象的方法</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229173429002.png" alt="image-20241229173429002"></p>
+<h4 id="方法三-实例工厂对象创建对象"><a href="#方法三-实例工厂对象创建对象" class="headerlink" title="方法三 实例工厂对象创建对象"></a>方法三 实例工厂对象创建对象</h4><ol>
+<li><p>先造出工厂的对象</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229173723013.png" alt="image-20241229173723013"></p>
+</li>
+<li><p>工厂对象实际只是配合使用的。实际上无意义</p>
+</li>
+</ol>
+<h4 id="方式三的改进"><a href="#方式三的改进" class="headerlink" title="方式三的改进"></a>方式三的改进</h4><ol>
+<li><p>使用FatcoryBean方法</p>
+</li>
+<li><p>创建的对象是单例的</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229174227661.png" alt="image-20241229174227661"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-4-bean的生命周期"><a href="#2-4-bean的生命周期" class="headerlink" title="2.4 bean的生命周期"></a>2.4 bean的生命周期</h2><ol>
+<li>生命周期：从创建到消亡的完整过程</li>
+<li>bean生命周期：bean从创建到销毁的整体过程</li>
+<li>bean生命周期控制：在bean创建后到销毁前做一些事情</li>
+</ol>
+<h1 id="三、依赖注入方法"><a href="#三、依赖注入方法" class="headerlink" title="三、依赖注入方法"></a>三、依赖注入方法</h1><ol>
+<li>向一个类中传递参数的方法<ul>
+<li>普通方法（set方法）</li>
+<li>构造方法</li>
+</ul>
+</li>
+<li>依赖注入描述了在容器中建立bean与bean之间依赖关系的过程,如果bean运行需要的是数字或字符串呢 ?<ul>
+<li>引用类型</li>
+<li>简单类型(基本数据类型与string)</li>
+</ul>
+</li>
+<li>依赖注入的方法<ul>
+<li>setter注入<ul>
+<li>简单类型</li>
+<li>引用类型</li>
+</ul>
+</li>
+<li>构造器注入<ul>
+<li>简单类型</li>
+<li>引用类型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-1-setter注入"><a href="#3-1-setter注入" class="headerlink" title="3.1 setter注入"></a>3.1 setter注入</h2><h4 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229175733629.png" alt="image-20241229175733629"></p>
+<h4 id="简单类型"><a href="#简单类型" class="headerlink" title="简单类型"></a>简单类型</h4><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229175815164.png" alt="image-20241229175815164"></p>
+<h2 id="3-2构造器注入"><a href="#3-2构造器注入" class="headerlink" title="3.2构造器注入"></a>3.2构造器注入</h2><ol>
+<li><p>相对setter来说只是标签进行了跟换</p>
+<p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229183230090.png" alt="image-20241229183230090"></p>
+</li>
+</ol>
+<h2 id="3-3依赖注入方式的选择"><a href="#3-3依赖注入方式的选择" class="headerlink" title="3.3依赖注入方式的选择"></a>3.3依赖注入方式的选择</h2><ol>
+<li>强制依赖使用构造器进行，使用setter注入有概率不进行注入导致nu11对象出现</li>
+<li>可选依赖使用setter注入进行，灵活性强</li>
+<li>Spring框架倡导使用构造器,第三方框架内部大多数采用构造器注入的形式进行数据初始化，相对严谨</li>
+<li>如果有必要可以两者同时使用，使用构造器注入完成强制依赖的注入，使用setter注入完成可选依赖的注入</li>
+<li>实际开发过程中还要根据实际情况分析，如果受控对象没有提供setter方法就必须使用构造器注入</li>
+<li>自己开发的模块推荐使用setter注入</li>
+</ol>
+<h1 id="四、依赖自动装配"><a href="#四、依赖自动装配" class="headerlink" title="四、依赖自动装配"></a>四、依赖自动装配</h1><ol>
+<li>IoC容器根据bean所依赖的资源在容器中自动査找并注入到bean中的过程称为自动装配</li>
+<li>自动装配方式<ul>
+<li>按类型(常用)</li>
+<li>按名称</li>
+<li>按构造方法</li>
+<li>不启用自动装配</li>
+</ul>
+</li>
+<li>自动装配用于引用类型依赖注入不能对简单类型进行操作</li>
+<li>使用按类型装配时(byType)必须保障容器中相同类型的bean唯一，推荐使用</li>
+<li>使用按名称装配时(byName)必须保障容器中具有指定名称的bean，因变量名与配置耦合，不推荐使用</li>
+<li>自动装配优先级低于setter注入与构造器注入，同时出现时自动装配配置失效</li>
+</ol>
+<h1 id="五、容器"><a href="#五、容器" class="headerlink" title="五、容器"></a>五、容器</h1><h2 id="5-1创建容器"><a href="#5-1创建容器" class="headerlink" title="5.1创建容器"></a>5.1创建容器</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241229185620210.png" alt="image-20241229185620210"></p>
+<h2 id="5-2获取bean"><a href="#5-2获取bean" class="headerlink" title="5.2获取bean"></a>5.2获取bean</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241230194145544.png" alt="image-20241230194145544"></p>
+<h2 id="5-3容器类层次结构"><a href="#5-3容器类层次结构" class="headerlink" title="5.3容器类层次结构"></a>5.3容器类层次结构</h2><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241230193924329.png" alt="image-20241230193924329"></p>
+<h2 id="5-4BeanFactory"><a href="#5-4BeanFactory" class="headerlink" title="5.4BeanFactory"></a>5.4BeanFactory</h2><p><strong><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241230194117274.png" alt="image-20241230194117274"></strong></p>
+<h2 id="5-5核心容器总结"><a href="#5-5核心容器总结" class="headerlink" title="5.5核心容器总结"></a>5.5核心容器总结</h2><h3 id="5-5-1容器相关"><a href="#5-5-1容器相关" class="headerlink" title="5.5.1容器相关"></a>5.5.1容器相关</h3><ol>
+<li>BeanFactory是IoC容器的顶层接口，初始化BeanFactory对象时，加载的bean延迟加载</li>
+<li>Applicationcontext接口是Spring容器的核心接口，初始化时bean立即加载</li>
+<li>Applicationcontext接口提供基础的bean操作相关方法通过其他接口扩展其功能</li>
+<li>Applicationcontext接口常用初始化类<ul>
+<li>ClassPathXmlApplicationContext（最常用）</li>
+<li>FileSystemXmlApplicationContext</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-5-2bean相关"><a href="#5-5-2bean相关" class="headerlink" title="5.5.2bean相关"></a>5.5.2bean相关</h3><p> <img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241230194602519.png" alt="image-20241230194602519"></p>
+<h3 id="5-5-3依赖注入相关"><a href="#5-5-3依赖注入相关" class="headerlink" title="5.5.3依赖注入相关"></a>5.5.3依赖注入相关</h3><p><img src="http://typora2023-11.oss-cn-beijing.aliyuncs.com/img/image-20241230195000771.png" alt="image-20241230195000771"></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 Aurora0702
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Qing
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
